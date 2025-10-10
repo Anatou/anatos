@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, system, host, username, ... }:
 
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   # ......
@@ -17,8 +18,9 @@
     vim
     wget
   ];
-  # Set the default editor to vim
-  environment.variables.EDITOR = "vim";
 
-  # ......
+  home-manager = {
+    extraSpecialArgs = { inherit inputs system host username pkgs; };
+    users.${username} = import ../../users/${username}/home.nix;
+  };
 }

@@ -4,16 +4,37 @@
   inputs = {
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.config.allowUnfree = true;
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    # Please replace my-nixos with your hostname
-    nixosConfigurations.anatos = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+    let
+      system = "x86_64-linux";
+      host = "anatos";
+      username = "anatou";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+    in
+    {
+    # ========== NixOs configuration ========== #
+    nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs system host username pkgs; };
       modules = [
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./configuration.nix
+        ./hosts/${host}/configuration.nix
       ];
     };
+    # ========== home-manager configuration ========== #
+    homeConfiguration.${username} = {
+      specialArgs = { inherit inputs system host username pkgs; };
+      modules = [
+        ./users/${username}/configuration.nix
+      ];
+    }
   };
 }
