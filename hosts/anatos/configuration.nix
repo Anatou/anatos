@@ -4,7 +4,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.home-manager
+    ./../../modules/home/programs
   ];
 
   # ......
@@ -19,8 +19,4 @@
     wget
   ];
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs system host username pkgs; };
-    users.${username} = import ../../users/${username}/home.nix;
-  };
 }

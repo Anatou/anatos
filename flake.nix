@@ -4,37 +4,37 @@
   inputs = {
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs.config.allowUnfree = true;
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
-    }
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs: 
     let
       system = "x86_64-linux";
-      host = "vm";
+      host = "nixos";
       username = "anatou";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
     in
     {
     # ========== NixOs configuration ========== #
+    # build with sudo nixos-rebuild switch --flake .
+    # or (same thing) sudo nixos-rebuild switch --flake .#nixosConfigurations.x86_64-linux
     nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs system host username pkgs; };
+      specialArgs = { inherit inputs system host username; };
       modules = [
         ./hosts/${host}/configuration.nix
+        ./users/${username}/configuration.nix
       ];
     };
     # ========== home-manager configuration ========== #
-    homeConfiguration.${username} = {
-      specialArgs = { inherit inputs system host username pkgs; };
+    # build with home-manager switch --flake .
+    # or (same thing) home-manager switch --flake ..#homeConfigurations.anatou
+    homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+      pkgs = import nixpkgs { inherit system username host; };
       modules = [
-        ./users/${username}/configuration.nix
+        ./users/${username}/home.nix
       ];
-    }
+    };
   };
 }

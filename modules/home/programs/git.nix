@@ -1,12 +1,12 @@
-{ lib, ...}:
+{ lib, config, ...}:
 {
-    options.programs.git.enable = lib.mkEnableOption "Enable Git";
+    options.my.git.enable = lib.mkEnableOption "Enable Git";
 
-    config = lib.mkIf config.programs.git.enable {
+    config = lib.mkIf config.my.git.enable {
         programs.git = {
             enable = true;
-            #userName = "Anatou";
-            #userEmail = "anatole@desnot.com";
+            userName = "Anatou";
+            userEmail = "anatole@desnot.com";
             aliases = {
                 a = "add .";
                 p = "push";
@@ -14,7 +14,7 @@
                 s = "status";
                 br = "branch -a";
                 sw = "switch";
-            }
+            };
         };
-    }
+    };
 }
