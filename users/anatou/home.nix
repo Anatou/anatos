@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, system, host, username, ... }:
+{ inputs, config, pkgs, system, host, username, zen-browser-flake, ... }:
 
 {
     imports = [
@@ -16,7 +16,10 @@
         pkgs.hello
         pkgs.htop
         pkgs.vscode
+        pkgs.fastfetch
     ];
+
+    programs.fastfetch.enable = true;
 
     my.git.enable = true;
     my.zsh.enable = true;

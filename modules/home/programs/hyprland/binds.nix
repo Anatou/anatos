@@ -27,10 +27,10 @@
             "$modifier SHIFT,quotedbl,movetoworkspace,4"
             "$modifier SHIFT,apostrophe,movetoworkspace,5"
             "$modifier SHIFT,parenleft,movetoworkspace,6"
-      "$modifier SHIFT,minus,movetoworkspace,7"
-      "$modifier SHIFT,egrave,movetoworkspace,8"
-      "$modifier SHIFT,underscore,movetoworkspace,9"
-      "$modifier SHIFT,ccedilla,movetoworkspace,10"
+            "$modifier SHIFT,minus,movetoworkspace,7"
+            "$modifier SHIFT,egrave,movetoworkspace,8"
+            "$modifier SHIFT,underscore,movetoworkspace,9"
+            "$modifier SHIFT,ccedilla,movetoworkspace,10"
         ];
 
         bindm = [
