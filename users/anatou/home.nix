@@ -4,6 +4,8 @@
     imports = [
         ./../../modules/home/programs
     ];
+    
+    nixpkgs.config.allowUnfree = true;
 
     home.username = "anatou";
     home.homeDirectory = "/home/anatou";
@@ -13,10 +15,12 @@
     home.packages = [
         pkgs.hello
         pkgs.htop
+        pkgs.vscode
     ];
 
     my.git.enable = true;
     my.zsh.enable = true;
+    my.hyprland.enable = true;
 
     home.sessionVariables = {
         EDITOR = "vim";
@@ -25,22 +29,6 @@
 
     home.shellAliases = {
         hi = "echo Hi !";
-    };
-
-    home.shell.enableShellIntegration = true;
-
-    programs.git = {
-        enable = true;
-        #userName = "Anatou";
-        #userEmail = "anatole@desnot.com";
-        aliases = {
-            a = "add .";
-            p = "push";
-            c = "commit -m";
-            s = "status";
-            br = "branch -a";
-            sw = "switch";
-        };
     };
 
     # creuser nix-colors

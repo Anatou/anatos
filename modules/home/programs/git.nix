@@ -1,6 +1,7 @@
 { lib, config, ...}:
+
 {
-    options.my.git.enable = lib.mkEnableOption "Enable Git";
+    options.my.git.enable = lib.mkEnableOption "Enable my git configuration";
 
     config = lib.mkIf config.my.git.enable {
         programs.git = {
@@ -10,7 +11,7 @@
             aliases = {
                 a = "add .";
                 p = "push";
-                c = "commit -m";
+                c = "commit";
                 s = "status";
                 br = "branch -a";
                 sw = "switch";

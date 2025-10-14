@@ -1,6 +1,12 @@
 { inputs, config, pkgs, system, host, username, ... }:
 
 {
-  programs.zsh.enable = true;
-  users.users.anatou.shell = pkgs.zsh;
+      # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users.anatou = {
+        isNormalUser = true;
+        extraGroups = [ 
+            "wheel" # Enable ‘sudo’ for the user.
+        ]; 
+        shell = pkgs.zsh;
+    };
 }
