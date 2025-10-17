@@ -1,8 +1,8 @@
 { lib, config, ...}:
 {
-    options.my.zsh.enable = lib.mkEnableOption "Enable my zsh configuration";
+    options.my.home.programs.zsh.enable = lib.mkEnableOption "Enable my zsh configuration";
 
-    config = lib.mkIf config.my.zsh.enable {
+    config = lib.mkIf config.my.home.programs.zsh.enable {
         programs.zsh = {
             enable = true;
             autosuggestion.enable = true;

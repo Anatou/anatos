@@ -1,9 +1,9 @@
 { lib, config, ...}:
 
 {
-    options.my.git.enable = lib.mkEnableOption "Enable my git configuration";
+    options.my.home.programs.git.enable = lib.mkEnableOption "Enable my git configuration";
 
-    config = lib.mkIf config.my.git.enable {
+    config = lib.mkIf config.my.home.programs.git.enable {
         programs.git = {
             enable = true;
             userName = "Anatou";

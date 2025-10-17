@@ -2,34 +2,39 @@
 
 {
     imports = [
-        ./../../modules/home/programs
+        ./../../modules/home
     ];
-    
     nixpkgs.config.allowUnfree = true;
 
+    # ============= User configuration ============= #
     home.username = "anatou";
     home.homeDirectory = "/home/anatou";
     # D'autres options de home pour config les différents affichages, langues, variables, curseurs, etc...
 
-    # Les packages à utiliser dans l'environnement utilisateur
-    home.packages = [
-        pkgs.hello
-        pkgs.htop
-        pkgs.vscode
-        pkgs.fastfetch
-    ];
+    # ============= User desktop environment ============= #
+    # Don't forget to activate the DE from the system configuration as well
+    # This is merely the DE configuration, home-manager does not have enough
+    # authority to completely manage the DEs
+    my.home.programs.hyprland.enable = true;
 
+    # ============= User programs ============= #
+    home.packages = with pkgs; [
+        hello
+        htop
+        vscode
+        fastfetch
+    ];
     programs.fastfetch.enable = true;
 
-    my.git.enable = true;
-    my.zsh.enable = true;
-    my.hyprland.enable = true;
+    # Programs with personnal settings
+    my.home.programs.git.enable = true;
+    my.home.programs.zsh.enable = true;
 
+    # ============= User shell ============= #
     home.sessionVariables = {
         EDITOR = "vim";
         FOO = "Hello";
     };
-
     home.shellAliases = {
         hi = "echo Hi !";
     };

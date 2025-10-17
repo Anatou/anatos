@@ -7,9 +7,9 @@
 
     {
 
-    options.my.hyprland.enable = lib.mkEnableOption "Enable my hyprland configuration";
+    options.my.home.programs.hyprland.enable = lib.mkEnableOption "Enable my hyprland configuration";
 
-    config = lib.mkIf config.my.hyprland.enable {
+    config = lib.mkIf config.my.home.programs.hyprland.enable {
 
         home.packages = with pkgs; [
             swww

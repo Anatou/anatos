@@ -3,5 +3,8 @@
 {
   imports = [
     ./audio.nix
+    ./ssh.nix
+    ./wireless.nix
+    ./display-manager.nix
   ];
 }
