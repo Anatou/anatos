@@ -5,5 +5,7 @@
         ./zsh.nix
         ./hyprland
         ./fastfetch
+        ./btop.nix
+        ./kitty.nix
     ];
 }

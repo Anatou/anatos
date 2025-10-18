@@ -28,6 +28,15 @@
     my.home.programs.git.enable = true;
     my.home.programs.zsh.enable = true;
     my.home.programs.fastfetch.enable = true;
+    my.home.programs.btop.enable = true;
+    my.home.programs.kitty.enable = true;
+
+    # Flatpak programs
+    my.home.services.flatpak.enable = true;
+    my.home.services.flatpak.packages = [
+        "io.github.zen_browser.zen"
+    ];
+
 
     # ============= User shell ============= #
     home.sessionVariables = {
