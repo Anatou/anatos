@@ -1,4 +1,4 @@
-{lib, config, username, ...}:
+{lib, config, ...}:
 
 {
     options.my.home.programs.fastfetch.enable = lib.mkEnableOption "Enable my fastfetch configuration";
@@ -17,7 +17,7 @@
                 };
 
                 logo = {
-                    source = ./${username}-fastfetch.png;
+                    source = ./hk-shade.png;
                     type = "kitty-direct";
                     height = 10;
                     width = 20;
@@ -38,7 +38,7 @@
                     type = "command";
                     key = " ├ AnatOs ";
                     keyColor = "31";
-                    text = "dev";
+                    text = "echo dev";
                     }
                     {
                     type = "kernel";

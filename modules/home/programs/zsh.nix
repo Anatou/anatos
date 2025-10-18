@@ -12,8 +12,8 @@
                 c = "clear";
                 gs = "git status";
                 gadd = "git add .";
-                gpush = "git push";
-                gpull = "git pull";
+                gpsh = "git push";
+                gpll = "git pull";
                 gco = "git commit -m ";
                 hm = "home-manager";
                 hm-switch = "home-manager switch --flake ~/anatos";

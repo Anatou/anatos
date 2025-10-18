@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, system, host, username, zen-browser-flake, ... }:
+{ inputs, config, pkgs, system, host, username, ... }:
 
 {
     imports = [
@@ -22,13 +22,12 @@
         hello
         htop
         vscode
-        fastfetch
     ];
-    programs.fastfetch.enable = true;
 
     # Programs with personnal settings
     my.home.programs.git.enable = true;
     my.home.programs.zsh.enable = true;
+    my.home.programs.fastfetch.enable = true;
 
     # ============= User shell ============= #
     home.sessionVariables = {
