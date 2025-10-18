@@ -8,9 +8,10 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: 
+  outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: 
     let
       system = "x86_64-linux";
       host = "nixvm";
@@ -31,11 +32,11 @@
     # ========== home-manager configuration ========== #
     # build with home-manager switch --flake .
     # or (same thing) home-manager switch --flake ..#homeConfigurations.anatou
-
     homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
       pkgs = import nixpkgs { inherit inputs system username host; };
       modules = [
         ./users/${username}/home.nix
+        nix-flatpak.homeManagerModules.nix-flatpak
       ];
     };
   };

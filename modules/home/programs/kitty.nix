@@ -1,4 +1,4 @@
-{ lib, config, ...}:
+{ lib, config, pkgs, ...}:
 
 {
     options.my.home.programs.kitty.enable = lib.mkEnableOption "Enable my kitty configuration";

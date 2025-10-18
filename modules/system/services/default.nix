@@ -6,5 +6,6 @@
     ./ssh.nix
     ./wireless.nix
     ./display-manager.nix
+    ./flatpak.nix
   ];
 }

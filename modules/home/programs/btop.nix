@@ -1,4 +1,4 @@
-{ lib, config, ...}:
+{ lib, config, pkgs, ...}:
 
 {
     options.my.home.programs.btop.enable = lib.mkEnableOption "Enable my btop configuration";

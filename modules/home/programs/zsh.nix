@@ -10,6 +10,7 @@
             initContent = "echo 'Welcome to zsh !'";
             shellAliases = {
                 c = "clear";
+                f = "clear && fastfetch";
                 gs = "git status";
                 gadd = "git add .";
                 gpsh = "git push";
