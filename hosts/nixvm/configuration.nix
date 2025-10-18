@@ -36,6 +36,8 @@
     keyMap = lib.mkForce "fr";
     useXkbConfig = true; # use xkb.options in tty.
   };
+  services.xserver.xkb.layout = "fr";
+  services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;

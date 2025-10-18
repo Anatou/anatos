@@ -1,4 +1,4 @@
-{ lib, config, ...}:
+{ lib, config, pkgs, ...}:
 
 {
     options.my.system.programs.server-programs.enable = lib.mkEnableOption "Installs useful system programs";

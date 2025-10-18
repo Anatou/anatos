@@ -6,7 +6,10 @@
         isNormalUser = true;
         extraGroups = [ 
             "wheel" # Enable ‘sudo’ for the user.
+            "adbusers"
         ]; 
         shell = pkgs.zsh;
     };
+
+    programs.zsh.enable = true;
 }

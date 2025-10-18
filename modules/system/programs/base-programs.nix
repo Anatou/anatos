@@ -1,4 +1,4 @@
-{ lib, config, ...}:
+{ lib, config, pkgs, ...}:
 
 {
     options.my.system.programs.base-programs.enable = lib.mkEnableOption "Installs useful system programs";
@@ -22,9 +22,9 @@
             killall
             pciutils
             brightnessctl
-            adb
             appimage-run
             libnotify
         ];
+        programs.adb.enable = true;
     };
 }
