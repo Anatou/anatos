@@ -48,6 +48,7 @@
   my.system.services.wireless.enable = true;
   my.system.services.sddm.enable = true;
   my.system.services.fonts.default.enable = true;
+  services.hardware.openrgb.enable = true;
 
   # Programs configuration
   my.system.programs.base-programs.enable = true;

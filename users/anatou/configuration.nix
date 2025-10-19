@@ -11,6 +11,7 @@
         extraGroups = [ 
             "wheel" # Enable ‘sudo’ for the user.
             "adbusers"
+            "networkmanager"
         ]; 
         password = "anatou"; # default that must be changed (but at least user isn't locked out on first boot)
         shell = pkgs.zsh;

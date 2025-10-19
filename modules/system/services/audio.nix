@@ -1,4 +1,4 @@
-{ lib, config, ...}:
+{ lib, config, pkgs, ...}:
 
 {
     options.my.system.services.pipewire.enable = lib.mkEnableOption "Enable my pipewire configuration";
@@ -33,5 +33,9 @@
                 ];
             };
         };
+
+        environment.systemPackages = with pkgs; [
+            pavucontrol
+        ];
     };
 }

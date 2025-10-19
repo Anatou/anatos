@@ -20,7 +20,9 @@
 
     # ============= User programs ============= #
     home.packages = with pkgs; [
-        htop
+        obsidian
+        spotify
+        spotify-player # tui app
     ];
 
     # Programs with personnal settings

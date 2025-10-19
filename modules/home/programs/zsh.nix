@@ -7,7 +7,7 @@
             enable = true;
             autosuggestion.enable = true;
             enableCompletion = true;
-            initContent = "fastfetch && echo 'Coucou bebou ^-^ Je t'aime !'";
+            initContent = ''fastfetch && echo "\nCoucou bebou ^-^ Je t'aime !"'';
             shellAliases = {
                 c = "clear";
                 f = "clear && fastfetch";
