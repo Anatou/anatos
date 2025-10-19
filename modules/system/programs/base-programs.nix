@@ -21,7 +21,6 @@
             unzip
             killall
             pciutils
-            brightnessctl
             appimage-run
             libnotify
         ];

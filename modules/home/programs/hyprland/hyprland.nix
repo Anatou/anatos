@@ -21,6 +21,8 @@
             hyprpolkitagent
             hyprshot
             hyprland-qtutils # needed for banners and ANR messages
+            playerctl
+            brightnessctl
         ];
         systemd.user.targets.hyprland-session.Unit.Wants = [
             "xdg-desktop-autostart.target"
