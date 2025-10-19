@@ -20,6 +20,7 @@
 
     # ============= User programs ============= #
     home.packages = with pkgs; [
+        htop
     ];
 
     # Programs with personnal settings
@@ -36,7 +37,7 @@
     ];
 
     # ============= User fonts ============= #
-    my.home.services.fonts.extra = [
+    my.home.services.fonts.extra = with pkgs; [
         fira-code
         fira-code-symbols
         jetbrains-mono
