@@ -1,12 +1,12 @@
-{ ... }:
+{ lib, config, ... }:
 
 {
     config = lib.mkIf config.my.home.programs.hyprland.enable {
         wayland.windowManager.hyprland.settings = {
             bind = [
                 "$modifier,Q,exec,kitty"
-                "$modifier,A,exec,firefox"
-                "$modifier,Space,exec,rofi-launcher"
+                "$modifier,A,exec,flatpak run app.zen_browser.zen"
+                "$modifier,Space,exec,rofi -show drun"
                 "$modifier,C,forcekillactive"
                 "$modifier,X,exec,hyprctl notify 1 1000 'rgb(ffffff)' 'Test'"
                 "$modifier,M,exit"
