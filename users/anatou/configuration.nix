@@ -17,5 +17,7 @@
     };
 
     programs.zsh.enable = true;
+    programs.hyprland.enable = true;
+    
     my.system.services.flatpak.enable = true;
 }

@@ -7,7 +7,7 @@
             enable = true;
             autosuggestion.enable = true;
             enableCompletion = true;
-            initContent = "echo 'Welcome to zsh !'";
+            initContent = "fastfetch && echo 'Coucou bebou ^-^ Je t'aime !'";
             shellAliases = {
                 c = "clear";
                 f = "clear && fastfetch";

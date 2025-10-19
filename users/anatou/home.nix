@@ -16,6 +16,7 @@
     # This is merely the DE configuration, home-manager does not have enough
     # authority to completely manage the DEs
     my.home.programs.hyprland.enable = true;
+    my.home.programs.rofi.enable = true;
 
     # ============= User programs ============= #
     home.packages = with pkgs; [

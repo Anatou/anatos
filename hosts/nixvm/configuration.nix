@@ -52,7 +52,6 @@
   my.system.programs.base-programs.enable = true;
 
   # DE configuration
-  programs.hyprland.enable = true;
   #services.xserver.enable = true;
   #services.xserver.desktopManager.gnome.enable = true;
   
