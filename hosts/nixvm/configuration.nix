@@ -47,6 +47,7 @@
   my.system.services.openssh.enable = true;
   my.system.services.wireless.enable = true;
   my.system.services.sddm.enable = true;
+  my.system.services.fonts.default.enable = true;
 
   # Programs configuration
   my.system.programs.base-programs.enable = true;

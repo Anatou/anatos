@@ -5,7 +5,6 @@
 
     config = lib.mkIf config.my.system.programs.server-programs.enable {
         environment.systemPackages = with pkgs; [
-            kitty
             vim 
             wget
             git

@@ -1,7 +1,5 @@
 { lib, config, pkgs, ...}:
-let
 
-in
 {
     options.my.home.services.flatpak = {
         packages = lib.mkOption {

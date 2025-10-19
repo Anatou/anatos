@@ -20,9 +20,6 @@
 
     # ============= User programs ============= #
     home.packages = with pkgs; [
-        hello
-        htop
-        vscode
     ];
 
     # Programs with personnal settings
@@ -31,10 +28,20 @@
     my.home.programs.fastfetch.enable = true;
     my.home.programs.btop.enable = true;
     my.home.programs.kitty.enable = true;
+    my.home.programs.vscode.enable = true;
 
     # Flatpak programs
     my.home.services.flatpak.packages = [
         "io.github.zen_browser.zen"
+    ];
+
+    # ============= User fonts ============= #
+    my.home.services.fonts.extra = [
+        fira-code
+        fira-code-symbols
+        jetbrains-mono
+        minecraftia
+        noto-fonts-emoji
     ];
 
     # ============= User shell ============= #

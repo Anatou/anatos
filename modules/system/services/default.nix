@@ -7,5 +7,6 @@
     ./wireless.nix
     ./display-manager.nix
     ./flatpak.nix
+    ./fonts.nix
   ];
 }

@@ -7,5 +7,7 @@
         ./fastfetch
         ./btop.nix
         ./kitty.nix
+        ./vscode.nix
+        ./zoxide.nix
     ];
 }
