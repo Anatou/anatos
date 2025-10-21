@@ -41,12 +41,12 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
+  my.system.services.displayManager = "ly";
 
   # Service configuration
   my.system.services.pipewire.enable = true;
   my.system.services.openssh.enable = true;
   my.system.services.wireless.enable = true;
-  my.system.services.sddm.enable = true;
   my.system.services.fonts.default.enable = true;
   services.hardware.openrgb.enable = true;
 
