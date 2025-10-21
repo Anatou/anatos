@@ -4,6 +4,7 @@ let
 in
 {
   options.my.system.services.sddm.enable = lib.mkEnableOption "Enable my sddm configuration";
+  options.my.system.services.ly.enable = lib.mkEnableOption "Enable my ly configuration";
 
   config = lib.mkIf config.my.system.services.sddm.enable {
     services.displayManager.sddm = {
@@ -17,4 +18,8 @@ in
     environment.systemPackages = [sddm-astronaut];
 
   };
+  config = lib.mkIf config.my.system.services.ly.enable {
+    services.displayManager.enable = true;
+  };
+
 }
