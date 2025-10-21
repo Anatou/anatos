@@ -12,6 +12,7 @@
                 "$modifier,M,exit"
                 "$modifier,P,pseudo"
                 "$modifier,V,togglefloating"
+                "$modifier,L,loginctl lock-session"
 
                 "$modifier,twosuperior,workspace,1"
                 "$modifier,ampersand,workspace,2"

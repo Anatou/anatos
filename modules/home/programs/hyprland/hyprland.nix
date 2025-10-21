@@ -1,11 +1,6 @@
-    { host
-    , config
-    , pkgs
-    , lib
-    , ...
-    }:
+{ host, config, pkgs, lib, ...}:
 
-    {
+{
 
     options.my.home.programs.hyprland.enable = lib.mkEnableOption "Enable my hyprland configuration";
 
