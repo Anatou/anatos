@@ -1,4 +1,4 @@
-{ host, config, pkgs, lib, ...}:
+{ host, config, pkgs, lib, username, ...}:
 
 {
     config = lib.mkIf config.my.home.programs.hyprland.enable {
@@ -8,10 +8,20 @@
             settings = {
                 general = {
                     disable_loading_bar = true;
-                    grace = 10;
+                    grace = 0; # tempo avant de demander un mdp
                     hide_cursor = true;
                     no_fade_in = false;
                 };
+                background = [
+                    {
+                        path = "/home/${username}/anatos/modules/home/programs/hyprland/hyprlock.jpg";
+                        blur_passes = 1;
+                        blur_size = 3;
+                        brightness = 0.8;       # fonce légèrement le fond pour plus de contraste
+                        vibrancy = 0.15;        # ajoute une petite saturation au flou
+                        vibrancy_darkness = 0.5;
+                    }
+                ];
                 input-field = [
                     {
                         size = "200, 50";

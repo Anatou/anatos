@@ -12,7 +12,8 @@
                 "$modifier,M,exit"
                 "$modifier,P,pseudo"
                 "$modifier,V,togglefloating"
-                "$modifier,L,loginctl lock-session"
+                "$modifier,L,exec,loginctl lock-session"
+                "$modifier SHIFT,L,exec,hyprlock"
 
                 "$modifier,twosuperior,workspace,1"
                 "$modifier,ampersand,workspace,2"
@@ -50,7 +51,7 @@
 
             bindm = [
                 "$modifier, mouse:272, movewindow"
-                "$modifier SHIFT, mouse:272, resizewindow"
+                "$modifier CONTROL, mouse:272, resizewindow"
                 "$modifier, mouse:273, resizewindow"
             ];
         };
