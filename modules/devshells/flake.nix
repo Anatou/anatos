@@ -1,5 +1,5 @@
 {
-  description = "A generic development shell";
+  description = "A flake containing many development shells";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -9,26 +9,30 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+
+      mkZshDevShell = { devshellTitle, packages, env }: pkgs.mkShell {
+        packages = packages;
+        shellHook = ''
+            #echo "Entering C development shell"
+            export ZDOTDIR="$HOME/anatos/modules/devshells" #quite important, does not work from env
+            exec $SH
+        '';
+        env = {
+            SH = "zsh";
+            DEVSHELL = devshellTitle;
+        } // env;
+      };
     in 
     {
-    devShells.${system}.c = pkgs.mkShell {
-      packages = with pkgs; [
-        libgcc
-        cmake
-        clang-tools
-        gdb
-        # Add other C development packages as needed
-      ];
-      shellHook = ''
-        echo "Entering C development shell"
-        # Sets the prompt text
-        exec zsh;
-        PS1="\[\033[1;4;38;5;63m\]C-DEVSHELL\[\033[0m\] \[\033[3;38;5;105m\]\w\$\[\033[0m\] ";
-      '';
-
-      env = {
-        PS1 = "\[\033[1;4;38;5;63m\]C-DEVSHELL\[\033[0m\] \[\033[3;38;5;105m\]\w\$\[\033[0m\] ";
-      };
+    devShells.${system}.c = mkZshDevShell {
+        devshellTitle = "c-devshell";
+        packages = with pkgs; [
+            libgcc
+            cmake
+            clang-tools
+            gdb
+        ];
+        env = {};
     };
   };
 }

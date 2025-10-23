@@ -7,7 +7,7 @@
             enable = true;
             autosuggestion.enable = true;
             enableCompletion = true;
-            initContent = ''fastfetch && echo "\nCoucou bebou ^-^ Je t'aime !"'';
+            initContent = ''if [ -z "$DEVSHELL" ]; then fastfetch && echo "\nCoucou bebou ^-^ Je t'aime ! "; fi'';
             shellAliases = {
                 c = "clear";
                 f = "clear && fastfetch";
