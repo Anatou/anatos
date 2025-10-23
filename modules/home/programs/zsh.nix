@@ -13,8 +13,8 @@
                 f = "clear && fastfetch";
                 gs = "git status";
                 gadd = "git add .";
-                gpsh = "git push";
-                gpll = "git pull";
+                gps = "git push";
+                gpl = "git pull";
                 gco = "git commit -m ";
                 hm = "home-manager";
                 hm-switch = "home-manager switch --flake ~/anatos";
