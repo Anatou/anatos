@@ -14,7 +14,7 @@
         packages = packages;
         shellHook = ''
             #echo "Entering C development shell"
-            export ZDOTDIR="$HOME/anatos/modules/devshells" #quite important, does not work from env
+            export ZDOTDIR="$HOME/anatos/modules/devshells" #important, does not work from env
             exec $SH
         '';
         env = {

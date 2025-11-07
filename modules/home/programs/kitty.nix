@@ -5,10 +5,16 @@
 
     config = lib.mkIf config.my.home.programs.kitty.enable {
         programs.kitty = {
-             enable = true;
+            enable = true;
             package = pkgs.kitty;
+            font = {
+                size = 12;
+                name = "Firacode";
+            };
+            themeFile = "ayu_mirage";
+            # themeFile = "Belafonte_Day";
+            # themeFile = "Monokai_Pro";
             settings = {
-                font_size = 12;
                 wheel_scroll_min_lines = 1;
                 window_padding_width = 4;
                 confirm_os_window_close = 0;

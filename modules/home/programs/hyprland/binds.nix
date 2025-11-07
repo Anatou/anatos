@@ -12,6 +12,7 @@
                 "$modifier,M,exit"
                 "$modifier,P,pseudo"
                 "$modifier,V,togglefloating"
+                "$modifier,J,togglesplit"
                 "$modifier,L,exec,loginctl lock-session"
                 "$modifier SHIFT,L,exec,hyprlock"
 

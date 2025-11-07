@@ -45,11 +45,11 @@
                     key = " ├  ";
                     keyColor = "31";
                     }
-                    {
-                    type = "packages";
-                    key = " ├ 󰏖 ";
-                    keyColor = "31";
-                    }
+                    # {
+                    # type = "packages";
+                    # key = " ├ 󰏖 ";
+                    # keyColor = "31";
+                    # }
                     {
                     type = "shell";
                     key = " └  ";

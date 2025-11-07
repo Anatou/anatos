@@ -16,13 +16,15 @@
     # This is merely the DE configuration, home-manager does not have enough
     # authority to completely manage the DEs
     my.home.programs.hyprland.enable = true;
+    my.home.programs.hyprland.hyprpaperTheme = "no_signal";
     my.home.programs.rofi.enable = true;
 
     # ============= User programs ============= #
     home.packages = with pkgs; [
         obsidian
         spotify
-        spotify-player # tui app
+        inkscape-with-extensions
+        gnome-calendar
     ];
 
     # Programs with personnal settings
@@ -31,13 +33,14 @@
     my.home.programs.fastfetch.enable = true;
     my.home.programs.btop.enable = true;
     my.home.programs.kitty.enable = true;
+    my.home.programs.starship.enable = true;
     my.home.programs.vscode.enable = true;
 
     # Flatpak programs
     my.home.services.flatpak.packages = [
         "io.github.zen_browser.zen"
     ];
-
+    
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [
         fira-code

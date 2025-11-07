@@ -24,4 +24,5 @@
     #};
     
     my.system.services.flatpak.enable = true;
+    my.system.services.auto-mount-data-drive.enable = true;
 }

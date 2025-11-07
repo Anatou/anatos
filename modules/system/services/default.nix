@@ -8,5 +8,6 @@
     ./display-manager.nix
     ./flatpak.nix
     ./fonts.nix
+    ./auto-mount-data-drive.nix
   ];
 }
