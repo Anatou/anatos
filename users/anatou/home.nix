@@ -40,6 +40,9 @@
     my.home.services.flatpak.packages = [
         "io.github.zen_browser.zen"
     ];
+
+    # ============= User services ============= #
+    my.home.services.cursor = "bibata";
     
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [
