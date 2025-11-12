@@ -24,7 +24,7 @@
         obsidian
         spotify
         inkscape-with-extensions
-        gnome-calendar
+        # gnome-calendar
     ];
 
     # Programs with personnal settings

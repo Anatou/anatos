@@ -11,16 +11,21 @@
       pkgs = nixpkgs.legacyPackages.${system};
 
       mkZshDevShell = { devshellTitle, packages, env }: pkgs.mkShell {
+        name = "${devshellTitle}";
         packages = packages;
-        shellHook = ''
-            #echo "Entering C development shell"
-            export ZDOTDIR="$HOME/anatos/modules/devshells" #important, does not work from env
-            exec $SH
-        '';
         env = {
             SH = "zsh";
             DEVSHELL = devshellTitle;
         } // env;
+        shellHook = ''
+            #echo "Entering C development shell"
+            exec $SH
+        '';
+        # If a other .zshrc is sourced, it must contain
+        # source ~/.zshrc
+        # RPROMPT=$RPROMPT"%F{red}["$DEVSHELL"]%f"
+        # And the shellHook must contain
+        # export ZDOTDIR="$HOME/anatos/modules/devshells" #important, does not work from env
       };
     in 
     {

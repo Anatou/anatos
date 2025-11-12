@@ -152,14 +152,16 @@
                 xwayland = {
                     force_zero_scaling = true;
                 };
+
+                workspace = [
+                    "special:special, gapsout:120 60 60 60, gapsin:30"
+                ];
+
             };
 
             extraConfig = "
             #monitor=,preferred,auto,auto
             monitor=Virtual-1,1920x1200@59.88,auto,1
-            # To enable blur on waybar uncomment the line below
-            # Thanks to SchotjeChrisman
-            #layerrule = blur,waybar
             ";
         };
     };

@@ -23,6 +23,7 @@
             pciutils
             appimage-run
             libnotify
+            acpi
         ];
         programs.adb.enable = true;
     };

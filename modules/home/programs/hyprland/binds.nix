@@ -10,12 +10,14 @@
                 "$modifier,C,forcekillactive"
                 "$modifier,X,exec,hyprctl notify 1 1000 'rgb(ffffff)' 'Test'"
                 "$modifier,M,exit"
+                "$modifier,F,fullscreen"
                 "$modifier,P,pseudo"
                 "$modifier,V,togglefloating"
                 "$modifier,J,togglesplit"
                 "$modifier,L,exec,loginctl lock-session"
                 "$modifier SHIFT,L,exec,hyprlock"
-
+                "$modifier,I,exec,rofimoji -a clipboard"
+                
                 "$modifier,twosuperior,workspace,1"
                 "$modifier,ampersand,workspace,2"
                 "$modifier,eacute,workspace,3"

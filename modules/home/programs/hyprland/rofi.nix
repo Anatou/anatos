@@ -4,6 +4,10 @@
     options.my.home.programs.rofi.enable = lib.mkEnableOption "Enable my rofi configuration";
 
     config = lib.mkIf config.my.home.programs.rofi.enable {
+        home.packages = with pkgs; [
+            rofimoji
+        ];
+
         programs.rofi = {
             enable = true;
             package = pkgs.rofi-wayland;

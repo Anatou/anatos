@@ -9,5 +9,6 @@
     ./binds.nix
     ./env.nix
     ./rofi.nix
+    ./waybar.nix
   ];
 }
