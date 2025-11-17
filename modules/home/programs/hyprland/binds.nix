@@ -10,6 +10,8 @@
                 "$modifier,C,forcekillactive"
                 "$modifier,X,exec,hyprctl notify 1 1000 'rgb(ffffff)' 'Test'"
                 "$modifier,M,exit"
+                "$modifier,E,exec,kitty -e yazi"
+                "$modifier SHIFT,E,exec,thunar"
                 "$modifier,F,fullscreen"
                 "$modifier,P,pseudo"
                 "$modifier,V,togglefloating"

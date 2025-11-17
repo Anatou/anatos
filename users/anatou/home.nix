@@ -24,6 +24,9 @@
         obsidian
         spotify
         inkscape-with-extensions
+        libreoffice-still
+        gedit
+        vlc
         # gnome-calendar
     ];
 
@@ -35,14 +38,33 @@
     my.home.programs.kitty.enable = true;
     my.home.programs.starship.enable = true;
     my.home.programs.vscode.enable = true;
+    my.home.programs.thunar.enable = true;
+    my.home.programs.yazi.enable = true;
 
     # Flatpak programs
     my.home.services.flatpak.packages = [
         "io.github.zen_browser.zen"
     ];
+    services.flatpak.overrides = {
+        "io.github.zen_browser.zen".Context = {
+            filesystems = [
+                "xdg-download"
+                "/run/.heim_org.h5l.kcm-socket"
+                "xdg-run/speech-dispatcher:ro"
+                "home"
+            ];
+        };
+    };
 
     # ============= User services ============= #
     my.home.services.cursor = "bibata";
+    my.home.services.default-apps = {
+        enable = true;
+        url = [ "app.zen_browser.zen.desktop" ];
+        pdf = [ "app.zen_browser.zen.desktop" ];
+        text = [ "gedit.desktop" ];
+        code = [ "code.desktop" ];
+    };
     
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [
@@ -64,9 +86,6 @@
 
     # creuser nix-colors
 
-    xdg.mimeApps.defaultApplications = {
-        "text/plain" = [ "app.desktop" ];
-    };
 
     programs.home-manager.enable = true;
     home.stateVersion = "25.05";

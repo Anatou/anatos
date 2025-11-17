@@ -36,6 +36,7 @@
             cmake
             clang-tools
             gdb
+            valgrind-light
         ];
         env = {};
     };

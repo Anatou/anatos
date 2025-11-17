@@ -32,6 +32,7 @@
                 # ToDo: Pull default terminal from config
                 "TERMINAL,kitty"
                 "XDG_TERMINAL_EMULATOR,kitty"
+                "XDG_MENU_PREFIX,plasma-"
             ];
         };
     };

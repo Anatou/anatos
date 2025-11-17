@@ -3,6 +3,7 @@
     imports = [
         ./git.nix
         ./zsh.nix
+        ./thunar.nix
         ./hyprland
         ./fastfetch
         ./btop.nix
@@ -10,5 +11,6 @@
         ./starship.nix
         ./vscode.nix
         ./zoxide.nix
+        ./yazi.nix
     ];
 }

@@ -22,6 +22,11 @@
     #security.pam.services.hyprlock = {
     #    text = ''auth include login'';
     #};
+
+    # Thunar services
+    programs.xfconf.enable = true;
+    services.gvfs.enable = true; 
+    services.tumbler.enable = true;
     
     my.system.services.flatpak.enable = true;
     my.system.services.auto-mount-data-drive.enable = true;

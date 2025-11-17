@@ -22,7 +22,6 @@
         # build with sudo nixos-rebuild switch --flake .
         # or (same thing) sudo nixos-rebuild switch --flake .#nixosConfigurations.nixvm
         nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-            nix.settings.experimental-features = ["nix-command" "flakes"];
             
             specialArgs = { inherit inputs system host username; };
             modules = [
