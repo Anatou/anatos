@@ -4,6 +4,7 @@
         ./flatpak.nix
         ./fonts.nix
         ./cursor.nix
-        ./default_apps.nix
+        ./mimeapps.nix
+        ./wayland-screenshot.nix
     ];
 }

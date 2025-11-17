@@ -12,6 +12,7 @@
             unrar
             unzip
             killall
+            jq
         ];
     };
 }

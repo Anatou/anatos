@@ -27,6 +27,8 @@
         libreoffice-still
         gedit
         vlc
+        qimgv
+        cowsay
         # gnome-calendar
     ];
 
@@ -51,19 +53,23 @@
                 "xdg-download"
                 "/run/.heim_org.h5l.kcm-socket"
                 "xdg-run/speech-dispatcher:ro"
-                "home"
+                "home" # give zen full access to home directory
             ];
         };
     };
 
     # ============= User services ============= #
     my.home.services.cursor = "bibata";
-    my.home.services.default-apps = {
+    my.home.services.wayland-screenshot.enable = true;
+    my.home.services.mimeapps = {
         enable = true;
         url = [ "app.zen_browser.zen.desktop" ];
         pdf = [ "app.zen_browser.zen.desktop" ];
         text = [ "gedit.desktop" ];
         code = [ "code.desktop" ];
+        video = [ "vlc.desktop" ];
+        audio = [ "vlc.desktop" ];
+        image = [ "qimgv.desktop" ];
     };
     
     # ============= User fonts ============= #

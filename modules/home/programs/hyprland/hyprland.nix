@@ -8,13 +8,9 @@
 
         home.packages = with pkgs; [
             swww
-            grim
-            slurp
             wl-clipboard
-            swappy
             ydotool
             hyprpolkitagent
-            hyprshot
             hyprland-qtutils # needed for banners and ANR messages
             playerctl
             brightnessctl
@@ -155,6 +151,11 @@
 
                 workspace = [
                     "special:special, gapsout:120 60 60 60, gapsin:30"
+                ];
+
+                windowrulev2 = [
+                    "workspace special:special, class:^(waybar)$"
+                    "nofocus, class:^(waybar)$"
                 ];
 
             };

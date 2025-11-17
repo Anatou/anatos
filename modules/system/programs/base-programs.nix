@@ -24,6 +24,7 @@
             appimage-run
             libnotify
             acpi
+            jq
         ];
         programs.adb.enable = true;
     };
