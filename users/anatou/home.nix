@@ -41,6 +41,7 @@
     my.home.programs.kitty.enable = true;
     my.home.programs.starship.enable = true;
     my.home.programs.vscode.enable = true;
+    my.home.programs.jetbrains-toolbox.enable = true;
     my.home.programs.thunar.enable = true;
     my.home.programs.yazi.enable = true;
 

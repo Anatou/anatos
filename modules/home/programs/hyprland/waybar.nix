@@ -1,20 +1,17 @@
 { host, config, pkgs, lib, ...}:
 
 # What I want in waybar
-# - time and date (center ?)
-# - music (right ?)
-# - cpu modes
-# - bluetooth
-# - wifi
-# - sleep inhibitor
-# - ram
-# - cpu
-# - brightness
-# - volume
-# - battery
-# Left -> System
-# Center -> Time, date, weather ?
-# Right -> Media & tray
+# - time and date (center ?) ✅
+# - music (right ?) ✅
+# - cpu modes ❌
+# - bluetooth ❌
+# - wifi ✅
+# - sleep inhibitor ✅
+# - ram ✅
+# - cpu ✅
+# - brightness ✅
+# - volume ✅
+# - battery ✅
 
 {
 config = lib.mkIf config.my.home.programs.hyprland.enable {
@@ -26,12 +23,11 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                 layer = "top";
                 position = "top";
                 exclusive = false;
-                height = 40;
+                height = 30;
                 spacing = 5;
-                modules-left = [ "group/" "group/systeminfo" "group/wifibluetooth" ];
-                # modules-left = [ "group/Utilities" "group/workspaces" "group/brightvol" "mpris" ];
+                modules-left = [ "group/os" "group/media" ];
                 modules-center = [ "group/datetime" ];
-                modules-right = [ "group/cpuram" "group/system" ];
+                modules-right = [ "group/cpuram" "group/tray" "group/system" ];
 
 
                 "custom/openbracket" = {
@@ -47,21 +43,7 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                     tooltip = false;
                 };
 
-                "group/datetime" = {
-                    orientation = "horizontal";
-                    modules = [
-                        "custom/openbracket"
-                        "clock"
-                        "custom/closebracket"
-                    ];
-                };
-
-                "clock" =  {
-                    "format" =  "{0:%a, %d %b} | {0:L%H:%M}";
-                    "tooltip-format" =  "<big>{:%A, %d.%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
-                };
-
-                "group/Utilities" = {
+                "group/os" = {
                     orientation = "horizontal";
                     modules = [
                         "custom/openbracket"
@@ -72,37 +54,69 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                     ];
                 };
 
-                "custom/nixos" = {
-                    format = "❄️";
-                    tooltip = false;
-                    on-click = "rofi -show drun";
-                };
-
-                "group/workspaces" = {
-                    "orientation" =  "horizontal";
-                    "modules" = [
+                "group/media" = {
+                    orientation = "horizontal";
+                    modules = [
                         "custom/openbracket"
-                        "hyprland/workspaces"
+                        "wireplumber"
+                        "custom/split"
+                        "mpris"
                         "custom/closebracket"
                     ];
                 };
 
-                "hyprland/workspaces" =  {
-                    "all-outputs" =  true;
-                    "warp-on-scroll" =  false;
-                    "enable-bar-scroll" =  true;
-                    "disable-scroll-wraparound" =  true;
-                    "active-only" =  false;
-                    "format" =  "{icon}";
-                    "format-icons" =  {
-                        "1" =  "1";
-                        "2" =  "2";
-                        "3" =  "3";
-                        "4" =  "4";
-                        "5" =  "5";
-                        "6" =  "6";
-                        "default" =  "•";
-                    };
+                "group/datetime" = {
+                    orientation = "horizontal";
+                    modules = [
+                        "custom/openbracket"
+                        "clock"
+                        "custom/closebracket"
+                    ];
+                };
+
+                "group/cpuram" =  {
+                    "orientation" =  "horizontal";
+                    "modules" =  [
+                        "custom/openbracket"
+                        "cpu"
+                        "custom/split"
+                        "memory"
+                        "custom/closebracket"
+                    ];
+                };
+
+                "group/tray" =  {
+                    "orientation" =  "horizontal";
+                    "modules" =  [
+                        "custom/openbracket"
+                        "tray"
+                        "custom/closebracket"
+                    ];
+                };
+
+                "group/system" =  {
+                    "orientation" =  "horizontal";
+                    "modules" =  [
+                        "custom/openbracket"
+                        "network"
+                        "custom/bluetooth"
+                        "custom/split"
+                        "battery"
+                        "backlight"
+                        "custom/closebracket"
+                    ];
+                };
+
+                "clock" =  {
+                    "format" = " {0:L%H:%M}";
+                    "tooltip-format" = "<big>{:%A, %d.%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
+                    "tooltip-delay" = 0;
+                };
+
+                "custom/nixos" = {
+                    format = "❄️";
+                    tooltip = false;
+                    on-click = "rofi -show drun";
                 };
 
                 "idle_inhibitor" =  {
@@ -125,53 +139,17 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                     "dynamic-order" =  ["artist"];
                 };
 
-                "group/windows" =  {
-                    "orientation" = "horizontal";
-                    "modules" = [
-                        "custom/openbracket"
-                        "hyprland/window"
-                        "custom/closebracket"
-                    ];
-                };
-                "hyprland/window" =  {
-                    "format" =  "{title}"; 
-                    "max-length" =  20;
-                    "min-length" =  0;
-                    "all-outputs" =  true;
-                };
-
-                "group/cpuram" =  {
-                    "orientation" =  "horizontal";
-                    "modules" =  [
-                        "custom/openbracket"
-                        "cpu"
-                        "custom/split"
-                        "memory"
-                        "custom/closebracket"
-                    ];
-                };
                 "cpu" =  {
-                    "format" =  "CPU = {usage}%";
+                    "format" =  " {usage}%";
                     "tooltip" =  false;
                     "interval" =  2;
                     "on-click" =  "kitty -e btop";
                 };
                 "memory" = {
-                    "format" =  "RAM = {}%";
+                    "format" =  " {}%";
                     "tooltip" =  false;
                     "interval" =  2;
                     "on-click" =  "kitty -e btop";
-                };
-
-                "group/brightvol" =  {
-                    "orientation" =  "horizontal";
-                    "modules" =  [
-                        "custom/openbracket"
-                        "backlight"
-                        "custom/split"
-                        "wireplumber"
-                        "custom/closebracket"
-                    ];
                 };
 
                 "wireplumber" =  {
@@ -192,31 +170,13 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                     "on-click" =  "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
                     "on-click-right" =  "pavucontrol";
                 };
+
                 "backlight" =  {
                     "format" =  "{icon} = {percent}%";
                     "format-icons" =  ["" "" "🌙"];
                     "on-click" =  "~/.config/waybar/scripts/brightness_slider.sh";
                 };
 
-                "group/system" =  {
-                    "orientation" =  "horizontal";
-                    "modules" =  [
-                        "custom/openbracket"
-                        "clock"
-                        "custom/split"
-                        "network"
-                        "custom/bluetooth"
-                        "custom/clipboard"
-                        "battery"
-                        "custom/closebracket"
-                    ];
-                };
-                
-                "custom/clipboard" =  {
-                    "format" =  "";
-                    "tooltip" =  false;
-                    "on-click" =  "~/.config/waybar/scripts/clipboard_menu.sh";
-                };
                 "battery" =  {
                     "states" =  {
                         "warning" =  30;
@@ -248,6 +208,50 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                 };
             };
         };
+
+        style = ''
+            * {
+                font-family: "Fira Code";
+                font-size: 1rem;
+            }
+
+            window#waybar {
+                background-color: rgba(0,0,0,0);
+            }
+
+            .modules-left {
+                background-color: rgba(122, 136, 157, 1);
+                border: solid rgba(41, 54, 75, 1);
+                border-width: 0 2px 2px 0;
+                border-bottom-right-radius: 1rem;
+                padding-left: .5rem;
+                padding-right: .5rem;
+            }
+
+            .modules-right {
+                background-color: rgba(122, 136, 157, 1);
+                border: solid rgba(41, 54, 75, 1);
+                border-width: 0 0 2px 2px;
+                border-bottom-left-radius: 1rem;
+                padding-left: .5rem;
+                padding-right: .5rem;
+            }
+
+            .modules-center {
+                background-color: rgba(122, 136, 157, 1);
+                border: solid rgba(41, 54, 75, 1);
+                border-width: 0 2px 2px 2px;
+                border-bottom-left-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+                padding-left: .5rem;
+                padding-right: .5rem;
+            }
+
+            .module {
+                padding-left: .25rem;
+                padding-right: .25rem;
+            }
+        '';
     };
 };
 }

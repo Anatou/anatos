@@ -9,6 +9,7 @@
         home.packages = with pkgs; [
             swww
             wl-clipboard
+            mako
             ydotool
             hyprpolkitagent
             hyprland-qtutils # needed for banners and ANR messages

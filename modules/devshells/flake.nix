@@ -49,6 +49,15 @@
                 ];
             };
 
+            java = mkZshDevShell {
+                devshellTitle = "java";
+                packages = with pkgs; [
+                    jdk
+                    maven
+                    gradle
+                ];
+            };
+
             python = mkZshDevShell {
                 devshellTitle = "python";
                 packages = with pkgs; [

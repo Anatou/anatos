@@ -12,5 +12,6 @@
         ./vscode.nix
         ./zoxide.nix
         ./yazi.nix
+        ./jetbrains-toolbox.nix
     ];
 }
