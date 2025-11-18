@@ -35,6 +35,7 @@
     # Programs with personnal settings
     my.home.programs.git.enable = true;
     my.home.programs.zsh.enable = true;
+    my.home.programs.zoxide.enable = true;
     my.home.programs.fastfetch.enable = true;
     my.home.programs.btop.enable = true;
     my.home.programs.kitty.enable = true;
@@ -88,6 +89,7 @@
     };
     home.shellAliases = {
         hi = "echo Hi !";
+        python = "devshell python-shell";
     };
 
     # creuser nix-colors

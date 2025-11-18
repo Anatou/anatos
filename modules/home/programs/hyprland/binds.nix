@@ -31,6 +31,7 @@
                 "$modifier,underscore,workspace,9"
                 "$modifier,ccedilla,workspace,10"
                 "$modifier SHIFT,S,movetoworkspace,special"
+                "$modifier,SHIFT S,exec,waybar-on-special-ws"
                 "$modifier,S,togglespecialworkspace" 
                 "$modifier,S,exec,waybar-on-special-ws"
                 "$modifier SHIFT,twosuperior,movetoworkspace,1"
