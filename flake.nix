@@ -14,7 +14,7 @@
     outputs = { self, nixpkgs, home-manager, nix-flatpak, ... }@inputs: 
     let
         system = "x86_64-linux";
-        host = "nixvm";
+        host = "anatos";
         username = "anatou";
     in
     {
@@ -31,7 +31,7 @@
         };
         # ========== home-manager configuration ========== #
         # build with home-manager switch --flake .
-        # or (same thing) home-manager switch --flake ..#homeConfigurations.anatou
+        # or (same thing) home-manager switch --flake .#homeConfigurations.anatou
         homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs { inherit inputs system username host; };
             extraSpecialArgs = { inherit inputs system username host; };
