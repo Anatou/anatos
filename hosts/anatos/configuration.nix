@@ -17,6 +17,9 @@
     # Use systemd-boot loader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    #boot.initrd.kernelModules = [ "mt7921e" ];
+    #environment.systemPackages = with pkgs; [ linux-firmware ];
+
 
     # Wireless and networking
     networking.hostName = "${host}";
@@ -39,15 +42,14 @@
 
     # Kernel options
     boot.kernelPackages = pkgs.linuxPackages_zen;
-
+    #boot.kernelPackages = pkgs.linuxPackages_latest;
+    
     # Boot options
     my.system.services.displayManager = "ly";
-    my.system.services.splashscreen.enable = true;
-    boot.kernelModules = [ "v4l2loopback" ];
-    boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-    boot.kernel.sysctl = { "vm.max_map_count" = 2147483642; };
+    my.system.services.splashscreen.enable = false;
 
-    # Graphics driver
+    # Driver
+    hardware.cpu.amd.updateMicrocode = true;
     hardware.graphics = {
         enable = true;
         enable32Bit = true;

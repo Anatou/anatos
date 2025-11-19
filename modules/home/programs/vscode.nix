@@ -22,6 +22,7 @@
                         shd101wyy.markdown-preview-enhanced
                         mads-hartmann.bash-ide-vscode
                         zainchen.json
+                        jnoortheen.nix-ide
                     ];
                     userSettings = {
                         "editor.detectIndentation" = false;
