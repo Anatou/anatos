@@ -9,5 +9,6 @@
     ./flatpak.nix
     ./fonts.nix
     ./auto-mount-data-drive.nix
+    ./splashscreen.nix
   ];
 }

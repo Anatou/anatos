@@ -7,27 +7,24 @@
         ./../../modules/system
         ];
 
-    nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = ["nix-command" "flakes"];
 
-    # Use the GRUB 2 boot loader.
-    # boot.loader.grub.enable = true;
-    # boot.loader.grub.efiSupport = true;
-    # boot.loader.efi.efiSysMountPoint = "/boot/efi";
-    # boot.loader.grub.device = "nodev"; 
+    # Nix package options
+    nixpkgs.config.allowUnfree = true;
+    hardware.enableRedistributableFirmware = true;
+    hardware.enableAllFirmware = true;
 
+    # Use systemd-boot loader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    networking.hostName = "${host}"; # Define your hostname.
-
-    time.timeZone = "Europe/Paris";
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # Wireless and networking
+    networking.hostName = "${host}";
+    my.system.services.wireless.enable = true;
+    my.system.services.openssh.enable = true;
 
     # Select internationalisation properties.
+    time.timeZone = "Europe/Paris";
     i18n.defaultLocale = "fr_FR.UTF-8";
     console = {
         font = "Lat2-Terminus16";
@@ -40,51 +37,36 @@
     # Enable CUPS to print documents.
     # services.printing.enable = true;
 
-    my.system.services.displayManager = "none";
+    # Kernel options
+    boot.kernelPackages = pkgs.linuxPackages_zen;
 
+    # Boot options
+    my.system.services.displayManager = "ly";
+    my.system.services.splashscreen.enable = true;
+    boot.kernelModules = [ "v4l2loopback" ];
+    boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+    boot.kernel.sysctl = { "vm.max_map_count" = 2147483642; };
+
+    # Graphics driver
     hardware.graphics = {
         enable = true;
         enable32Bit = true;
     };
-    services.xserver.enable = true;
+    systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
     services.xserver.videoDrivers = [ "amdgpu" ];
-    boot.initrd.kernelModules = [ "amdgpu" ];
-    hardware.enableRedistributableFirmware = true;
-    boot.kernelPackages = pkgs.linuxPackages_zen;
 
+    #services.xserver.enable = true;
+    #boot.initrd.kernelModules = [ "amdgpu" ];
 
-    # Service configuration
+    # Audio
     my.system.services.pipewire.enable = true;
-    my.system.services.openssh.enable = true;
-    my.system.services.wireless.enable = true;
+
+    # Fonts
     my.system.services.fonts.default.enable = true;
-    services.hardware.openrgb.enable = true;
 
     # Programs configuration
     my.system.programs.base-programs.enable = true;
-
-    # DE configuration
-    #services.xserver.enable = true;
-    #services.xserver.desktopManager.gnome.enable = true;
-    
-    # Configure keymap in X11
-    # services.xserver.xkb.layout = "fr";
-    # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    # programs.gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
-
-
-    # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
+    services.hardware.openrgb.enable = true;
 
     # This option defines the first version of NixOS you have installed on this particular machine,
     # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
