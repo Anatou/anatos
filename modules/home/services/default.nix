@@ -1,10 +1,10 @@
 { ... }:
 {
     imports = [
-        ./flatpak.nix
+        ./wayland-screenshot.nix
         ./fonts.nix
+        ./flatpak.nix
         ./cursor.nix
         ./mimeapps.nix
-        ./wayland-screenshot.nix
     ];
 }

@@ -28,6 +28,17 @@
             modules = [
                 ./hosts/${host}/configuration.nix
                 ./users/${username}/configuration.nix
+                # ./users/home-manager.nix
+                home-manager.nixosModules.home-manager {
+                    home-manager = {
+                        backupFileExtension = "backup";
+                        extraSpecialArgs = { inherit inputs system username host; };
+                        users.${username}.imports = [
+                            ./users/${username}/home.nix 
+                            nix-flatpak.homeManagerModules.nix-flatpak
+                        ];
+                    };
+                }
             ];
         };
         # ========== home-manager configuration ========== #
@@ -38,7 +49,6 @@
             extraSpecialArgs = { inherit inputs system username host; };
             modules = [
                 ./users/${username}/home.nix
-                nix-flatpak.homeManagerModules.nix-flatpak
             ];
         };
     };

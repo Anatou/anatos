@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ...}:
+{ lib, config, pkgs, osConfig, ...}:
 
 {
     options.my.home.services.flatpak = {
@@ -8,7 +8,7 @@
         };
     }; 
 
-    config = lib.mkIf config.my.system.services.flatpak.enable {
+    config = lib.mkIf osConfig.my.system.services.flatpak.enable {
         services.flatpak = {
             packages = [
                 # Those two packages manage flatpak
