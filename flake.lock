@@ -53,11 +53,28 @@
         "type": "github"
       }
     },
+    "nixpkgs-linux-firmware-downgrade": {
+      "locked": {
+        "lastModified": 1754656860,
+        "narHash": "sha256-usiWCP5cbuuymE6u+oyKua5liZD1ZjK/kH8C4QT9pUc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "732e4d32ad9fde9447d7cfca129b3afec7de00cc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "732e4d32ad9fde9447d7cfca129b3afec7de00cc",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-flatpak": "nix-flatpak",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-linux-firmware-downgrade": "nixpkgs-linux-firmware-downgrade"
       }
     }
   },
