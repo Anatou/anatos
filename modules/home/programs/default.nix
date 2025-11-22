@@ -3,6 +3,7 @@
     imports = [
         ./git.nix
         ./zsh.nix
+        ./cava.nix
         ./thunar.nix
         ./hyprland
         ./fastfetch

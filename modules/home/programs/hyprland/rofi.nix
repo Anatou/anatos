@@ -3,7 +3,6 @@
 {
     config = lib.mkIf config.my.home.programs.hyprland.enable {
         home.packages = with pkgs; [
-            rofimoji
         ];
 
         programs.rofi = {

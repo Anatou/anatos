@@ -43,6 +43,7 @@
     my.home.programs.jetbrains-toolbox.enable = true;
     my.home.programs.thunar.enable = true;
     my.home.programs.yazi.enable = true;
+    my.home.programs.cava.enable = true;
 
     # Flatpak programs
     my.home.services.flatpak.packages = [
@@ -100,10 +101,43 @@
     home.shellAliases = {
         hi = "echo Hi !";
         python = "devshell python-shell";
+        hgrep = "history | grep ";
+        c = "clear";
+        f = "clear && fastfetch";
+        gs = "git status";
+        gadd = "git add .";
+        gps = "git push";
+        gpl = "git pull";
+        gco = "git commit -m ";
+        glg = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)%ad (%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all --date=format:%Y-%m-%d@%H:%M:%S";
+        log = "glg";
+        commit = "git commit -m ";
+        push = "git push";
+        pull = "git pull";
+        #hm = "home-manager";
+        #hm-switch = "home-manager switch --flake ~/anatos && source ~/.zshrc";
+        sys-switch = "sudo nixos-rebuild switch --flake ~/anatos";
+        sys-boot = "sudo nixos-rebuild boot --flake ~/anatos";
+        list-sys-gens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
+        list-user-gens = "nix-env --list-generations";
+        gc-sys-all = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old";
+        gc-sys-pick = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations";
+        gc-user-all = "nix-env --delete-generations old";
+        gc-user-pick = "nix-env --delete-generations";
+        gc-store = "nix-store --gc";
+        gc-purge = "gc-sys-all && gc-user-all && gc-store";
+        ls-desktop-files = ''
+            LSOUTPUT="";
+            LSOUTPUT=$LSOUTPUT"================ .desktop from flatpak ================\n";
+            LSOUTPUT=$LSOUTPUT$(ls -1 /var/lib/flatpak/**/current/active/export/share/applications/ | grep -v -e '^[[:space:]]*$' -e '/var');
+            LSOUTPUT=$LSOUTPUT"\n================ .desktop from home-manager ================\n";
+            LSOUTPUT=$LSOUTPUT$(ls -1 ~/.nix-profile/share/applications);
+            LSOUTPUT=$LSOUTPUT"\n================ .desktop from nixos system ================\n";
+            LSOUTPUT=$LSOUTPUT$(ls -1 /run/current-system/sw/share/applications);
+            echo $LSOUTPUT'';
     };
 
     # creuser nix-colors
-
 
     programs.home-manager.enable = true;
     home.stateVersion = "25.05";
