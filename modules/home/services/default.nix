@@ -5,6 +5,7 @@
         ./fonts.nix
         ./flatpak.nix
         ./cursor.nix
-        ./mimeapps.nix
+        ./default-apps.nix
+        ./user-dirs.nix
     ];
 }

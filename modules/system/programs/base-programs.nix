@@ -9,6 +9,7 @@
             firefox
             kitty
             # TUI programs
+            bash
             zsh
             vim 
             wget

@@ -63,7 +63,7 @@
     # ============= User services ============= #
     my.home.services.cursor = "bibata";
     my.home.services.wayland-screenshot.enable = true;
-    my.home.services.mimeapps = {
+    my.home.services.default-apps = {
         enable = true;
         url = [ "app.zen_browser.zen.desktop" ];
         pdf = [ "app.zen_browser.zen.desktop" ];
@@ -72,6 +72,12 @@
         video = [ "vlc.desktop" ];
         audio = [ "vlc.desktop" ];
         image = [ "qimgv.desktop" ];
+    };
+
+    my.home.services.user-dirs = {
+        enable = true;
+        documents = "documents";
+        download = "download";
     };
     
     # ============= User fonts ============= #
