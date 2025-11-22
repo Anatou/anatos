@@ -68,19 +68,19 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
 
                 if [ "$ACTION" = "big" ]; then
                     case "$WAYBAR_MODE" in
-                        "mini" | "killed_full_mini")
+                        "mini" | "killed_full_mini" | "killed_mini")
                             waybar -c ~/.config/waybar/waybar_full -s ~/.config/waybar/waybar_full.style.css &
                             echo "full_mini" > "$STATE_FILE"
                             ;;
-                        "medium" | "killed_full_medium")
+                        "medium" | "killed_full_medium" | "killed_medium")
                             waybar -c ~/.config/waybar/waybar_full -s ~/.config/waybar/waybar_full.style.css &
                             echo "full_medium" > "$STATE_FILE"
                             ;;
-                        "full_mini" | "killed_mini")
+                        "full_mini")
                             waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
                             echo "mini" > "$STATE_FILE"
                             ;;
-                        "full_medium" | "killed_medium")
+                        "full_medium")
                             waybar -c ~/.config/waybar/waybar_medium -s ~/.config/waybar/waybar_medium.style.css &
                             echo "medium" > "$STATE_FILE"
                             ;;
@@ -91,21 +91,13 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                     esac
                 else
                     case "$WAYBAR_MODE" in
-                        "mini" | "killed_medium")
+                        "mini" | "full_medium" | "killed_medium" | "killed_full_medium")
                             waybar -c ~/.config/waybar/waybar_medium -s ~/.config/waybar/waybar_medium.style.css &
                             echo "medium" > "$STATE_FILE"
                             ;;
-                        "medium" | "killed_mini")
+                        "medium" | "full_mini" | "killed_mini" | "killed_full_mini")
                             waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
                             echo "mini" > "$STATE_FILE"
-                            ;;
-                        "full_mini" | "killed_mini")
-                            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
-                            echo "mini" > "$STATE_FILE"
-                            ;;
-                        "full_medium" | "killed_medium")
-                            waybar -c ~/.config/waybar/waybar_medium -s ~/.config/waybar/waybar_medium.style.css &
-                            echo "medium" > "$STATE_FILE"
                             ;;
                         *)
                             waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
