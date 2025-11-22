@@ -1,9 +1,7 @@
 { lib, config, pkgs, ...}:
 
 {
-    options.my.home.programs.rofi.enable = lib.mkEnableOption "Enable my rofi configuration";
-
-    config = lib.mkIf config.my.home.programs.rofi.enable {
+    config = lib.mkIf config.my.home.programs.hyprland.enable {
         home.packages = with pkgs; [
             rofimoji
         ];

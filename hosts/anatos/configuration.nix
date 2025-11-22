@@ -1,6 +1,7 @@
 { config, lib, pkgs, inputs, system, username, host, pkgs-linux-firmware-downgrade, ... }:
 
 {
+    # =============== Nix settings =============== #
     imports =
         [ # Include the results of the hardware scan.
         ./hardware.nix
@@ -14,21 +15,50 @@
     hardware.enableRedistributableFirmware = true;
     hardware.enableAllFirmware = true;
 
-    # Use systemd-boot loader.
+    nix.settings.auto-optimise-store = true;
+    nix.gc = {
+        automatic = true;
+        dates = "weekly";
+    };
+
+    # =============== Boot & Kernel settings =============== #
+    # Boot options
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    # Boot options
     my.system.services.displayManager = "ly";
     my.system.services.splashscreen.enable = true;
     hardware.firmware = [ pkgs-linux-firmware-downgrade.linux-firmware ];
 
+    # Kernel options
+    boot.kernelPackages = pkgs.linuxPackages_zen;
 
+    # Driver
+    hardware.cpu.amd.updateMicrocode = true;
+    hardware.graphics = {
+        enable = true;
+        enable32Bit = true;
+    };
+    hardware.graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
+    systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
+    services.xserver.videoDrivers = [ "amdgpu" ];
+
+    # =============== System services =============== #
     # Wireless and networking
     networking.hostName = "${host}";
     my.system.services.wireless.enable = true;
     my.system.services.openssh.enable = true;
 
+    # Enable CUPS to print documents.
+    # services.printing.enable = true;
+
+    # Audio
+    my.system.services.pipewire.enable = true;
+
+    # Fonts
+    my.system.services.fonts.default.enable = true;
+
+    # =============== System language =============== #
     # Select internationalisation properties.
     time.timeZone = "Europe/Paris";
     i18n.defaultLocale = "fr_FR.UTF-8";
@@ -40,28 +70,7 @@
     services.xserver.xkb.layout = "fr";
     services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-    # Enable CUPS to print documents.
-    # services.printing.enable = true;
-
-    # Kernel options
-    boot.kernelPackages = pkgs.linuxPackages_zen;
-
-    # Driver
-    hardware.cpu.amd.updateMicrocode = true;
-    hardware.graphics = {
-        enable = true;
-        enable32Bit = true;
-    };
-    systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
-    services.xserver.videoDrivers = [ "amdgpu" ];
-
-    # Audio
-    my.system.services.pipewire.enable = true;
-
-    # Fonts
-    my.system.services.fonts.default.enable = true;
-
-    # Programs configuration
+    # =============== System programs =============== #
     my.system.programs.base-programs.enable = true;
     services.hardware.openrgb.enable = true;
 

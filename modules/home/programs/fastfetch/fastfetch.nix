@@ -31,14 +31,14 @@
                     "break"
                     {
                     type = "os";
-                    key = "OS";
+                    key = "OS   ";
                     keyColor = "31";
                     }
                     {
                     type = "command";
-                    key = " ├ AnatOs ";
+                    key = " ├ ⚝ ";
                     keyColor = "31";
-                    text = "echo dev";
+                    text = "echo AnatOs";
                     }
                     {
                     type = "kernel";
@@ -80,13 +80,13 @@
                     }
                     {
                     type = "cpu";
-                    format = "{1} ({3}) @ {7} GHz";
+                    format = "{1} ({3}) @ {7}";
                     key = " ├  ";
                     keyColor = "33";
                     }
                     {
                     type = "gpu";
-                    format = "{1} {2} @ {12} GHz";
+                    format = "{1} {2}";
                     key = " ├ 󰢮 ";
                     keyColor = "33";
                     }

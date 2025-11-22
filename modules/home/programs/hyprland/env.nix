@@ -29,7 +29,6 @@
                 # Set terminal and xdg_terminal_emulator to kitty
                 # To provent yazi from starting xterm when run from rofi menu
                 # You can set to your preferred terminal if you you like
-                # ToDo: Pull default terminal from config
                 "TERMINAL,kitty"
                 "XDG_TERMINAL_EMULATOR,kitty"
                 "XDG_MENU_PREFIX,plasma-"

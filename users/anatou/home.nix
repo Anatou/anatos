@@ -17,7 +17,6 @@
     # authority to completely manage the DEs
     my.home.programs.hyprland.enable = true;
     my.home.programs.hyprland.hyprpaperTheme = "no_signal";
-    my.home.programs.rofi.enable = true;
 
     # ============= User programs ============= #
     home.packages = with pkgs; [
@@ -79,6 +78,9 @@
         documents = "documents";
         download = "download";
     };
+
+    # ============= User scripts ============= #
+    my.home.scripts.devshell.enable = true;
     
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [
@@ -87,6 +89,7 @@
         jetbrains-mono
         minecraftia
         noto-fonts-emoji
+        vdrsymbols
     ];
 
     # ============= User shell ============= #

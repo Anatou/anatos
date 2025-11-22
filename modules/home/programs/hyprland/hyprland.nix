@@ -2,14 +2,13 @@
 
 {
 
-    options.my.home.programs.hyprland.enable = lib.mkEnableOption "Enable my hyprland configuration";
+    options.my.home.programs.hyprland.enable = lib.mkEnableOption "Enable my hyprland ecosystem";
 
     config = lib.mkIf config.my.home.programs.hyprland.enable {
 
         home.packages = with pkgs; [
             swww
             wl-clipboard
-            mako
             ydotool
             hyprpolkitagent
             hyprland-qtutils # needed for banners and ANR messages
@@ -40,10 +39,6 @@
                 ];
                 input = {
                     kb_layout = "fr";
-                    #kb_options = [
-                    #"grp:alt_caps_toggle"
-                    #"caps:super"
-                    #];
                     numlock_by_default = true;
                     repeat_delay = 300;
                     follow_mouse = 1;
@@ -52,7 +47,7 @@
                     touchpad = {
                     natural_scroll = true;
                     disable_while_typing = true;
-                    scroll_factor = 0.8;
+                    scroll_factor = 0.7;
                     };
                 };
 
@@ -155,7 +150,6 @@
                 ];
 
                 windowrulev2 = [
-                    "workspace special:special, class:^(waybar)$"
                     "nofocus, class:^(waybar)$"
                 ];
 
@@ -163,7 +157,6 @@
 
             extraConfig = "
             #monitor=,preferred,auto,auto
-            monitor=Virtual-1,1920x1200@59.88,auto,1
             ";
         };
     };

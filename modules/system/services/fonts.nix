@@ -3,6 +3,7 @@ let
     defaultFonts = if config.my.system.services.fonts.default.enable then [
         pkgs.font-awesome
         pkgs.material-icons
+        pkgs.material-symbols
         pkgs.nerd-fonts.symbols-only
         pkgs.nerd-fonts.hack
     ] else [];
