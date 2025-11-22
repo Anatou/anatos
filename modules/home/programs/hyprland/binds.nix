@@ -9,6 +9,8 @@
                 "$modifier,Space,exec,rofi -show drun"
                 "$modifier,C,killactive"
                 "$modifier,Z,exec,bash $HOME/.config/waybar/waybar_controler.sh"
+                "$modifier SHIFT,Z,exec,bash $HOME/.config/waybar/waybar_controler.sh big"
+                "$modifier CONTROL,Z,exec,bash $HOME/.config/waybar/waybar_controler.sh kill"
                 "$modifier,X,exec,hyprctl notify 1 1000 'rgb(ffffff)' 'Test'"
                 "$modifier,M,exit"
                 "$modifier,E,exec,kitty -e yazi"
