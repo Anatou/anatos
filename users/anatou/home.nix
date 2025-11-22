@@ -50,12 +50,12 @@
         "io.github.zen_browser.zen"
     ];
     services.flatpak.overrides = {
-        "io.github.zen_browser.zen".Context = {
+        "app.zen_browser.zen".Context = {
             filesystems = [
                 "xdg-download"
                 "/run/.heim_org.h5l.kcm-socket"
                 "xdg-run/speech-dispatcher:ro"
-                "home" # give zen full access to home directory
+                "/home/${username}" # give zen full access to home directory
             ];
         };
     };

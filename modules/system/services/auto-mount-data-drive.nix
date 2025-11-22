@@ -12,7 +12,7 @@
         #    wantedBy = [ "multi-user.target" ];
         #};
 
-        fileSystems."/home/${username}/Documents" = {
+        fileSystems."/home/${username}/documents" = {
             device = "/dev/nvme0n1p3";
             fsType = "ext4"; 
             options = [ "defaults" ];
@@ -20,7 +20,7 @@
 
         # Makes the directory if does not exist
         systemd.tmpfiles.rules = [
-            "d /home/${username}/Documents 0755 ${username} users -"
+            "d /home/${username}/documents 0755 ${username} users -"
         ];
     };
 }
