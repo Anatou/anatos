@@ -9,7 +9,7 @@
             ignore-timeout=1
             default-timeout=5000
             max-visible=10
-            width=280
+            width=330
             font=FiraCode
 
             background-color=#000000FF

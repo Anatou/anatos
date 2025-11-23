@@ -8,7 +8,7 @@ let
 
     waybar_height = 24;
     mini_width = 100;
-    medium_width = 1000;
+    medium_width = 900;
 
     border-radius = "1rem";
     padding = ".95rem";
@@ -132,7 +132,7 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
 
             clock =  {
                 format = "{:L%H:%M}";
-                tooltip-format = "<big>{:%A, %d.%B %Y}</big>\n<tt><small>{calendar}</small></tt>";
+                tooltip-format = "<big>{:%A, %d.%B %Y}</big>\n\n<tt><small>{calendar}</small></tt>";
                 on-click = "bash $HOME/${waybar_config_path}${waybar_controler}";
                 on-click-middle = "bash $HOME/${waybar_config_path}${waybar_controler} big";
                 on-click-right = "bash $HOME/${waybar_config_path}${waybar_controler} kill";
@@ -217,7 +217,7 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
             };
 
             backlight =  {
-                format =  "{icon}{percent}%";
+                format =  "{icon} {percent}%";
                 format-icons =  ["🌙" "" ""];
             };
 
@@ -254,6 +254,10 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                 format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" ];
                 actions = {
                     on-click-right = "mode";
+                };
+
+                "hyprland/workspaces" = {
+
                 };
             };
         };
@@ -351,8 +355,6 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                 modules =  [
                     "battery"
                     "backlight"
-                    "idle_inhibitor"
-                    "custom/notification-mode"
                 ];
             };
         };
@@ -432,7 +434,7 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
 
             "group/system" = {
                 orientation = "horizontal";
-                modules = [ "group/cpuram" "custom/sep" "tray" "custom/sep" "group/controls" ];
+                modules = [ "hyprland/workspaces" "custom/sep" "group/cpuram" "custom/sep" "tray" "custom/sep" "group/controls" ];
             };
 
             "group/cpuram" =  {
@@ -468,30 +470,31 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
             * {
                 font-family: "Fira Code";
                 font-size: .9rem;
-                color: rgba(255,255,255,1);
             }
 
             tooltip {
                 background-color: rgba(0, 0, 0, 0);
                 border: none;
+                color: rgba(255,255,255,1);
             }
 
             tooltip label {
                 margin: -.35rem;
-                padding: ${padding};
+                padding: .95rem;
                 background-color: rgba(0, 0, 0, 1);
-                border-radius: ${border-radius};
+                border-radius: 1rem;
             }
 
             window#waybar {
                 background-color: rgba(0, 0, 0, 1);
-                padding-top: ${top};
-                padding-bottom: ${bottom};
+                padding-top: .1rem;
+                padding-bottom: .25rem;
+                color: rgba(255,255,255,1);
             }
 
             .modules-left {
                 background-color: rgba(0, 0, 0, 1);
-                padding-left: ${padding};
+                padding-left: .95rem;
             }
 
             .modules-center {
@@ -500,12 +503,45 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
 
             .modules-right {
                 background-color: rgba(0, 0, 0, 1);
-                padding-right: ${padding};
+                padding-right: .95rem;
             }
 
             .module {
                 padding-left: .25rem;
                 padding-right: .25rem;
+            }
+
+            #workspaces label {
+                font-weight: bold;
+                font-size: .6rem;
+            }
+            #workspaces label.active {
+                color:black;
+            }
+
+            #workspaces button {
+                padding: 0;
+                margin: 0 0.1rem;
+                border-radius: .1rem;
+                color: rgba(255,255,255,1);
+                background: rgba(255,255,255,0.1);
+                border: none;
+                outline: none;
+            }
+            #workspaces button.active, #workspaces button.active:hover {
+                border-radius: .1rem;
+                color:black;
+                background: rgba(255,255,255,1);
+                min-width: 1rem;
+                border: none;
+                outline: none;
+            }
+            #workspaces button:hover {
+                box-shadow: none;
+                border-radius: .1rem;
+                background: rgba(255,255,255,.3);
+                border: none;
+                outline: none;
             }
         '';
     };
