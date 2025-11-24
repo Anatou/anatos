@@ -7,5 +7,7 @@
         ./cursor.nix
         ./default-apps.nix
         ./user-dirs.nix
+        ./stylix.nix
+        ./udiskie.nix
     ];
 }

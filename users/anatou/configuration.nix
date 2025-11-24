@@ -27,6 +27,10 @@
     programs.xfconf.enable = true;
     services.gvfs.enable = true; 
     services.tumbler.enable = true;
+
+    # udiskie services
+    services.udisks2.enable = true;
+
     
     my.system.services.flatpak.enable = true;
     my.system.services.auto-mount-data-drive.enable = true;

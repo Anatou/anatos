@@ -39,6 +39,7 @@
     my.home.programs.btop.enable = true;
     my.home.programs.kitty.enable = true;
     my.home.programs.starship.enable = true;
+    my.home.programs.neovim.enable = true;
     my.home.programs.vscode.enable = true;
     my.home.programs.jetbrains-toolbox.enable = true;
     my.home.programs.thunar.enable = true;
@@ -61,6 +62,8 @@
     };
 
     # ============= User services ============= #
+    my.home.services.udiskie.enable = true;
+    my.home.services.stylix.enable = true;
     my.home.services.cursor = "bibata";
     my.home.services.wayland-screenshot.enable = true;
     my.home.services.default-apps = {
@@ -95,7 +98,6 @@
 
     # ============= User shell ============= #
     home.sessionVariables = {
-        EDITOR = "vim";
         FOO = "Hello";
     };
     home.shellAliases = {

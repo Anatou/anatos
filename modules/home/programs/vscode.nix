@@ -30,7 +30,7 @@
                         "[nix]"."editor.tabSize" = 4;
                         "editor.indentSize" = "tabSize";
                         "files.autoSave" = "onFocusChange";
-                        "editor.fontFamily" = "'Fira Code', 'monospace', 'monospace'";
+                        "editor.fontFamily" = lib.mkDefault "'Fira Code', 'monospace', 'monospace'";
                         "editor.fontLigatures" = true;
                     };
                 };

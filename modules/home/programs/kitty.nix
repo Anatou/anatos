@@ -8,8 +8,8 @@
             enable = true;
             package = pkgs.kitty;
             font = {
-                size = 12;
-                name = "Firacode";
+                size = lib.mkForce 11;
+                name = lib.mkDefault "Firacode";
             };
             themeFile = "ayu_mirage";
             # themeFile = "Belafonte_Day";

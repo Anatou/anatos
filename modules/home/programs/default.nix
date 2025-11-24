@@ -14,5 +14,6 @@
         ./zoxide.nix
         ./yazi.nix
         ./jetbrains-toolbox.nix
+        ./neovim.nix
     ];
 }
