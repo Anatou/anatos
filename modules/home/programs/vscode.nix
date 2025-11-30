@@ -18,6 +18,7 @@
                         ms-python.python
                         ms-python.debugpy
                         ms-python.vscode-pylance
+                        ms-toolsai.jupyter
                         tamasfe.even-better-toml
                         shd101wyy.markdown-preview-enhanced
                         mads-hartmann.bash-ide-vscode

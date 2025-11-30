@@ -17,6 +17,10 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                     timeout = 300; # 5 minutes
                     on-timeout = "loginctl lock-session";
                 }
+                {
+                    timeout = 360; # 6 minutes
+                    on-timeout = "systemctl suspend";
+                }
             ];
         };
     };

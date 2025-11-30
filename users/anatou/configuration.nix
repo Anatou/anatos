@@ -23,6 +23,9 @@
     #    text = ''auth include login'';
     #};
 
+
+    programs.steam.enable = true;
+
     # Thunar services
     programs.xfconf.enable = true;
     services.gvfs.enable = true; 

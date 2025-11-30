@@ -74,6 +74,7 @@
                 })
                 (lib.mkIf (config.my.home.services.default-apps.image != []) {
                     "image/*" = config.my.home.services.default-apps.image;
+                    "image/png" = config.my.home.services.default-apps.image;
                 })
                 (lib.mkIf (config.my.home.services.default-apps.audio != []) {
                     "audio/*" = config.my.home.services.default-apps.audio;

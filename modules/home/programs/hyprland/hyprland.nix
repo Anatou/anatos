@@ -157,6 +157,7 @@
 
             extraConfig = "
             #monitor=,preferred,auto,auto
+            layerrule = animation slide, rofi
             ";
         };
     };

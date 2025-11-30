@@ -193,9 +193,9 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
 
             "custom/notification-mode" =  {
                 exec = "${waybar_config_path}${waybar_notification_mode}";
+                interval = "once";
                 format =  "{text}";
                 return-type = "json";
-                restart-interval = 1;
                 exec-on-event = true;
                 tooltip = true;
                 tooltip-format = "{alt}";
@@ -255,10 +255,19 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                 actions = {
                     on-click-right = "mode";
                 };
+            };
 
-                "hyprland/workspaces" = {
-
-                };
+            "custom/weather" = {
+                exec = "echo \"get-waybar\" | nc localhost 6000";
+                #interval = "once";
+                interval = 60;
+                signal = 10;
+                exec-on-event = true;
+                return-type = "json";
+                format = "{text}";
+                tooltip-format = "{alt}";
+                tooltip = true;
+                on-click = "echo \"sync\" | nc localhost 6000";
             };
         };
     };
@@ -429,7 +438,7 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
 
             "group/media" = {
                 orientation = "horizontal";
-                modules = [ "wireplumber" "cava" "custom/sep" "mpris#full" ];
+                modules = [ "custom/weather" "custom/sep" "wireplumber" "cava" "custom/sep" "mpris#full" ];
             };
 
             "group/system" = {

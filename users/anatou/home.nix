@@ -28,7 +28,13 @@
         vlc
         qimgv
         cowsay
-        # gnome-calendar
+        ungoogled-chromium
+        blender
+        krita
+        krita-plugin-gmic
+        discord
+        swi-prolog
+        mermaid-cli
     ];
 
     # Programs with personnal settings
@@ -45,6 +51,7 @@
     my.home.programs.thunar.enable = true;
     my.home.programs.yazi.enable = true;
     my.home.programs.cava.enable = true;
+    my.home.programs.thunderbird.enable = false;
 
     # Flatpak programs
     my.home.services.flatpak.packages = [
@@ -102,7 +109,7 @@
     };
     home.shellAliases = {
         hi = "echo Hi !";
-        python = "devshell python-shell";
+        py = "devshell python-shell";
         hgrep = "history | grep ";
         c = "clear";
         f = "clear && fastfetch";

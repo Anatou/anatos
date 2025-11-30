@@ -61,7 +61,7 @@
             python = mkZshDevShell {
                 devshellTitle = "python";
                 packages = with pkgs; [
-                    python314
+                    (python313.withPackages (p: [ p.pyzmq p.ipykernel p.jupyterlab p.jupyter ]))
                 ];
                 beforeZsh = ''
                     if [ ! -d ./.venv ]; then 
