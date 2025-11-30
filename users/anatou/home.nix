@@ -77,7 +77,7 @@
         enable = true;
         url = [ "app.zen_browser.zen.desktop" ];
         pdf = [ "app.zen_browser.zen.desktop" ];
-        text = [ "gedit.desktop" ];
+        text = [ "org.gnome.gedit.desktop" ];
         code = [ "code.desktop" ];
         video = [ "vlc.desktop" ];
         audio = [ "vlc.desktop" ];

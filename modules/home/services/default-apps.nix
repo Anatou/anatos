@@ -65,19 +65,56 @@
                 (lib.mkIf (config.my.home.services.default-apps.text != []) {
                     "text/plain" = config.my.home.services.default-apps.text;
                     "text/markdown" = config.my.home.services.default-apps.text;
+                    "video/h264" = config.my.home.services.default-apps.text;
                 })
                 (lib.mkIf (config.my.home.services.default-apps.code != []) {
                     "text/*" = config.my.home.services.default-apps.code;
+                    "text/basic" = config.my.home.services.default-apps.code;
+                    "text/calendar" = config.my.home.services.default-apps.code;
+                    "text/css" = config.my.home.services.default-apps.code;
+                    "text/csv" = config.my.home.services.default-apps.code;
+                    "text/javascript" = config.my.home.services.default-apps.code;
+                    "text/json" = config.my.home.services.default-apps.code;
+                    "text/jsx" = config.my.home.services.default-apps.code;
+                    "text/mathml" = config.my.home.services.default-apps.code;
+                    "text/richtext" = config.my.home.services.default-apps.code;
+                    "text/rust" = config.my.home.services.default-apps.code;
+                    "text/uri-list" = config.my.home.services.default-apps.code;
+                    "text/x-asm" = config.my.home.services.default-apps.code;
+                    "text/x-c" = config.my.home.services.default-apps.code;
+                    "text/x-fortran" = config.my.home.services.default-apps.code;
+                    "text/x-java-source" = config.my.home.services.default-apps.code;
+                    "text/x-pascal" = config.my.home.services.default-apps.code;
+                    "text/x-python" = config.my.home.services.default-apps.code;
+                    "text/x-setext" = config.my.home.services.default-apps.code;
+                    "text/zig" = config.my.home.services.default-apps.code;
                 })
                 (lib.mkIf (config.my.home.services.default-apps.video != []) {
                     "video/*" = config.my.home.services.default-apps.video;
+                    "video/mp4" = config.my.home.services.default-apps.video;
+                    "video/mpeg" = config.my.home.services.default-apps.video;
+                    "video/quicktime" = config.my.home.services.default-apps.video;
+                    "video/webm" = config.my.home.services.default-apps.video;
+                    "video/x-msvideo" = config.my.home.services.default-apps.video;
+                    "video/x-matroska" = config.my.home.services.default-apps.video;
+                    "video/x-m4v" = config.my.home.services.default-apps.video;
                 })
                 (lib.mkIf (config.my.home.services.default-apps.image != []) {
                     "image/*" = config.my.home.services.default-apps.image;
+                    "image/avif" = config.my.home.services.default-apps.image;
+                    "image/avifs" = config.my.home.services.default-apps.image;
+                    "image/bmp" = config.my.home.services.default-apps.image;
+                    "image/jpeg" = config.my.home.services.default-apps.image;
+                    "image/pjpeg" = config.my.home.services.default-apps.image;
+                    "image/gif" = config.my.home.services.default-apps.image;
                     "image/png" = config.my.home.services.default-apps.image;
+                    "image/webp" = config.my.home.services.default-apps.image;
                 })
                 (lib.mkIf (config.my.home.services.default-apps.audio != []) {
                     "audio/*" = config.my.home.services.default-apps.audio;
+                    "audio/mp4" = config.my.home.services.default-apps.audio;
+                    "audio/mpeg" = config.my.home.services.default-apps.audio;
+                    "audio/wav" = config.my.home.services.default-apps.audio;
                 })
             ];
         };
