@@ -3,6 +3,9 @@
 {
     config = lib.mkIf config.my.home.programs.hyprland.enable {
         wayland.windowManager.hyprland.settings = {
+
+            "binds:hide_special_on_workspace_change" = true;
+
             bind = [
                 "$modifier,Q,exec,kitty"
                 "$modifier,A,exec,flatpak run app.zen_browser.zen"
@@ -15,6 +18,7 @@
                 "$modifier SHIFT,X,exec,code ~/anatos"
                 "$modifier,M,exit"
                 "$modifier,E,exec,kitty -e yazi"
+                "$modifier,O,exec,obsidian"
                 "$modifier SHIFT,E,exec,thunar"
                 "$modifier,F,fullscreen"
                 "$modifier,P,pseudo"
@@ -24,6 +28,8 @@
                 "$modifier,I,exec,rofimoji -a clipboard copy"
                 "$modifier,Print,exec,wayland-screenshot"
                 
+                "$modifier,S,togglespecialworkspace,special" 
+                "$modifier,D,togglespecialworkspace,utils"
                 "$modifier,twosuperior,workspace,1"
                 "$modifier,ampersand,workspace,2"
                 "$modifier,eacute,workspace,3"
@@ -35,7 +41,7 @@
                 "$modifier,underscore,workspace,9"
                 "$modifier,ccedilla,workspace,10"
                 "$modifier SHIFT,S,movetoworkspace,special"
-                "$modifier,S,togglespecialworkspace" 
+                "$modifier SHIFT,D,movetoworkspace,special:utils"
                 "$modifier SHIFT,twosuperior,movetoworkspace,1"
                 "$modifier SHIFT,ampersand,movetoworkspace,2"
                 "$modifier SHIFT,eacute,movetoworkspace,3"

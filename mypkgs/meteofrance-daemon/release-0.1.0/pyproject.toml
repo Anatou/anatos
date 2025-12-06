@@ -1,0 +1,24 @@
+[project]
+version = "0.1.0"
+name = "meteofrance-daemon"
+dependencies = [ "requests" ]
+requires-python = "== 3.13.3"
+authors = [ {name = "Anatole Desnot", email = "anatole@desnot.com"} ]
+description = "A daemon gathering meteofrance's live weather forecast"
+
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+meteofrance-daemon = "main:main"
+# Very important as it bypasses the need for a setup.py
+
+[tool.setuptools]
+py-modules = [ 
+    "main", 
+    "meteofrance_service",
+    "weather_daemon", 
+    "daemon", 
+    "localization_service", 
+]

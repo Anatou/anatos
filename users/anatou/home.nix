@@ -35,6 +35,9 @@
         discord
         swi-prolog
         mermaid-cli
+        beeper
+        zathura
+        inotify-tools
     ];
 
     # Programs with personnal settings
@@ -51,6 +54,7 @@
     my.home.programs.thunar.enable = true;
     my.home.programs.yazi.enable = true;
     my.home.programs.cava.enable = true;
+    my.home.services.meteofrance-daemon.enable = true;
     my.home.programs.thunderbird.enable = false;
 
     # Flatpak programs
@@ -144,6 +148,7 @@
             LSOUTPUT=$LSOUTPUT"\n================ .desktop from nixos system ================\n";
             LSOUTPUT=$LSOUTPUT$(ls -1 /run/current-system/sw/share/applications);
             echo $LSOUTPUT'';
+        mermaid = "mmdc";
     };
 
     # creuser nix-colors

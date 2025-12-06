@@ -9,5 +9,6 @@
         ./user-dirs.nix
         ./stylix.nix
         ./udiskie.nix
+        ./meteofrance-daemon.nix
     ];
 }

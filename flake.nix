@@ -50,7 +50,7 @@
                 # ./users/home-manager.nix
                 home-manager.nixosModules.home-manager {
                     home-manager = {
-                        backupFileExtension = "backup";
+                        backupFileExtension = "backup2";
                         extraSpecialArgs = { inherit inputs system username host; };
                         users.${username}.imports = [
                             ./users/${username}/home.nix 

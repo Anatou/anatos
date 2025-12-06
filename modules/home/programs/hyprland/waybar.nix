@@ -268,6 +268,7 @@ config = lib.mkIf config.my.home.programs.hyprland.enable {
                 tooltip-format = "{alt}";
                 tooltip = true;
                 on-click = "echo \"sync\" | nc localhost 6000";
+                on-click-right = "echo \"toggle-loc-lock\" | nc localhost 6000";
             };
         };
     };

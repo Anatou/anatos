@@ -146,7 +146,14 @@
                 };
 
                 workspace = [
-                    "special:special, gapsout:120 60 60 60, gapsin:30"
+                    "special:special, gapsout:60 60 60 60, gapsin:30"
+                    "special:utils, gapsout:90 90 90 90, gapsin:2"
+                    "1, persistant:true"
+                    "2, persistant:true"
+                    "3, persistant:true"
+                    "4, persistant:true"
+                    "5, persistant:true"
+                    "6, persistant:true"
                 ];
 
                 windowrulev2 = [
