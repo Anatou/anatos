@@ -7,6 +7,6 @@ let
 in 
 
 (mkFHSDevShell {
-    name = "python-fhs";
+    name = "python3.13-fhs";
     packages = with pkgs; [ python313 python313Packages.pip ];
 }).env

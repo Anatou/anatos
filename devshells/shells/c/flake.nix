@@ -9,7 +9,7 @@
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
-        mk-devshells = (import ../../lib/zsh-devshell.nix).outputs { inherit self nixpkgs system; };
+        mk-devshells = (import ../../lib/zsh-devshell.nix).outputs { inherit self pkgs system; };
         mkZshDevShell = mk-devshells.mkZshDevShell;
     in 
     {
@@ -23,7 +23,7 @@
                     gdb
                     valgrind-light
                 ];
-            }
+            };
         };
     };
 }

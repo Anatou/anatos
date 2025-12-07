@@ -1,5 +1,5 @@
 {
-    description = "A generic python 3.13 development shell";
+    description = "Flake containing many python development shells";
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -28,7 +28,7 @@
             };
 
             shell = mkBashDevShell {
-                name = "python-shell";
+                name = "python3.13-shell";
                 packages = with pkgs; [
                     python313
                 ];
