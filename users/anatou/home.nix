@@ -34,7 +34,6 @@
         krita
         krita-plugin-gmic
         discord
-        swi-prolog
         mermaid-cli
         beeper
         zathura
@@ -114,7 +113,7 @@
     };
     home.shellAliases = {
         hi = "echo Hi !";
-        py = "devshell python-shell";
+        py = "devshell python shell";
         hgrep = "history | grep ";
         c = "clear";
         f = "clear && fastfetch";
