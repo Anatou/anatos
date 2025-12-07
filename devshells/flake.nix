@@ -25,21 +25,20 @@
         DEVSHELLSDIR="$HOME/anatos/devshells/shells";
     in 
     {
-        devshell = pkgs.writeShellApplication {
-            name = "devshell";
-            text = 
+        devshell = pkgs.writeShellScriptBin "devshell"
             ''
                 declare -A flakes=()
                 
-                for dir in $HOME/anatos/devshells/shells/*/; do
+                for dir in "$HOME"/anatos/devshells/shells/*/; do
                     flake_name=$(basename "$dir")
-                    cd $dir
+                    cd "$dir"
                     flake_shells_raw=$(nix flake show --quiet --no-warn-dirty --no-write-lock-file --no-update-lock-file)
-                    IFS=$'\n' read -rd "" -a flake_shells_splitted <<< "$flake_shells_raw"
+
+                    IFS=$'\n' read -rd ''\'' -a flake_shells_splitted <<< "$flake_shells_raw"
                     flake_shells=("''\${flake_shells_splitted[@]:3}")
                     flake_shells_str=""
                     for i in $(seq 0 ''\${#flake_shells[@]}); do
-                        flake_shells_str="$flake_shells_str''\${flake_shells[$i]}\n"
+                        flake_shells_str="$flake_shells_str''\${flake_shells[$i]:14}\n"
                     done
                     flake_shells_str=''\${flake_shells_str::-2}
                     if [ ''\${#flake_shells[@]} -gt 1 ]; then
@@ -50,12 +49,13 @@
                     flakes["$flake_name"]=''\${flake_shells_str}
                 done
 
-                echo "======== ''\${#flakes[@]} development flakes ========"
+                out_str=""
+                out_str="$out_str======== ''\${#flakes[@]} development flakes ========\n"
                 for el in "''\${!flakes[@]}"; do
-                    echo $el
-                    echo -e ''\${flakes["''\${el}"]}
+                    out_str="$out_str\x1B[32m$el\x1B[0m\n"
+                    out_str="$out_str''\${flakes["''\${el}"]}"
                 done
+                echo -e "$out_str"
             '';
         };
-    };
 }

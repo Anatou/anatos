@@ -10,7 +10,7 @@
             enableBashIntegration = true;
             settings = {
                 nix_shell = {
-                    "format" = "in [\\[$symbol $state DEVSHELL\\]: $name]($style) ";
+                    "format" = "in [$name \\[$state DEVSHELL\\]]($style) ";
                     "symbol" = "❄️";
                     "style" = "bold red";
                 };

@@ -1,8 +1,9 @@
-{ inputs, config, pkgs, system, host, username, ... }:
+{ inputs, config, nixpkgs, pkgs, system, host, username, ... }:
 
 {
     imports = [
         ./../../modules/home
+        ./../../devshells
     ];
     nixpkgs.config.allowUnfree = true;
 
@@ -94,8 +95,8 @@
         download = "download";
     };
 
+    my.devShells.enable = true;
     # ============= User scripts ============= #
-    my.home.scripts.devshell.enable = true;
     
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [

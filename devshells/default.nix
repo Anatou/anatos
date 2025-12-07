@@ -1,16 +1,15 @@
-{ pkgs, lib, option, config, ... }:
+{ nixpkgs, pkgs, lib, option, config, ... }:
 let
-    system = "x86_64-linux";
     self = "";
-    devshells-flake = (import ./flake.nix).outputs { inherit self pkgs system; };
-    devshells = devshells-flake.devshells;
+    devshells-flake = (import ./flake.nix).outputs { inherit self nixpkgs; };
+    devshell = devshells-flake.devshell;
 in 
 {
-    options.my.home.scripts.devshell.enable = lib.mkEnableOption "Enable the devshell script";
+    options.my.devShells.enable = lib.mkEnableOption "Enable the devshell script";
 
     config = lib.mkMerge [
-        (lib.mkIf config.my.home.scripts.devshell.enable {
-            home.packages = [ devshells ];
+        (lib.mkIf config.my.devShells.enable {
+            home.packages = [ devshell ];
         })
     ];
 }

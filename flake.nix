@@ -51,7 +51,7 @@
                 home-manager.nixosModules.home-manager {
                     home-manager = {
                         backupFileExtension = "backup2";
-                        extraSpecialArgs = { inherit inputs system username host; };
+                        extraSpecialArgs = { inherit inputs system username host nixpkgs; };
                         users.${username}.imports = [
                             ./users/${username}/home.nix 
                             nix-flatpak.homeManagerModules.nix-flatpak
