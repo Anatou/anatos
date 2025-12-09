@@ -10,9 +10,11 @@
                 "<S-Left>" = "navigate previous";
                 "<S-Up>" = "navigate previous";
                 "<PageUp>" = "navigate previous";
+                "<KPPageUp>" = "navigate previous";
                 "<S-Right>" = "navigate next";
                 "<S-Down>" = "navigate next";
                 "<PageDown>" = "navigate next";
+                "<KPPageDown>" = "navigate next";
 
                 "<C-Left>" = "zoom out";
                 "<C-Up>" = "zoom out";
