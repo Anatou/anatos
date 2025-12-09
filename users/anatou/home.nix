@@ -38,6 +38,7 @@
         beeper
         zathura
         inotify-tools
+        zip
     ];
 
     # Programs with personnal settings
@@ -54,7 +55,7 @@
     my.home.programs.thunar.enable = true;
     my.home.programs.yazi.enable = true;
     my.home.programs.cava.enable = true;
-    my.home.services.meteofrance-daemon.enable = true;
+    my.home.programs.zathura.enable = true;
     my.home.programs.thunderbird.enable = false;
 
     # Flatpak programs
@@ -73,6 +74,7 @@
     };
 
     # ============= User services ============= #
+    my.home.services.meteofrance-daemon.enable = true;
     my.home.services.udiskie.enable = true;
     my.home.services.stylix.enable = true;
     my.home.services.cursor = "bibata";
@@ -80,7 +82,7 @@
     my.home.services.default-apps = {
         enable = true;
         url = [ "app.zen_browser.zen.desktop" ];
-        pdf = [ "app.zen_browser.zen.desktop" ];
+        pdf = [ "org.pwmt.zathura.desktop" ];
         text = [ "org.gnome.gedit.desktop" ];
         code = [ "code.desktop" ];
         video = [ "vlc.desktop" ];
@@ -94,7 +96,7 @@
         download = "download";
     };
 
-    my.devShells.enable = true;
+    my.devshells.enable = true;
     # ============= User scripts ============= #
     
     # ============= User fonts ============= #
@@ -119,14 +121,15 @@
         f = "clear && fastfetch";
         gs = "git status";
         gadd = "git add .";
-        gps = "git push";
-        gpl = "git pull";
-        gco = "git commit -m ";
         glg = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)%ad (%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all --date=format:%Y-%m-%d@%H:%M:%S";
-        log = "glg";
         commit = "git commit -m ";
         push = "git push";
         pull = "git pull";
+        gsw = "git switch";
+        gswc = "git switch -c";
+        gbr = "git branch -a";
+        gbra = "git branch";
+        gfetch = "git fetch --prune";
         #hm = "home-manager";
         #hm-switch = "home-manager switch --flake ~/anatos && source ~/.zshrc";
         sys-switch = "sudo nixos-rebuild switch --flake ~/anatos";

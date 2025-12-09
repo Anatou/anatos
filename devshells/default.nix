@@ -5,10 +5,10 @@ let
     devshell = devshells-flake.devshell;
 in 
 {
-    options.my.devShells.enable = lib.mkEnableOption "Enable the devshell functionality";
+    options.my.devshells.enable = lib.mkEnableOption "Enable the devshell functionality";
 
     config = lib.mkMerge [
-        (lib.mkIf config.my.devShells.enable {
+        (lib.mkIf config.my.devshells.enable {
             home.packages = [ devshell ];
         })
     ];

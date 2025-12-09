@@ -16,5 +16,6 @@
         ./jetbrains-toolbox.nix
         ./neovim.nix
         ./thunderbird.nix
+        ./zathura.nix
     ];
 }

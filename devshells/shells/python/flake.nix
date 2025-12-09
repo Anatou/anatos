@@ -18,7 +18,17 @@
         devShells.${system} = {
             default = mkPythonDevShell {
                 version = "3.13";
-                packages = with pkgs; [ python313 ];
+                packages = with pkgs; [ python313 jupyter-all ];
+            };
+
+            v310 = mkPythonDevShell {
+                version = "3.10";
+                packages = with pkgs; [ python310 ];
+            };
+
+            v314t = mkPythonDevShell {
+                version = "3.14-free-threading";
+                packages = with pkgs; [ python314FreeThreading ];
             };
 
             no-venv = mkPythonDevShell {

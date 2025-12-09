@@ -21,5 +21,11 @@
                 ];
             };
         };
+
+        #packages.${system}.default = {
+        #    packages = with pkgs; [
+        #        swi-prolog
+        #    ];
+        #};
     };
 }

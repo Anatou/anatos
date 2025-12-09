@@ -72,7 +72,7 @@
                 get_shells_list
 
                 print_small_help() {
-                    echo -e "\x1b[1;1musage: $0 [devshell] [option] | list | help\x1b[1;0m"
+                    echo -e "\x1b[1;1musage: $0 [devshell] [option] | list | help | fhs\x1b[1;0m"
                     echo -e "Activates a predefined development environment (aka devshell).\nProviding the current shell with a targeted version of the software needed."
                 }
 
@@ -87,6 +87,7 @@
                     echo -e "Example: \n$ devshell python \x1b[1;2;3m<- activates the default python devshell\x1b[1;0m"
                     echo -e "To activate a specific devshell, it must be named after the flake."
                     echo -e "Example: \n$ devshell python no-venv \x1b[1;2;3m<- activates the python devshell with no forced venv\x1b[1;0m"
+                    echo -e "Option \x1b[1;1mfhs\x1b[1;0m sets the shell in a non-sandboxed FHS environment"
                     echo ""
                     print_list
                 }
@@ -104,6 +105,9 @@
                         ;;
                     "list") 
                         echo -e "$shells_list_display"
+                        ;;
+                    "fhs") 
+                        nix-shell ~/anatos/devshells/fhs/shell.nix
                         ;;
                     * ) 
                         if [[ ''\${!shells_list[@]} =~ $1 ]]; then
