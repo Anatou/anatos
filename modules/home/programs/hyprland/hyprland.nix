@@ -1,10 +1,16 @@
-{ host, config, pkgs, lib, ...}:
+{ host, config, nixosConfig, pkgs, lib, ...}:
 
 {
 
     options.my.home.programs.hyprland.enable = lib.mkEnableOption "Enable my hyprland ecosystem";
 
     config = lib.mkIf config.my.home.programs.hyprland.enable {
+
+        assertions =
+        [ { assertion = nixosConfig.programs.hyprland.enable;
+            message = "programs.hyprland.enable must be set to `true` on system level for hyprland to work";
+            }
+        ];
 
         home.packages = with pkgs; [
             rofimoji

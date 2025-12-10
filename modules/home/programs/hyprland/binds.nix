@@ -40,7 +40,7 @@
                 "$modifier,egrave,workspace,8"
                 "$modifier,underscore,workspace,9"
                 "$modifier,ccedilla,workspace,10"
-                "$modifier SHIFT,S,movetoworkspace,special"
+                "$modifier SHIFT,S,movetoworkspace,special:special"
                 "$modifier SHIFT,D,movetoworkspace,special:utils"
                 "$modifier SHIFT,twosuperior,movetoworkspace,1"
                 "$modifier SHIFT,ampersand,movetoworkspace,2"
