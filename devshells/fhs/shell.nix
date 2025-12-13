@@ -2,8 +2,7 @@
 let
     system = "x86_64-linux";
     self = "";
-    mk-FHS-devshells = (import ../lib/FHS-devshell.nix).outputs { inherit self pkgs system; };
-    mkFHSDevShell = mk-FHS-devshells.mkFHSDevShell;
+    mkFHSDevShell = (import ../lib/fhs-devshell.nix) { inherit pkgs; };
 in 
 
 (mkFHSDevShell {

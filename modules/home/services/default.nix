@@ -3,6 +3,7 @@
     imports = [
         ./wayland-screenshot.nix
         ./fonts.nix
+        ./podman.nix
         ./flatpak.nix
         ./cursor.nix
         ./default-apps.nix

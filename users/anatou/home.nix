@@ -3,7 +3,6 @@
 {
     imports = [
         ./../../modules/home
-        ./../../devshells
     ];
     nixpkgs.config.allowUnfree = true;
 
@@ -76,6 +75,7 @@
     # ============= User services ============= #
     my.home.services.meteofrance-daemon.enable = true;
     my.home.services.udiskie.enable = true;
+    my.home.services.podman.enable = true;
     my.home.services.stylix.enable = true;
     my.home.services.cursor = "bibata";
     my.home.services.wayland-screenshot.enable = true;
@@ -96,26 +96,27 @@
         download = "download";
     };
 
-    my.devshells.enable = true;
     # ============= User scripts ============= #
+    my.home.scripts.devshell.enable = true;
     
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [
+        vdrsymbols
         fira-code
         fira-code-symbols
         jetbrains-mono
         minecraftia
         noto-fonts-emoji
-        vdrsymbols
     ];
 
     # ============= User shell ============= #
     home.sessionVariables = {
         FOO = "Hello";
+        SYSTEM = "${system}";
     };
     home.shellAliases = {
         hi = "echo Hi !";
-        py = "devshell python shell";
+        py = "devshell python:shell";
         hgrep = "history | grep ";
         c = "clear";
         f = "clear && fastfetch";
@@ -132,7 +133,7 @@
         gfetch = "git fetch --prune";
         #hm = "home-manager";
         #hm-switch = "home-manager switch --flake ~/anatos && source ~/.zshrc";
-        sys-switch = "sudo nixos-rebuild switch --flake ~/anatos";
+        sys-switch = "sudo nixos-rebuild switch --flake ~/anatos && source ~/.zshrc";
         sys-boot = "sudo nixos-rebuild boot --flake ~/anatos";
         list-sys-gens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
         list-user-gens = "nix-env --list-generations";

@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "c": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "path": "./shells/c",
-        "type": "path"
-      },
-      "original": {
-        "path": "./shells/c",
-        "type": "path"
-      },
-      "parent": []
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1764836381,
@@ -32,45 +16,10 @@
         "type": "github"
       }
     },
-    "python": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "path": "./shells/python",
-        "type": "path"
-      },
-      "original": {
-        "path": "./shells/python",
-        "type": "path"
-      },
-      "parent": []
-    },
     "root": {
       "inputs": {
-        "c": "c",
-        "nixpkgs": "nixpkgs",
-        "python": "python",
-        "rust": "rust"
+        "nixpkgs": "nixpkgs"
       }
-    },
-    "rust": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "path": "./shells/rust",
-        "type": "path"
-      },
-      "original": {
-        "path": "./shells/rust",
-        "type": "path"
-      },
-      "parent": []
     }
   },
   "root": "root",
