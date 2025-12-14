@@ -28,49 +28,59 @@
         ... 
     }@inputs: 
     let
-        system = "x86_64-linux";
-        host = "anatos";
-        username = "anatou";
+        host_config = {
+            "anatos" = {
+                system = "x86_64-linux";
+                username = "anatou";
+            };
+            "nixvm" = {
+                system = "x86_64-linux";
+                username = "anatou";
+            };
+        };
     in
     {
-        # ========== NixOs configuration ========== #
-        # build with sudo nixos-rebuild switch --flake .
-        # or (same thing) sudo nixos-rebuild switch --flake .#nixosConfigurations.nixvm
-        nixosConfigurations.${host} = nixpkgs.lib.nixosSystem {
-            
-            specialArgs = { 
-                inherit inputs system host username; 
-                pkgs-linux-firmware-downgrade = import nixpkgs-linux-firmware-downgrade { 
-                    inherit system; allowUnfree = true;
+    # ========== NixOs configuration ========== #
+    # build with sudo nixos-rebuild switch --flake .
+    # or (same thing) sudo nixos-rebuild switch --flake .#nixosConfigurations.nixvm
+    nixosConfigurations =
+        nixpkgs.lib.mapAttrs
+        (host: cfg:
+            nixpkgs.lib.nixosSystem {
+                specialArgs = {
+                    inherit inputs host;
+                    username = cfg.username;
+                    system = cfg.system;
+
+                    pkgs-linux-firmware-downgrade =
+                        import nixpkgs-linux-firmware-downgrade { system = cfg.system; allowUnfree = true; };
                 };
-            };
-            modules = [
-                ./hosts/${host}/configuration.nix
-                ./users/${username}/configuration.nix
-                # ./users/home-manager.nix
-                home-manager.nixosModules.home-manager {
-                    home-manager = {
-                        backupFileExtension = "backup2";
-                        extraSpecialArgs = { inherit inputs system username host nixpkgs; };
-                        users.${username}.imports = [
-                            ./users/${username}/home.nix 
-                            nix-flatpak.homeManagerModules.nix-flatpak
-                            stylix.homeModules.stylix
-                            nvf.homeManagerModules.default
-                        ];
-                    };
-                }
-            ];
-        };
-        # ========== home-manager configuration ========== #
-        # build with home-manager switch --flake .
-        # or (same thing) home-manager switch --flake .#homeConfigurations.anatou
-        homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-            #pkgs = import nixpkgs { inherit inputs system username host; };
-            extraSpecialArgs = { inherit inputs system username host; };
-            modules = [
-                ./users/${username}/home.nix
-            ];
-        };
+
+                modules = [
+                    ./hosts/${host}/configuration.nix
+                    ./users/${cfg.username}/configuration.nix
+
+                    home-manager.nixosModules.home-manager {
+                        home-manager = {
+                            backupFileExtension = "backup2";
+                            extraSpecialArgs = {
+                            inherit inputs host;
+                            system = cfg.system;
+                            username = cfg.username;
+                            nixpkgs = nixpkgs;
+                            };
+
+                            users.${cfg.username}.imports = [
+                            ./users/${cfg.username}/home.nix
+                                nix-flatpak.homeManagerModules.nix-flatpak
+                                stylix.homeModules.stylix
+                                nvf.homeManagerModules.default
+                            ];
+                        };
+                    }
+                ];
+            }
+        )
+        host_config;
     };
 }

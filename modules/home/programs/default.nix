@@ -1,21 +1,25 @@
 { ... }:
 {
     imports = [
-        ./git.nix
-        ./zsh.nix
-        ./cava.nix
-        ./thunar.nix
-        ./hyprland
-        ./fastfetch
         ./btop.nix
-        ./kitty.nix
-        ./starship.nix
-        ./vscode.nix
-        ./zoxide.nix
-        ./yazi.nix
+        ./cava.nix
+        ./fastfetch
+        ./git.nix
+        ./hyprland
         ./jetbrains-toolbox.nix
+        ./kitty.nix
+        ./mako.nix
         ./neovim.nix
+        ./rofi.nix
+        ./rofimoji.nix
+        ./starship.nix
+        ./thunar.nix
         ./thunderbird.nix
+        ./vscode.nix
+        ./waybar.nix
+        ./yazi.nix
         ./zathura.nix
+        ./zoxide.nix
+        ./zsh.nix
     ];
 }

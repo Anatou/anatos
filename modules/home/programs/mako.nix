@@ -1,7 +1,9 @@
 { lib, config, pkgs, ...}:
 
 {
-    config = lib.mkIf config.my.home.programs.hyprland.enable {
+    options.my.home.programs.mako.enable = lib.mkEnableOption "Enable my mako configuration";
+
+    config = lib.mkIf config.my.home.programs.mako.enable {
         home.packages = with pkgs; [
             mako
         ];

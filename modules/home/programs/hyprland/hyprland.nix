@@ -6,6 +6,11 @@
 
     config = lib.mkIf config.my.home.programs.hyprland.enable {
 
+        my.home.programs.mako.enable = true;
+        my.home.programs.rofi.enable = true;
+        my.home.programs.rofimoji.enable = true;
+        my.home.programs.waybar.enable = true;
+
         assertions =
         [ { assertion = nixosConfig.programs.hyprland.enable;
             message = "programs.hyprland.enable must be set to `true` on system level for hyprland to work";
@@ -13,7 +18,6 @@
         ];
 
         home.packages = with pkgs; [
-            rofimoji
             wl-clipboard
             ydotool
             hyprpolkitagent

@@ -16,7 +16,9 @@ let
     bottom = ".25rem";
 in
 {
-config = lib.mkIf config.my.home.programs.hyprland.enable {
+options.my.home.programs.waybar.enable = lib.mkEnableOption "Enable my waybar configuration";
+
+config = lib.mkIf config.my.home.programs.waybar.enable {
 
     home.file."${waybar_config_path}${waybar_controler}" = {
         executable = true;
