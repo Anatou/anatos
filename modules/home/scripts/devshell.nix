@@ -4,7 +4,7 @@ pkgs.writeShellScriptBin "devshell" ''
     
     print_small_help() {
         echo -e "\x1b[1mUsage:\x1b[0m"
-        echo "  devshell {<shell>|list|help}"
+        echo "  devshell {<shell>|fhs|list|help}"
         echo "  devshell packages {warm|clean|help}"
         echo ""
     }
@@ -28,6 +28,11 @@ pkgs.writeShellScriptBin "devshell" ''
         echo "  »<prefix>"
         echo "   ├─ <option1>"
         echo "   └─ ..."
+        echo ""
+        echo "devshell fhs"
+        echo "  Activates the FHS devshell (Filesystem Hierarchy Standard)"
+        echo "  The FHS devshell is a non-sandboxed FHS compliant environment with many libs"
+        echo "  It may be used to run or compile some programs needing a standard file système"
         echo ""
         echo "devshell help"
         echo "  Prints this help"
@@ -118,6 +123,9 @@ pkgs.writeShellScriptBin "devshell" ''
             ;;
         "list") 
             print_shells
+            ;;
+        "fhs") 
+            nix-shell "$HOME"/anatos/devshells/fhs
             ;;
         "packages")
             if [[ ! -n "$2" ]]; then

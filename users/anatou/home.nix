@@ -20,24 +20,30 @@
 
     # ============= User programs ============= #
     home.packages = with pkgs; [
+        # Base
         obsidian
         spotify
-        inkscape-with-extensions
+        # File opening/manipulation
         libreoffice-still
         gedit
         vlc
         qimgv
-        cowsay
         ungoogled-chromium
+        zathura
+        # Art/creation
         blender
+        inkscape-with-extensions
         krita
         krita-plugin-gmic
-        discord
+        godot
+        # Computing
+        cowsay
         mermaid-cli
-        beeper
-        zathura
-        inotify-tools
         zip
+        inotify-tools
+        # Communications
+        discord
+        beeper
     ];
 
     # Programs with personnal settings
@@ -75,7 +81,6 @@
     # ============= User services ============= #
     my.home.services.meteofrance-daemon.enable = true;
     my.home.services.udiskie.enable = true;
-    my.home.services.podman.enable = true;
     my.home.services.stylix.enable = true;
     my.home.services.cursor = "bibata";
     my.home.services.wayland-screenshot.enable = true;
