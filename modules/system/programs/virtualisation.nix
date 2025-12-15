@@ -3,7 +3,7 @@
 {
     options.my.system.programs.virtualisation.enable = lib.mkEnableOption "Enable useful virtualisation options";
 
-    config = lib.mkIf config.my.system.programs.base-programs.enable {
+    config = lib.mkIf config.my.system.programs.virtualisation.enable {
         virtualisation = {
             docker.enable = true;
             podman.enable = true;
