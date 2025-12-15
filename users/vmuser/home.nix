@@ -23,7 +23,6 @@
     # ============= User programs ============= #
     home.packages = with pkgs; [
         # Base
-        obsidian
         spotify
         # File opening/manipulation
         libreoffice-still
@@ -33,19 +32,10 @@
         ungoogled-chromium
         zathura
         # Art/creation
-        blender
-        inkscape-with-extensions
-        krita
-        krita-plugin-gmic
-        godot
-        # Computing
         cowsay
         mermaid-cli
         zip
         inotify-tools
-        # Communications
-        discord
-        beeper
     ];
 
     # Programs with personnal settings
@@ -58,12 +48,9 @@
     my.home.programs.starship.enable = true;
     my.home.programs.neovim.enable = true;
     my.home.programs.vscode.enable = true;
-    my.home.programs.jetbrains-toolbox.enable = true;
     my.home.programs.thunar.enable = true;
     my.home.programs.yazi.enable = true;
-    my.home.programs.cava.enable = true;
     my.home.programs.zathura.enable = true;
-    my.home.programs.thunderbird.enable = false;
 
     # Flatpak programs
     my.home.services.flatpak.packages = [
@@ -108,7 +95,6 @@
     
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [
-        vdrsymbols
         fira-code
         fira-code-symbols
         jetbrains-mono

@@ -1,30 +1,45 @@
 { config, lib, pkgs, host, ... }:
 
 {
+    # =============== Nix settings =============== #
     imports =
         [ # Include the results of the hardware scan.
         ./hardware.nix
         ./../../modules/system
         ];
 
-    nixpkgs.config.allowUnfree = true;
     nix.settings.experimental-features = ["nix-command" "flakes"];
 
+    # Nix package options
+    nixpkgs.config.allowUnfree = true;
+    hardware.enableRedistributableFirmware = true;
+    hardware.enableAllFirmware = true;
+
+    nix.settings.auto-optimise-store = true;
+    nix.gc = {
+        automatic = true;
+        dates = "weekly";
+    };
+
+    # =============== Boot & Kernel settings =============== #
+    # Boot options
     # Use the GRUB 2 boot loader.
     boot.loader.grub.enable = true;
     boot.loader.grub.efiSupport = true;
     boot.loader.efi.efiSysMountPoint = "/boot/efi";
     boot.loader.grub.device = "nodev"; 
 
-    networking.hostName = "${host}"; # Define your hostname.
+    # =============== System services =============== #
+    # Wireless and networking
+    networking.hostName = "${host}";
+    my.system.services.wireless.enable = true;
+    my.system.services.openssh.enable = true;
+    my.system.services.pipewire.enable = true;
+    my.system.services.fonts.default.enable = true;
 
-    time.timeZone = "Europe/Paris";
-
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
+    # =============== System language =============== #
     # Select internationalisation properties.
+    time.timeZone = "Europe/Paris";
     i18n.defaultLocale = "fr_FR.UTF-8";
     console = {
         font = "Lat2-Terminus16";
@@ -34,61 +49,9 @@
     services.xserver.xkb.layout = "fr";
     services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-    # Enable CUPS to print documents.
-    # services.printing.enable = true;
-
-
-    my.system.services.displayManager = "ly";
-
-    # Service configuration
-    my.system.services.pipewire.enable = true;
-    my.system.services.openssh.enable = true;
-    my.system.services.wireless.enable = true;
-    my.system.services.fonts.default.enable = true;
-    services.hardware.openrgb.enable = true;
-
-    # Programs configuration
+    # =============== System programs =============== #
     my.system.programs.base-programs.enable = true;
 
-    # DE configuration
-    #services.xserver.enable = true;
-    #services.xserver.desktopManager.gnome.enable = true;
-    
-    # Configure keymap in X11
-    # services.xserver.xkb.layout = "fr";
-    # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    # programs.gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
-
-
-    # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
-    # Or disable the firewall altogether.
-    # networking.firewall.enable = false;
-
-    # This option defines the first version of NixOS you have installed on this particular machine,
-    # and is used to maintain compatibility with application data (e.g. databases) created on older NixOS versions.
-    #
-    # Most users should NEVER change this value after the initial install, for any reason,
-    # even if you've upgraded your system to a new NixOS release.
-    #
-    # This value does NOT affect the Nixpkgs version your packages and OS are pulled from,
-    # so changing it will NOT upgrade your system - see https://nixos.org/manual/nixos/stable/#sec-upgrading for how
-    # to actually do that.
-    #
-    # This value being lower than the current NixOS release does NOT mean your system is
-    # out of date, out of support, or vulnerable.
-    #
-    # Do NOT change this value unless you have manually inspected all the changes it would make to your configuration,
-    # and migrated your data accordingly.
-    #
     # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
     system.stateVersion = "25.05"; # Did you read the comment?
 

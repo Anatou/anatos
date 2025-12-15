@@ -10,6 +10,7 @@
         ./kitty.nix
         ./mako.nix
         ./neovim.nix
+        ./niri
         ./rofi.nix
         ./rofimoji.nix
         ./starship.nix

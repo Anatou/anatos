@@ -72,7 +72,7 @@
 
     # =============== System programs =============== #
     my.system.programs.base-programs.enable = true;
-    my.system.programs.virtualisation.enable = true;
+    my.system.programs.virtualisation.enable = false;
     services.hardware.openrgb.enable = true;
 
     # This option defines the first version of NixOS you have installed on this particular machine,

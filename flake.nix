@@ -35,7 +35,7 @@
             };
             "nixvm" = {
                 system = "x86_64-linux";
-                username = "anatou";
+                username = "vmuser";
             };
         };
     in
@@ -64,14 +64,14 @@
                         home-manager = {
                             backupFileExtension = "backup2";
                             extraSpecialArgs = {
-                            inherit inputs host;
-                            system = cfg.system;
-                            username = cfg.username;
-                            nixpkgs = nixpkgs;
+                                inherit inputs host home-manager;
+                                system = cfg.system;
+                                username = cfg.username;
+                                nixpkgs = nixpkgs;
                             };
 
                             users.${cfg.username}.imports = [
-                            ./users/${cfg.username}/home.nix
+                                ./users/${cfg.username}/home.nix
                                 nix-flatpak.homeManagerModules.nix-flatpak
                                 stylix.homeModules.stylix
                                 nvf.homeManagerModules.default
