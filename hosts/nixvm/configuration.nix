@@ -29,6 +29,9 @@
     boot.loader.efi.efiSysMountPoint = "/boot/efi";
     boot.loader.grub.device = "nodev"; 
 
+    my.system.services.displayManager = "ly";
+    my.system.services.splashscreen.enable = true;
+
     # =============== System services =============== #
     # Wireless and networking
     networking.hostName = "${host}";
