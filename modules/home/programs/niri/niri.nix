@@ -41,34 +41,47 @@ in
                 };
                 mouse = {};
                 trackpoint = {};
+                focus-follows-mouse = no-children;
             };
 
             output = {
-                    _args = [ "eDP-1" ];
-                    mode = "3200x2000@120.030";
+                    _args = [ "Virtual-1" ];
+                    mode = "3840x2160@59.940";
                     scale = 2;
                     transform = "normal";
                     #position = { x = 1280; y = 0; };
             };
 
             layout = {
-                gaps = 16;
+                gaps = 4;
+                #struts = {
+                #    left = 10;
+                #    right = 10;
+                #    top = 16;
+                #    bottom = 16;
+                #};
                 center-focused-column = "never";
-                #preset-column-widths = [
-                #    { proportion = 0.33333; }
-                #    { proportion = 0.5; }
-                #    { proportion = 0.66667; }
-                #];
+                #default-column-display = "tabbed";
+                empty-workspace-above-first = no-children;
+                always-center-single-column = no-children;
+                preset-column-widths = {
+                    proportion = [
+                        0.33333
+                        0.5
+                        0.66667
+                    ];
+                };
                 default-column-width = { proportion = 0.5; };
                 focus-ring = {
+                    off = no-children;
                     width = 4;
                     active-color = "#7fc8ff";
                     inactive-color = "#505050";
                 };
                 border = {
                     # It is not a good idea to enable the focus-ring and the border
-                    off = no-children;
-                    width = 4;
+                    #off = no-children;
+                    width = 1;
                     active-color = "#ffc87f";
                     inactive-color = "#505050";
                     urgent-color = "#9b0000";
@@ -79,21 +92,35 @@ in
                     offset = { _props = {x=0; y=5;}; };
                     color = "#0007";
                 };
-                struts = {
-                    # left 64
-                    # right 64
-                    # top 64
-                    # bottom 64
+                tab-indicator = {
+                    # off
+                    hide-when-single-tab = no-children;
+                    place-within-column = no-children;
+                    gap = 5;
+                    width = 4;
+                    length = { _props={total-proportion=1.0; };};
+                    position = "right";
+                    gaps-between-tabs = 2;
+                    corner-radius = 8;
+                    active-color = "red";
+                    inactive-color = "gray";
+                    urgent-color = "blue";
+                    # active-gradient from="#80c8ff" to="#bbddff" angle=45
+                    # inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+                    # urgent-gradient from="#800" to="#a33" angle=45
                 };
             };
 
-            spawn-at-startup = "waybar";
-            #hotkey-overlay = {
-            #    # Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
-            #    # skip-at-startup
-            #};
+            window-rule = {
+                geometry-corner-radius = 12;
+                clip-to-geometry = true;
+            };
 
-            screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
+            spawn-sh-at-startup = "bash $HOME/.config/waybar/waybar-controler.sh";
+            hotkey-overlay = { skip-at-startup = no-children; };
+            prefer-no-csd = no-children;
+
+            screenshot-path = "~/download/screenshots/screenshot from %Y-%m-%d %H-%M-%S.png";
             #animation = {};
         });
     };

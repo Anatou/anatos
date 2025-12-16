@@ -1,7 +1,7 @@
 { host, config, pkgs, lib, username, ...}:
 
 {
-config = lib.mkIf config.my.home.programs.hyprland.enable {
+config = lib.mkIf (config.my.home.programs.hyprland.enable || config.my.home.programs.niri.enable) {
 
     services.hyprpaper = {
         enable = true;

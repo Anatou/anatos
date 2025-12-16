@@ -7,7 +7,9 @@ let
 		splitString
 		mapAttrsToList
 		any
+        all
 		;
+    inherit (lib.lists) forEach;
 	inherit (builtins) typeOf replaceStrings elem;
 
 	# ListOf String -> String
@@ -91,7 +93,12 @@ let
 		let
 			flatElements = map literalValueToString list;
 		in
-		"${name} ${concatStringsSep " " flatElements}";
+		"${concatStringsSep "\n" (forEach flatElements (el: "${name} ${el}"))}";
+
+    convertListOfAttrsToKDL = 
+        "${name: list: convertListOfAttrsToKDL "\n" (
+            forEach list (el: convertAttributeToKDL name el)
+        )}";
 
 	# String -> ListOf Anything -> String
 	convertListOfNonFlatAttrsToKDL = name: list: ''
@@ -111,10 +118,14 @@ let
 						"set"
 					]
 				) list;
+            elementsAreAllSet = 
+                all ( el: elem (typeOf el) [ "set" ] ) list;
 		in
 		if elementsAreFlat then
 			convertListOfFlatAttrsToKDL name list
-		else
+		else if elementsAreAllSet then
+			convertListOfAttrsToKDL name list
+        else
 			convertListOfNonFlatAttrsToKDL name list;
 
 	# Combined Conversion

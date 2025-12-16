@@ -23,6 +23,18 @@ binds = {
         _props = { hotkey-overlay-title = "Run an Application: rofi"; };
         spawn-sh = "rofi -show drun";
     };
+    "Mod+Z" = {
+        _props = { hotkey-overlay-title = "Activate Waybar"; };
+        spawn-sh = "bash $HOME/.config/waybar/waybar-controler.sh";
+    };
+    "Mod+Shift+Z" = {
+        _props = { hotkey-overlay-title = "Activate Waybar"; };
+        spawn-sh = "bash $HOME/.config/waybar/waybar-controler.sh big";
+    };
+    "Mod+Ctrl+Z" = {
+        _props = { hotkey-overlay-title = "Activate Waybar"; };
+        spawn-sh = "bash $HOME/.config/waybar/waybar-controler.sh kill";
+    };
     "XF86AudioRaiseVolume" = {   
         _props = { allow-when-locked = true; };
         spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+";
@@ -41,23 +53,25 @@ binds = {
     };
     "XF86MonBrightnessUp" = { 
         _props = { allow-when-locked = true; };
-        spawn = [ "brightnessctl" "--class=backlight" "set" "+10%" ];
+        spawn-sh = "brightnessctl --class=backlight set +10%";
     };
     "XF86MonBrightnessDown" = { 
         _props = { allow-when-locked = true; };
-        spawn = [ "brightnessctl" "--class=backlight" "set" "10%-" ];
+        spawn-sh = "brightnessctl --class=backlight set 10%-";
     };
 
-    "Mod+O" = { _props = { repeat = false; }; toggle-overview = no-children; };
+    "Mod+W" = { _props = { repeat = false; }; toggle-overview = no-children; };
     "Mod+C" = { _props = { repeat = false; }; close-window = no-children; };
 
+    #"Mod+D" = { maximize-window-to-edges = no-children; };
+
     "Mod+Left" = {  focus-column-left = no-children; };
-    "Mod+Down" = {  focus-window-down = no-children; };
-    "Mod+Up" = {    focus-window-up = no-children; };
+    "Mod+Down" = {  focus-window-or-workspace-down = no-children; };
+    "Mod+Up" =   {  focus-window-or-workspace-up = no-children; };
     "Mod+Right" = { focus-column-right = no-children; };
     "Mod+H" = {     focus-column-left = no-children; };
-    "Mod+J" = {     focus-window-down = no-children; };
-    "Mod+K" = {     focus-window-up = no-children; };
+    "Mod+J" = {     focus-window-or-workspace-down = no-children; };
+    "Mod+K" = {     focus-window-or-workspace-up = no-children; };
     "Mod+L" = {     focus-column-right = no-children; };
 
     "Mod+Ctrl+Left" = {  move-column-left = no-children; };
@@ -69,6 +83,7 @@ binds = {
     "Mod+Ctrl+K" = {     move-window-up = no-children; };
     "Mod+Ctrl+L" = {     move-column-right = no-children; };
 
+    "Mod+Twosuperior" = { focus-column-first = no-children; };
     "Mod+Home" = { focus-column-first = no-children; };
     "Mod+End" = {  focus-column-last = no-children; };
     "Mod+Ctrl+Home" = { move-column-to-first = no-children; };
@@ -122,9 +137,9 @@ binds = {
     "Mod+Ctrl+Shift+WheelScrollDown" = { move-column-right = no-children; };
     "Mod+Ctrl+Shift+WheelScrollUp" = {   move-column-left = no-children; };
 
-    "Mod+1" = { focus-workspace = 1; };
-    "Mod+2" = { focus-workspace = 2; };
-    "Mod+3" = { focus-workspace = 3; };
+    "Mod+ampersand" = { focus-workspace = 1; };
+    "Mod+eacute"    = { focus-workspace = 2; };
+    "Mod+quotedbl"  = { focus-workspace = 3; };
     "Mod+4" = { focus-workspace = 4; };
     "Mod+5" = { focus-workspace = 5; };
     "Mod+6" = { focus-workspace = 6; };
@@ -132,9 +147,9 @@ binds = {
     "Mod+8" = { focus-workspace = 8; };
     "Mod+9" = { focus-workspace = 9; };
 
-    "Mod+Ctrl+1" = { move-column-to-workspace = 1; };
-    "Mod+Ctrl+2" = { move-column-to-workspace = 2; };
-    "Mod+Ctrl+3" = { move-column-to-workspace = 3; };
+    "Mod+Ctrl+ampersand" = { move-column-to-workspace = 1; };
+    "Mod+Ctrl+eacute"    = { move-column-to-workspace = 2; };
+    "Mod+Ctrl+quotedbl"  = { move-column-to-workspace = 3; };
     "Mod+Ctrl+4" = { move-column-to-workspace = 4; };
     "Mod+Ctrl+5" = { move-column-to-workspace = 5; };
     "Mod+Ctrl+6" = { move-column-to-workspace = 6; };
@@ -142,11 +157,11 @@ binds = {
     "Mod+Ctrl+8" = { move-column-to-workspace = 8; };
     "Mod+Ctrl+9" = { move-column-to-workspace = 9; };
 
-    "Mod+BracketLeft" = {  consume-or-expel-window-left = no-children; };
-    "Mod+BracketRight" = { consume-or-expel-window-right = no-children; };
+    "Mod+O" = {  consume-or-expel-window-left = no-children; };
+    "Mod+P" = { consume-or-expel-window-right = no-children; };
 
     "Mod+Comma" = {  consume-window-into-column = no-children; };
-    "Mod+Period" = { expel-window-from-column = no-children; };
+    "Mod+Semicolon" = { expel-window-from-column = no-children; };
 
     "Mod+R" = {       switch-preset-column-width = no-children; };
     "Mod+Shift+R" = { switch-preset-window-height = no-children; };
