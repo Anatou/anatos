@@ -25,7 +25,7 @@
                 "$modifier,V,togglefloating"
                 "$modifier,J,togglesplit"
                 "$modifier,L,exec,loginctl lock-session"
-                "$modifier,I,exec,rofimoji"
+                "$modifier,I,exec,exec,bash rofimoji"
                 "$modifier,Print,exec,wayland-screenshot"
                 
                 "$modifier,S,togglespecialworkspace,special" 

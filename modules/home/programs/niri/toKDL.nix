@@ -95,10 +95,10 @@ let
 		in
 		"${concatStringsSep "\n" (forEach flatElements (el: "${name} ${el}"))}";
 
-    convertListOfAttrsToKDL = 
-        "${name: list: convertListOfAttrsToKDL "\n" (
+    convertListOfAttrsToKDL = name: list: ''
+        ${(concatStringsSep "\n" (
             forEach list (el: convertAttributeToKDL name el)
-        )}";
+        ))}'';
 
 	# String -> ListOf Anything -> String
 	convertListOfNonFlatAttrsToKDL = name: list: ''

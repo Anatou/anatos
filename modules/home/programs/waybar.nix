@@ -25,7 +25,7 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
         text = ''
         STATE_FILE="$HOME/.cache/waybar_mode"
 
-        # Création du fichier si inexistant (mode 0 par défaut)
+        # Create state file (and start waybar in mini)
         if [ ! -f "$STATE_FILE" ]; then
             echo "mini" > "$STATE_FILE"
             waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
@@ -38,12 +38,15 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
                 ACTION="big"
             elif [ $# -eq 1 ] && [ "$1" = "kill" ]; then
                 ACTION="kill"
+            elif [ $# -eq 1 ] && [ "$1" = "init" ]; then
+                ACTION="init"
             fi
 
-            echo "Action: $ACTION"
-            echo "\$1: $1"
-
-            if [ "$ACTION" = "kill" ]; then
+            if [ "$ACTION" = "init" ]; then
+                waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
+                echo "mini" > "$STATE_FILE"
+                ;;
+            elif [ "$ACTION" = "kill" ]; then
                 if pgrep waybar >/dev/null; then
                     pkill waybar
                     case "$WAYBAR_MODE" in

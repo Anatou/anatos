@@ -41,7 +41,7 @@ in
                 };
                 mouse = {};
                 trackpoint = {};
-                focus-follows-mouse = no-children;
+                #focus-follows-mouse = no-children;
             };
 
             output = {
@@ -54,12 +54,12 @@ in
 
             layout = {
                 gaps = 4;
-                #struts = {
-                #    left = 10;
-                #    right = 10;
+                struts = {
+                    left = 64;
+                    right = 64;
                 #    top = 16;
                 #    bottom = 16;
-                #};
+                };
                 center-focused-column = "never";
                 #default-column-display = "tabbed";
                 empty-workspace-above-first = no-children;
@@ -87,6 +87,7 @@ in
                     urgent-color = "#9b0000";
                 };     
                 shadow = {
+                    on = no-children;
                     softness = 30;
                     spread = 5;
                     offset = { _props = {x=0; y=5;}; };
@@ -96,18 +97,22 @@ in
                     # off
                     hide-when-single-tab = no-children;
                     place-within-column = no-children;
-                    gap = 5;
-                    width = 4;
+                    gap = 2;
+                    width = 8;
                     length = { _props={total-proportion=1.0; };};
                     position = "right";
                     gaps-between-tabs = 2;
                     corner-radius = 8;
-                    active-color = "red";
-                    inactive-color = "gray";
-                    urgent-color = "blue";
-                    # active-gradient from="#80c8ff" to="#bbddff" angle=45
-                    # inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-                    # urgent-gradient from="#800" to="#a33" angle=45
+                    #active-color = "red";
+                    #inactive-color = "gray";
+                    #urgent-color = "blue";
+                    active-gradient =   { _props = { from="#ffb14aff"; to="#ff9100ff"; angle=0; }; };
+                    inactive-gradient = { _props = { from="#505050"; to="#808080"; angle=0; relative-to="workspace-view"; }; };
+                    urgent-gradient =   { _props = { from="#800"; to="#aa339aff"; angle=0; }; };
+                };
+                insert-hint = {
+                    off = no-children;
+                    #color "#ffc87f80"
                 };
             };
 
@@ -116,7 +121,7 @@ in
                 clip-to-geometry = true;
             };
 
-            spawn-sh-at-startup = "bash $HOME/.config/waybar/waybar-controler.sh";
+            spawn-sh-at-startup = "$HOME/.config/waybar/waybar-controler.sh init";
             hotkey-overlay = { skip-at-startup = no-children; };
             prefer-no-csd = no-children;
 
