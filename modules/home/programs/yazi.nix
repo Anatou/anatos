@@ -57,6 +57,11 @@
                         desc = "Goto ~/anatos";
                     }
                     {
+                        on = [ "g" "i" ];
+                        run = "cd ~/documents/insa-4if";
+                        desc = "Goto ~/documents/insa-4if";
+                    }
+                    {
                         on = "<Enter>";
                         run = "plugin smart-enter";
                         desc = "Enter the child directory, or open the file";

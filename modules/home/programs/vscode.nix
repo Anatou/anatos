@@ -33,6 +33,7 @@
                         "files.autoSave" = "onFocusChange";
                         "editor.fontFamily" = lib.mkDefault "'Fira Code', 'monospace', 'monospace'";
                         "editor.fontLigatures" = true;
+                        "keyboard.dispatch" = "keycode";
                     };
                 };
             };

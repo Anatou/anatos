@@ -12,6 +12,13 @@ in
         packages = with pkgs; [ python313 jupyter-all ];
     };
 
+    v310 = {
+        prefix = prefix;
+        function = mkPythonDevshell;
+        name = "python-3.10";
+        packages = with pkgs; [ python310 jupyter-all ];
+    };
+
     v314t = {
         prefix = prefix;
         function = mkPythonDevshell;

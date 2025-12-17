@@ -1,7 +1,7 @@
 { host, config, pkgs, lib, ...}:
 
 {
-config = lib.mkIf config.my.home.programs.hyprland.enable {
+config = lib.mkIf config.my.home.programs.hyprlock.enable {
 
     services.hypridle = {
         enable = true;

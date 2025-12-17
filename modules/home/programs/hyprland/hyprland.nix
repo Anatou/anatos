@@ -10,6 +10,8 @@
         my.home.programs.rofi.enable = true;
         my.home.programs.rofimoji.enable = true;
         my.home.programs.waybar.enable = true;
+        my.home.programs.hyprpaper.enable = true;
+        my.home.programs.hyprlock.enable = true;
 
         assertions =
         [ { assertion = nixosConfig.programs.hyprland.enable;

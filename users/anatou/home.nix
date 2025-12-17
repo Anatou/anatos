@@ -16,9 +16,11 @@
     # This is merely the DE configuration, home-manager does not have enough
     # authority to completely manage the DEs
     my.home.programs.hyprland.enable = true;
-    my.home.programs.hyprland.hyprpaperTheme = "no_signal";
-    
     my.home.programs.niri.enable = true;
+    my.home.programs.hyprlock.theme = "no_signal";
+    my.home.programs.hyprpaper.theme = "modane-montagne";
+
+    
     
     # ============= User programs ============= #
     home.packages = with pkgs; [
@@ -120,6 +122,7 @@
     home.sessionVariables = {
         FOO = "Hello";
         SYSTEM = "${system}";
+        EDITOR = "nvim";
     };
     home.shellAliases = {
         hi = "echo Hi !";

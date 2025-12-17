@@ -16,8 +16,8 @@
     # This is merely the DE configuration, home-manager does not have enough
     # authority to completely manage the DEs
     my.home.programs.hyprland.enable = true;
-    my.home.programs.hyprland.hyprpaperTheme = "no_signal";
-    
+    my.home.programs.hyprlock.theme = "no_signal";
+    my.home.programs.hyprpaper.theme = "mountain_sunset";
     my.home.programs.niri.enable = true;
     
     # ============= User programs ============= #
@@ -106,6 +106,7 @@
     home.sessionVariables = {
         FOO = "Hello";
         SYSTEM = "${system}";
+        EDITOR = "nvim";
     };
     home.shellAliases = {
         hi = "echo Hi !";

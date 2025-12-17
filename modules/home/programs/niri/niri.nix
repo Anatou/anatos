@@ -13,6 +13,9 @@ in
         my.home.programs.rofi.enable = true;
         my.home.programs.rofimoji.enable = true;
         my.home.programs.waybar.enable = true;
+        my.home.programs.hyprpaper.enable = true;
+        my.home.programs.hyprlock.enable = true;
+        my.home.scripts.niri-media-switcher.enable = true;
 
         assertions =
         [ { assertion = nixosConfig.programs.niri.enable;
@@ -44,21 +47,37 @@ in
                 #focus-follows-mouse = no-children;
             };
 
-            output = {
+            output = [ 
+                {
                     _args = [ "Virtual-1" ];
                     mode = "3840x2160@59.940";
                     scale = 2;
                     transform = "normal";
                     #position = { x = 1280; y = 0; };
-            };
+                } 
+                {
+                    _args = [ "eDP-1" ];
+                    mode = "3200x2000@120.000";
+                    scale = 2;
+                    transform = "normal";
+                    position = { _props = { x = 0; y = 0; }; };
+                } 
+                {
+                    _args = [ "HDMI-A-1" ];
+                    mode = "2560x1440@143.972";
+                    scale = 1;
+                    transform = "normal";
+                    position = { _props = { x = 1600; y = -400; }; };
+                }
+            ];
 
             layout = {
                 gaps = 4;
                 struts = {
                     left = 64;
                     right = 64;
-                #    top = 16;
-                #    bottom = 16;
+                    top = -4;
+                    bottom = -4;
                 };
                 center-focused-column = "never";
                 #default-column-display = "tabbed";
@@ -116,14 +135,27 @@ in
                 };
             };
 
+            gestures = {
+                hot-corners = { off = no-children; };
+            };
+
             window-rule = {
                 geometry-corner-radius = 12;
                 clip-to-geometry = true;
             };
 
-            spawn-sh-at-startup = "$HOME/.config/waybar/waybar-controler.sh init";
+            spawn-sh-at-startup = [
+                "$HOME/.config/waybar/waybar-controler.sh init"
+                "systemctl --user restart hypridle.service"
+                "systemctl --user restart hyprpaper.service"
+            ];
             hotkey-overlay = { skip-at-startup = no-children; };
             prefer-no-csd = no-children;
+
+            workspace = [ 
+                { _args = [ "media" ]; } 
+            ];
+
 
             screenshot-path = "~/download/screenshots/screenshot from %Y-%m-%d %H-%M-%S.png";
             #animation = {};

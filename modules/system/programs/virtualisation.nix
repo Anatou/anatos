@@ -11,10 +11,11 @@
             libvirtd.enable = true;
 
             virtualbox.host = {
-                enable = true;
+                enable = false;
                 enableExtensionPack = true;
             };
-            virtualbox.guest.enable = true;
+            virtualbox.guest.enable = false;
+            # Currently broken
         };
 
         programs = {

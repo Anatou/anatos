@@ -1,18 +1,24 @@
 { host, config, pkgs, lib, username, ...}:
 
 {
-    options.my.home.programs.hyprland.hyprpaperTheme = lib.mkOption {
+    # !!!!!!!!!!!!!!
+    # hyprpaper has some troubles starting on its own
+    # You must execute the following line after startup of your DE
+    # `systemctl --user restart hyprpaper.service`
+
+    options.my.home.programs.hyprlock.enable = lib.mkEnableOption "Enable my hyprlock configuration";
+    options.my.home.programs.hyprlock.theme = lib.mkOption {
         type = lib.types.enum [ "mountain_sunset" "no_signal" ];
         default = "mountain_sunset";
         description = "Choose your hyprlock theme (mountain_sunset, no_signal)";
     };
 
-    config = lib.mkIf config.my.home.programs.hyprland.enable {
+    config = lib.mkIf config.my.home.programs.hyprlock.enable {
 
         programs.hyprlock = {
             enable = true;
             settings = lib.mkMerge [
-                (lib.mkIf (config.my.home.programs.hyprland.hyprpaperTheme == "mountain_sunset") {
+                (lib.mkIf (config.my.home.programs.hyprlock.theme == "mountain_sunset") {
                     general = {
                         disable_loading_bar = true;
                         grace = 0; # tempo avant de demander un mdp
@@ -21,7 +27,7 @@
                     };
                     background = [
                         {
-                            path = "/home/${username}/anatos/modules/home/programs/hyprland/mountain_sunset.jpg";
+                            path = "/home/${username}/anatos/modules/home/programs/hyprlock/mountain_sunset.jpg";
                             blur_passes = 1;
                             blur_size = 3;
                             brightness = 0.8;       # fonce légèrement le fond pour plus de contraste
@@ -46,7 +52,7 @@
                     ];
                 })
 
-                (lib.mkIf (config.my.home.programs.hyprland.hyprpaperTheme == "no_signal") {
+                (lib.mkIf (config.my.home.programs.hyprlock.theme == "no_signal") {
                     general = {
                         disable_loading_bar = true;
                         grace = 0; # tempo avant de demander un mdp
@@ -56,7 +62,7 @@
                     };
                     background = [
                         {
-                            path = "/home/${username}/anatos/modules/home/programs/hyprland/no_signal.png";
+                            path = "/home/${username}/anatos/modules/home/programs/hyprlock/no_signal.png";
                         }
                     ];
                     input-field = [

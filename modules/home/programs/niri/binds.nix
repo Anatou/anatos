@@ -12,6 +12,7 @@ binds = {
     "Mod+Space" = {  _props = { hotkey-overlay-title = "Run an Application: rofi"; }; spawn-sh = "rofi -show drun"; };
     "Mod+Shift+X" = {  _props = { hotkey-overlay-title = "Launch vscode and Open anatos"; }; spawn-sh = "code ~/anatos"; };
     "Mod+I" = {  _props = { hotkey-overlay-title = "Run an emoji picker: rofimoji"; }; spawn-sh = "rofimoji"; };
+    "Mod+Tab" = {  _props = { hotkey-overlay-title = "Switch to media workspace"; }; spawn-sh = "niri-media-switcher"; };
 
     "Mod+W" = { _props = { repeat = false; }; toggle-overview = no-children; };
     "Mod+C" = { _props = { repeat = false; }; close-window = no-children; };

@@ -6,6 +6,8 @@
         ./fastfetch
         ./git.nix
         ./hyprland
+        ./hyprlock
+        ./hyprpaper
         ./jetbrains-toolbox.nix
         ./kitty.nix
         ./mako.nix
