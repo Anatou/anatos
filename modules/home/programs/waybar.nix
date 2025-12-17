@@ -45,7 +45,6 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
             if [ "$ACTION" = "init" ]; then
                 waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
                 echo "mini" > "$STATE_FILE"
-                ;;
             elif [ "$ACTION" = "kill" ]; then
                 if pgrep waybar >/dev/null; then
                     pkill waybar
