@@ -24,6 +24,7 @@
                         mads-hartmann.bash-ide-vscode
                         zainchen.json
                         jnoortheen.nix-ide
+                        reditorsupport.r
                     ];
                     userSettings = {
                         "editor.detectIndentation" = false;

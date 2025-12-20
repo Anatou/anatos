@@ -34,8 +34,5 @@ in
             wallpaper = [ ",/home/${username}/anatos/modules/home/programs/hyprpaper/${theme}.${file_extension}" ];
         };
     };
-    home.file."hyprpaper_test".text = ''
-            /home/${username}/anatos/modules/home/programs/hyprpaper/${theme}.${file_extension}
-        '';
 };
 }

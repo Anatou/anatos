@@ -464,17 +464,8 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
                 "modules" =  [
                     "battery"
                     "backlight"
-                    "idle_inhibitor"
                     "custom/notification-mode"
                 ];
-            };
-
-            "idle_inhibitor" =  {
-                "format" =  "{icon}";
-                "format-icons" =  {
-                    "activated" =  "☕";
-                    "deactivated" =  "🛏️";
-                };
             };
         };
     };

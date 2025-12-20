@@ -14,6 +14,7 @@ binds = {
     "Mod+I" = {  _props = { hotkey-overlay-title = "Run an emoji picker: rofimoji"; }; spawn-sh = "rofimoji"; };
     "Mod+Tab" = {  _props = { hotkey-overlay-title = "Switch to media workspace"; }; spawn-sh = "niri-media-switcher"; };
 
+    "Mod+Shift+W" = { center-column = no-children; };
     "Mod+W" = { _props = { repeat = false; }; toggle-overview = no-children; };
     "Mod+C" = { _props = { repeat = false; }; close-window = no-children; };
     "Ctrl+Alt+Delete" = { quit = no-children; };

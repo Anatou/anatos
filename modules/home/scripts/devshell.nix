@@ -141,7 +141,7 @@ pkgs.writeShellScriptBin "devshell" ''
                     nix profile remove devshells
                     nix profile install "$HOME"/anatos/devshells#installScript
                     install-all-devshell-packages
-                    echo -e "Warmed all devshell programs, they will persist through `nix-store --gc`"
+                    echo -e "Warmed all devshell programs, they will persist through \`nix-store --gc\`"
                     ;;
                 "clean") 
                     rm -rf "$HOME"/.nix-profile-devshells/*

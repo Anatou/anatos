@@ -47,7 +47,15 @@ let
 				else if element == true then
 					"true"
 				else if typeOf element == "string" then
-					''"${sanitizeString element}"''
+                    let 
+                        len = builtins.stringLength element;
+                        len-1 = len - 1;
+                    in
+                    if (builtins.substring 0 1 element == "#" || builtins.substring 0 2 element == "r#") && builtins.substring len-1 1 element == "#" then
+					    ''${element}''
+
+                    else
+					    ''"${sanitizeString element}"''
 				else
 					toString element
 			);

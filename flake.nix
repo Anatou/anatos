@@ -37,6 +37,10 @@
                 system = "x86_64-linux";
                 username = "vmuser";
             };
+            "nixos_lab" = {
+                system = "x86_64-linux";
+                username = "lab";
+            };
         };
     in
     {

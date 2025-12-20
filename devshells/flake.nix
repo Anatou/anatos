@@ -32,6 +32,7 @@
             importShell (import ./shells/java.nix { inherit pkgs system; })   //
             importShell (import ./shells/prolog.nix { inherit pkgs system; }) //
             importShell (import ./shells/python.nix { inherit pkgs system; }) //
+            importShell (import ./shells/r.nix   { inherit pkgs system; }) //
             importShell (import ./shells/rust.nix   { inherit pkgs system; })
         );
 

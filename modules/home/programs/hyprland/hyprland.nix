@@ -48,6 +48,8 @@
                     "systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_SESSION_CLASS XDG_SESSION_ID"
                     "systemctl --user restart hypridle.service"
                     "systemctl --user restart hyprpaper.service"
+                    "systemctl --user restart caffeine"
+                    "systemctl --user restart udiskie"
                 ];
                 input = {
                     kb_layout = "fr";

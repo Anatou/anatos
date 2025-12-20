@@ -139,21 +139,79 @@ in
                 hot-corners = { off = no-children; };
             };
 
-            window-rule = {
-                geometry-corner-radius = 12;
-                clip-to-geometry = true;
+            environment = {
+                "NIXOS_OZONE_WL" = "1";
+                "NIXPKGS_ALLOW_UNFREE" = "1";
+                "XDG_CURRENT_DESKTOP" = "Hyprland";
+                "XDG_SESSION_TYPE" = "wayland";
+                "XDG_SESSION_DESKTOP" = "Hyprland";
+                "GDK_BACKEND" = "wayland,x11";
+                "CLUTTER_BACKEND" = "wayland";
+                "QT_QPA_PLATFORM" = "wayland;xcb";
+                "QT_WAYLAND_DISABLE_WINDOWDECORATION" = "1";
+                "QT_AUTO_SCREEN_SCALE_FACTOR" = "1";
+                "SDL_VIDEODRIVER" = "x11";
+                "MOZ_ENABLE_WAYLAND" = "1";
+                # This is to make electron apps start in wayland
+                "ELECTRON_OZONE_PLATFORM_HINT" = "wayland";
+                # Disabling this by default as it can result in inop cfg
+                # Added card2 in case this gets enabled. For better coverage
+                # This is mostly needed by Hybrid laptops.
+                # but if you have multiple discrete GPUs this will set order
+                #"AQ_DRM_DEVICES,/dev/dri/card0:/dev/dri/card1:/dev/card2"
+                "GDK_SCALE"= "1";
+                "QT_SCALE_FACTOR"= "1";
+                # Set terminal and xdg_terminal_emulator to kitty
+                # To provent yazi from starting xterm when run from rofi menu
+                # You can set to your preferred terminal if you you like
+                "TERMINAL" = "kitty";
+                "XDG_TERMINAL_EMULATOR" = "kitty";
+                "XDG_MENU_PREFIX" = "plasma-";
             };
+
+            window-rule = [ 
+                {
+                    geometry-corner-radius = 12;
+                    clip-to-geometry = true;
+                }
+                {
+                    match = [ 
+                        { _props={app-id="^obsidian$";}; } 
+                        { _props={app-id="^spotify$";}; }
+                        { _props={app-id="beepertexts";}; } # BEEPER DOES NOT BEHAVE GRRRR 
+                    ];
+                    open-on-workspace = "media";
+                }
+                {
+                    match = [ 
+                        { _props={app-id="code$";}; } 
+                        { _props={app-id="obsidian$";}; } 
+                        { _props={app-id=''r#"^app\.zen_browser\.zen$"#'';}; } 
+                    ];
+                    open-maximized = true;
+                }
+            ];
 
             spawn-sh-at-startup = [
                 "$HOME/.config/waybar/waybar-controler.sh init"
                 "systemctl --user restart hypridle.service"
                 "systemctl --user restart hyprpaper.service"
+                "systemctl --user restart caffeine"
+                "systemctl --user restart udiskie"
+                "beeper" # For some reason I cannot find a way to spawn beeper from regular 'spawn' 
+                "nm-applet --indicator"
+                "blueman-applet"
+            ];
+            spawn-at-startup = [
+                "obsidian" "spotify"
             ];
             hotkey-overlay = { skip-at-startup = no-children; };
             prefer-no-csd = no-children;
 
             workspace = [ 
-                { _args = [ "media" ]; } 
+                {   _args = [ "media" ]; 
+                    open-on-output = "eDP-1";
+                } 
             ];
 
 

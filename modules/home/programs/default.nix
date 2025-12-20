@@ -2,6 +2,7 @@
 {
     imports = [
         ./btop.nix
+        ./caffeine.nix
         ./cava.nix
         ./fastfetch
         ./git.nix

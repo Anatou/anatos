@@ -9,89 +9,36 @@
     # ============= User configuration ============= #
     home.username = "${username}";
     home.homeDirectory = "/home/${username}";
-    # D'autres options de home pour config les différents affichages, langues, variables, curseurs, etc...
 
     # ============= User desktop environment ============= #
-    # Don't forget to activate the DE from the system configuration as well
-    # This is merely the DE configuration, home-manager does not have enough
-    # authority to completely manage the DEs
     my.home.programs.hyprland.enable = true;
-    my.home.programs.niri.enable = true;
-    my.home.programs.hyprlock.theme = "no_signal";
-    my.home.programs.hyprpaper.theme = "modane-montagne";
-
-    
     
     # ============= User programs ============= #
     home.packages = with pkgs; [
-        # Base
-        obsidian
-        spotify
-        # File opening/manipulation
         libreoffice-still
         gedit
-        vlc
-        qimgv
-        ungoogled-chromium
-        zathura
-        # Art/creation
-        blender
-        inkscape-with-extensions
-        krita
-        krita-plugin-gmic
-        godot
-        # Computing
-        cowsay
-        mermaid-cli
         zip
         inotify-tools
-        # Communications
-        discord
-        beeper
+        ungoogled-chromium
     ];
 
     # Programs with personnal settings
     my.home.programs.git.enable = true;
     my.home.programs.zsh.enable = true;
-    my.home.programs.zoxide.enable = true;
     my.home.programs.fastfetch.enable = true;
     my.home.programs.btop.enable = true;
     my.home.programs.kitty.enable = true;
     my.home.programs.starship.enable = true;
     my.home.programs.neovim.enable = true;
     my.home.programs.vscode.enable = true;
-    my.home.programs.jetbrains-toolbox.enable = true;
-    my.home.programs.thunar.enable = true;
     my.home.programs.yazi.enable = true;
-    my.home.programs.cava.enable = true;
-    my.home.programs.zathura.enable = true;
-    my.home.programs.thunderbird.enable = false;
-
-    # Flatpak programs
-    my.home.services.flatpak.packages = [
-        "io.github.zen_browser.zen"
-    ];
-    services.flatpak.overrides = {
-        "app.zen_browser.zen".Context = {
-            filesystems = [
-                "xdg-download"
-                "/run/.heim_org.h5l.kcm-socket"
-                "xdg-run/speech-dispatcher:ro"
-                "/home/${username}" # give zen full access to home directory
-            ];
-        };
-    };
 
     # ============= User services ============= #
-    my.home.services.meteofrance-daemon.enable = true;
-    my.home.programs.caffeine.enable = true;
-    my.home.services.udiskie.enable = true;
     my.home.services.stylix.enable = true;
     my.home.services.cursor = "bibata";
     my.home.services.wayland-screenshot.enable = true;
     my.home.services.default-apps = {
-        enable = true;
-        url = [ "app.zen_browser.zen.desktop" ];
+        enable = false;
         pdf = [ "org.pwmt.zathura.desktop" ];
         text = [ "org.gnome.gedit.desktop" ];
         code = [ "code.desktop" ];
@@ -106,18 +53,14 @@
         download = "download";
     };
 
-    services.caffeine.enable = true;
-
     # ============= User scripts ============= #
     my.home.scripts.devshell.enable = true;
     
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [
-        vdrsymbols
         fira-code
         fira-code-symbols
         jetbrains-mono
-        minecraftia
         noto-fonts-emoji
     ];
 
@@ -144,8 +87,6 @@
         gbr = "git branch -a";
         gbra = "git branch";
         gfetch = "git fetch --prune";
-        #hm = "home-manager";
-        #hm-switch = "home-manager switch --flake ~/anatos && source ~/.zshrc";
         sys-switch = "sudo nixos-rebuild switch --flake ~/anatos && source ~/.zshrc";
         sys-boot = "sudo nixos-rebuild boot --flake ~/anatos";
         list-sys-gens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
@@ -165,7 +106,6 @@
             LSOUTPUT=$LSOUTPUT"\n================ .desktop from nixos system ================\n";
             LSOUTPUT=$LSOUTPUT$(ls -1 /run/current-system/sw/share/applications);
             echo $LSOUTPUT'';
-        mermaid = "mmdc";
     };
 
     # creuser nix-colors
