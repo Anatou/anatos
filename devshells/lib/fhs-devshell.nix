@@ -9,7 +9,11 @@ in
         name = "startFHS";
         executable = true;
         text = ''
-            export DEVSHELL=${name}
+            if [[ -v DEVSHELL ]]; then
+                export name="''\${DEVSHELL}-fhs-env"
+            else    
+                export DEVSHELL=${name}
+            fi
             zsh
         '';
     };

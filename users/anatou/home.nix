@@ -43,6 +43,7 @@
         # Computing
         cowsay
         mermaid-cli
+        ollama
         zip
         inotify-tools
         # Communications
@@ -113,7 +114,7 @@
     
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [
-        vdrsymbols
+        #vdrsymbols
         fira-code
         fira-code-symbols
         jetbrains-mono

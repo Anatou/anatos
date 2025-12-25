@@ -81,7 +81,7 @@ in
                 };
                 center-focused-column = "never";
                 #default-column-display = "tabbed";
-                empty-workspace-above-first = no-children;
+                #empty-workspace-above-first = no-children;
                 always-center-single-column = no-children;
                 preset-column-widths = {
                     proportion = [

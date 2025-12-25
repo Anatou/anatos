@@ -28,7 +28,8 @@ in
         beforeZsh = ''
             export PATH="''${CARGO_HOME:-$HOME/.cargo}/bin":"$PATH"
             export PATH="''${RUSTUP_HOME:-$HOME/.rustup}/toolchains/$RUSTC_VERSION-${pkgs.stdenv.hostPlatform.rust.rustcTarget}/bin":"$PATH"
-
+            devshell fhs
+            exit
         '';
         env = {
             #RUSTC_VERSION = overrides.toolchain.channel;
