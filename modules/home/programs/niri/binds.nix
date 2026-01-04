@@ -68,10 +68,10 @@ binds = {
         _props = { allow-when-locked = true; };
         spawn-sh = "brightnessctl --class=backlight set 10%-";
     };
-    "Mod+TouchpadScrollDown" = { spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; };
-    "Mod+TouchpadScrollUp"   = { spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; };
-
-
+    "Mod+TouchpadScrollDown" = { _props = { allow-when-locked = true; }; spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; };
+    "Mod+TouchpadScrollUp"   = { _props = { allow-when-locked = true; }; spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; };
+    "Mod+Shift+TouchpadScrollDown" = { _props = { allow-when-locked = true; }; spawn-sh = "brightnessctl --class=backlight set +2%"; };
+    "Mod+Shift+TouchpadScrollUp"   = { _props = { allow-when-locked = true; }; spawn-sh = "brightnessctl --class=backlight set 2%-"; };
 
 
     "Mod+Left" = {  focus-column-left = no-children; };

@@ -60,7 +60,9 @@
 
     # =============== System language =============== #
     # Select internationalisation properties.
-    time.timeZone = "Europe/Paris";
+    time.timeZone = lib.mkDefault "Europe/Paris";
+    services.automatic-timezoned.enable = true;
+    services.geoclue2.enable = true;
     i18n.defaultLocale = "fr_FR.UTF-8";
     console = {
         font = "Lat2-Terminus16";

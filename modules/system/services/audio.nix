@@ -32,10 +32,41 @@
                 }
                 ];
             };
+
+            configPackages = [
+                (pkgs.writeTextDir "share/pipewire/pipewire.conf.d/combine-stream.conf" ''
+                    context.modules = [
+                        {   name = libpipewire-module-combine-stream
+                            args = {
+                                combine.mode = sink
+                                node.name = "my_combined_sink"
+                                node.description = "My Combined Sink"
+                                combine.props = {
+                                    audio.position = [ FL FR ]
+                                }
+                                stream.rules = [
+                                    {
+                                        matches = [
+                                            {
+                                                media.class = "Audio/Sink"
+                                            }
+                                        ]
+                                        actions = {
+                                            create-stream = {
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                '')
+            ];
         };
 
         environment.systemPackages = with pkgs; [
             pavucontrol
+            qpwgraph
         ];
     };
 }

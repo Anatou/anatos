@@ -72,12 +72,12 @@ in
             ];
 
             layout = {
-                gaps = 4;
+                gaps = 2;
                 struts = {
-                    left = 64;
-                    right = 64;
-                    top = -4;
-                    bottom = -4;
+                    left = 32;
+                    right = 32;
+                    top = -2;
+                    bottom = -2;
                 };
                 center-focused-column = "never";
                 #default-column-display = "tabbed";
