@@ -8,6 +8,7 @@
         ./default-apps.nix
         ./user-dirs.nix
         ./stylix.nix
+        ./tailscale.nix
         ./udiskie.nix
         ./meteofrance-daemon.nix
     ];

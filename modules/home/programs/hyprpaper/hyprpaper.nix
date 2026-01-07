@@ -1,7 +1,7 @@
 { host, config, pkgs, lib, username, ...}:
 let 
     theme = config.my.home.programs.hyprpaper.theme;
-    jpg_bg = [ "modane-montagne" "anatole-thabor" "hyprpaper" "mountain_sunset" ];
+    jpg_bg = [ "modane-montagne" "anatole-thabor" "hyprpaper" "mountain_sunset" "alien-in-space" ];
     png_bg = [ ];
     backgrounds = jpg_bg ++ png_bg;
     

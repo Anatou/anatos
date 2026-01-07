@@ -18,7 +18,7 @@
     my.home.programs.hyprland.enable = true;
     my.home.programs.niri.enable = true;
     my.home.programs.hyprlock.theme = "no_signal";
-    my.home.programs.hyprpaper.theme = "modane-montagne";
+    my.home.programs.hyprpaper.theme = "alien-in-space";
 
     
     
@@ -34,18 +34,21 @@
         qimgv
         ungoogled-chromium
         zathura
+        qbittorrent
         # Art/creation
         blender
         inkscape-with-extensions
         krita
         krita-plugin-gmic
         godot
+        anki-bin
         # Computing
         cowsay
         mermaid-cli
         ollama
         zip
         inotify-tools
+        tailscale
         # Communications
         discord
         beeper
@@ -87,6 +90,7 @@
     my.home.services.meteofrance-daemon.enable = true;
     my.home.programs.caffeine.enable = true;
     my.home.services.udiskie.enable = true;
+    my.home.services.tailscale.enable = true;
     my.home.services.stylix.enable = true;
     my.home.services.cursor = "bibata";
     my.home.services.wayland-screenshot.enable = true;
@@ -134,17 +138,6 @@
         hgrep = "history | grep ";
         c = "clear";
         f = "clear && fastfetch";
-        gs = "git status";
-        gadd = "git add .";
-        glg = "git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)%ad (%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all --date=format:%Y-%m-%d@%H:%M:%S";
-        commit = "git commit -m ";
-        push = "git push";
-        pull = "git pull";
-        gsw = "git switch";
-        gswc = "git switch -c";
-        gbr = "git branch -a";
-        gbra = "git branch";
-        gfetch = "git fetch --prune";
         #hm = "home-manager";
         #hm-switch = "home-manager switch --flake ~/anatos && source ~/.zshrc";
         sys-switch = "sudo nixos-rebuild switch --flake ~/anatos && source ~/.zshrc";

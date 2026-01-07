@@ -11,5 +11,6 @@ in
         cmake
         ninja
         vcpkg 
+        patchelf
     ];
 }).env

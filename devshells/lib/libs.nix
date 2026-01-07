@@ -24,8 +24,11 @@ with pkgs; [
     # Required
     glib
     gtk2
+    gtk3
     bzip2
-    
+    libgbm
+    udev
+
     libsForQt5.qt5.qtwayland
 
     # Without these it silently fails
