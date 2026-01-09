@@ -41,7 +41,7 @@
         krita
         krita-plugin-gmic
         godot
-        anki-bin
+        anki
         # Computing
         cowsay
         mermaid-cli
