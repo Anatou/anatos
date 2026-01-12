@@ -7,7 +7,7 @@ in
     default = {
         prefix = prefix;
         function = mkZshDevshell;
-        name = "swi-prolog";
+        name = "swiprolog";
         packages = with pkgs; [
             swi-prolog
         ];

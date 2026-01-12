@@ -1,6 +1,7 @@
 { pkgs, ...}:
 let 
     libs = (import ./libs.nix) { inherit pkgs; };
+    make-devshell-name = (import ./make-devshell-name.nix);
 in
 { name, packages ? []}: pkgs.buildFHSEnv {
     name = "${name}";
@@ -9,11 +10,7 @@ in
         name = "startFHS";
         executable = true;
         text = ''
-            if [[ -v DEVSHELL ]]; then
-                export name="''\${DEVSHELL}-fhs-env"
-            else    
-                export DEVSHELL=${name}
-            fi
+            ${make-devshell-name name}
             zsh
         '';
     };

@@ -7,7 +7,7 @@ in
     default = {
         prefix = prefix;
         function = mkZshDevshell;
-        name = "node-js";
+        name = "nodejs";
         packages = with pkgs; [
             nodejs_24
         ];

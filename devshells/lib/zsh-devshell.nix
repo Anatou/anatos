@@ -1,12 +1,15 @@
 { pkgs, ...}:
+let
+    make-devshell-name = (import ./make-devshell-name.nix);
+in
 { name, packages ? [], env ? {}, beforeZsh ? "", afterZsh ? "", function, prefix }: pkgs.mkShell {
     name = "${name}";
     packages = packages;
     env = {
         SH = "zsh";
-        DEVSHELL = name;
     } // env;
-    shellHook = beforeZsh + ''
+    shellHook = ''${make-devshell-name name}'' +
+    beforeZsh + ''
         exec $SH
     '' + afterZsh;
 }

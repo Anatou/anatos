@@ -8,21 +8,21 @@ in
     default = {
         prefix = prefix;
         function = mkPythonDevshell;
-        name = "python-3.13";
+        name = "python3.13";
         packages = with pkgs; [ python313 jupyter-all ];
     };
 
     v310 = {
         prefix = prefix;
         function = mkPythonDevshell;
-        name = "python-3.10";
+        name = "python3.10";
         packages = with pkgs; [ python310 jupyter-all ];
     };
 
     v314t = {
         prefix = prefix;
         function = mkPythonDevshell;
-        name = "python-3.14-free-threading";
+        name = "python3.14-free-threading";
         packages = with pkgs; [ python314FreeThreading ];
     };
 
@@ -42,5 +42,12 @@ in
             python313
         ];
         shellHook = "python; exit";
+    };
+
+    v313-bash = {
+        prefix = prefix;
+        function = mkBashDevShell;
+        name = "python3.13-bash";
+        packages = with pkgs; [ python313 jupyter-all ];
     };
 }
