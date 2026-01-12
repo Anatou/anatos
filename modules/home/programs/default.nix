@@ -9,6 +9,7 @@
         ./hyprland
         ./hyprlock
         ./hyprpaper
+        ./ollama.nix
         ./jetbrains-toolbox.nix
         ./kitty.nix
         ./mako.nix

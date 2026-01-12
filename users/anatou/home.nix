@@ -45,7 +45,6 @@
         # Computing
         cowsay
         mermaid-cli
-        ollama
         zip
         inotify-tools
         tailscale
@@ -60,6 +59,7 @@
     my.home.programs.zoxide.enable = true;
     my.home.programs.fastfetch.enable = true;
     my.home.programs.btop.enable = true;
+    my.home.programs.ollama.enable = true;
     my.home.programs.kitty.enable = true;
     my.home.programs.starship.enable = true;
     my.home.programs.neovim.enable = true;
