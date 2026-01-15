@@ -1,13 +1,13 @@
 { pkgs, ...}:
 let
     libs = import ./libs.nix { inherit pkgs; };
+    make-devshell-name = (import ./make-devshell-name.nix);
 in
 { name, packages ? [], environment ? {}, use-venv ? true, function, prefix}: pkgs.mkShell {
     name = "${name}";
     packages = packages;
     env = {
         SH = "zsh";
-        DEVSHELL = "${name}";
         LD_LIBRARY_PATH= "${pkgs.lib.makeLibraryPath libs}";
     } // environment;
     shellHook = let 
@@ -28,6 +28,7 @@ in
         else "";
     in
     ''
+    ${make-devshell-name name}
     ${venv-setup}
     exec $SH
     deactivate

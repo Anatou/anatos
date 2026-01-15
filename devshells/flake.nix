@@ -86,7 +86,7 @@
             # Unchanged packages will not be downloaded again as they still exist in the store
             for pkg in ${pkgNames}; do
                 echo "Installing: ''${pkg}"
-                nix profile install --profile "$HOME"/.nix-profile-devshells/''${pkg} "$HOME"/anatos/devshells#packages.${system}.''${pkg}
+                nix profile add --profile "$HOME"/.nix-profile-devshells/''${pkg} "$HOME"/anatos/devshells#packages.${system}.''${pkg}
             done
 
             echo ""

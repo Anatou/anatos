@@ -99,7 +99,7 @@
         fira-code-symbols
         jetbrains-mono
         minecraftia
-        noto-fonts-emoji
+        noto-fonts-color-emoji
     ];
 
     # ============= User shell ============= #

@@ -167,7 +167,9 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
             };
 
             wireplumber =  {
-                scroll-step =  5;
+                scroll-step =  0.5;
+                reverse-scrolling = true;
+                #reverse-mouse-scrolling = true
                 format =  "{icon}{volume}%";
                 format-bluetooth =  "{icon}{volume}% ";
                 format-bluetooth-muted =  " {icon}";
@@ -221,6 +223,9 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
             };
 
             backlight =  {
+                scroll-step =  0.5;
+                reverse-scrolling = true;
+                #reverse-mouse-scrolling = true
                 format =  "{icon} {percent}%";
                 format-icons =  ["🌙" "" ""];
             };

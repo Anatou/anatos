@@ -149,6 +149,9 @@ binds = {
     #"Mod+Ctrl+Shift+WheelScrollDown" = { move-column-right = no-children; };
     #"Mod+Ctrl+Shift+WheelScrollUp" = {   move-column-left = no-children; };
 
+    "Mod+Alt+WheelScrollDown" = { spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; };
+    "Mod+Alt+WheelScrollUp" = {  spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; };
+
     #"Mod+ampersand" = { focus-workspace = 1; };
     #"Mod+eacute"    = { focus-workspace = 2; };
     #"Mod+quotedbl"  = { focus-workspace = 3; };
@@ -171,7 +174,6 @@ binds = {
 
     "Mod+Y" = {  consume-or-expel-window-left = no-children; };
     "Mod+U" = { consume-or-expel-window-right = no-children; };
-
 
     "Mod+R" = {       switch-preset-column-width = no-children; };
     "Mod+Shift+R" = { switch-preset-window-height = no-children; };

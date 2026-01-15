@@ -61,7 +61,7 @@
         fira-code
         fira-code-symbols
         jetbrains-mono
-        noto-fonts-emoji
+        noto-fonts-color-emoji
     ];
 
     # ============= User shell ============= #

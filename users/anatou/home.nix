@@ -42,6 +42,7 @@
         krita-plugin-gmic
         godot
         anki
+        jellyfin-desktop
         # Computing
         cowsay
         mermaid-cli
@@ -123,7 +124,7 @@
         fira-code-symbols
         jetbrains-mono
         minecraftia
-        noto-fonts-emoji
+        noto-fonts-color-emoji
     ];
 
     # ============= User shell ============= #
