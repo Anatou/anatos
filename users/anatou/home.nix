@@ -27,6 +27,7 @@
         # Base
         obsidian
         spotify
+        thunderbird
         # File opening/manipulation
         libreoffice-still
         gedit
@@ -70,7 +71,6 @@
     my.home.programs.yazi.enable = true;
     my.home.programs.cava.enable = true;
     my.home.programs.zathura.enable = true;
-    my.home.programs.thunderbird.enable = false;
 
     # Flatpak programs
     my.home.services.flatpak.packages = [

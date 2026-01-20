@@ -19,7 +19,6 @@
         ./rofimoji.nix
         ./starship.nix
         ./thunar.nix
-        ./thunderbird.nix
         ./vscode.nix
         ./waybar.nix
         ./yazi.nix

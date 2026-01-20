@@ -144,6 +144,7 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
 
             mpris =  {
                 format =  "{status_icon} {dynamic}";
+                title-len = 20;
                 interval =  1;
                 dynamic-len =  40;
                 status-icons =  {
@@ -226,7 +227,7 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
                 scroll-step =  0.5;
                 reverse-scrolling = true;
                 #reverse-mouse-scrolling = true
-                format =  "{icon} {percent}%";
+                format =  "{icon}{percent}%";
                 format-icons =  ["🌙" "" ""];
             };
 
@@ -235,10 +236,10 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
                     warning =  30;
                     critical =  15;
                 };
-                format =  "{icon} {capacity}%";
-                format-full =  "{icon} {capacity}%";
-                format-charging =  " {capacity}%";
-                format-plugged =  " {capacity}%";
+                format =  "{icon}{capacity}%";
+                format-full =  "{icon}{capacity}%";
+                format-charging =  "{capacity}%";
+                format-plugged =  "{capacity}%";
                 format-icons =  ["" "" "" "" ""];
             };
 
@@ -353,7 +354,7 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
 
             "group/media" = {
                 orientation = "horizontal";
-                modules = [ "wireplumber" "custom/sep" "mpris" ];
+                modules = [ "custom/weather" "custom/sep" "wireplumber" "custom/sep" "mpris" ];
             };
 
             "group/system" = {
@@ -374,6 +375,7 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
                 modules =  [
                     "battery"
                     "backlight"
+                    "custom/notification-mode"
                 ];
             };
         };

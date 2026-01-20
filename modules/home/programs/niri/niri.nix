@@ -178,6 +178,7 @@ in
                     match = [ 
                         { _props={app-id="^obsidian$";}; } 
                         { _props={app-id="^spotify$";}; }
+                        { _props={app-id="^thunderbird$";}; }
                         { _props={app-id="beepertexts";}; } # BEEPER DOES NOT BEHAVE GRRRR 
                     ];
                     open-on-workspace = "media";
@@ -187,6 +188,7 @@ in
                         { _props={app-id="code$";}; } 
                         { _props={app-id="obsidian$";}; } 
                         { _props={app-id=''r#"^app\.zen_browser\.zen$"#'';}; } 
+                        { _props={app-id="thunderbird$";}; } 
                     ];
                     open-maximized = true;
                 }
