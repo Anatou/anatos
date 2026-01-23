@@ -189,6 +189,8 @@ in
                         { _props={app-id="obsidian$";}; } 
                         { _props={app-id=''r#"^app\.zen_browser\.zen$"#'';}; } 
                         { _props={app-id="thunderbird$";}; } 
+                        { _props={app-id="winboat";}; } 
+                        
                     ];
                     open-maximized = true;
                 }

@@ -11,25 +11,31 @@ in
         function = mkZshDevshell;
         name = "rust";
         packages = with pkgs; [ 
-            #clippy
-            #rustc
-            stdenv
-            cargo
             rustup
+            stdenv
             rustPlatform.bindgenHook
-            #rustfmt
+
             openssl
             pkg-config
-            cargo-deny
-            cargo-edit
-            cargo-watch
+            libevdev
+            fontconfig
             rust-analyzer
+
+            libxkbcommon
+            wayland
+            xorg.libX11
+            xorg.libXcursor
+            xorg.libXi
+            xorg.libXrandr
+            libGL
+
+            gcc
         ];
         beforeZsh = ''
             export PATH="''${CARGO_HOME:-$HOME/.cargo}/bin":"$PATH"
             export PATH="''${RUSTUP_HOME:-$HOME/.rustup}/toolchains/$RUSTC_VERSION-${pkgs.stdenv.hostPlatform.rust.rustcTarget}/bin":"$PATH"
-            devshell fhs
-            exit
+            # devshell fhs
+            # exit
         '';
         env = {
             #RUSTC_VERSION = overrides.toolchain.channel;

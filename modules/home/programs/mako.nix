@@ -6,6 +6,7 @@
     config = lib.mkIf config.my.home.programs.mako.enable {
         home.packages = with pkgs; [
             mako
+            inotify-tools
         ];
         home.file.".config/mako/config".text = ''
             ignore-timeout=1

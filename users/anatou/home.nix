@@ -48,8 +48,8 @@
         cowsay
         mermaid-cli
         zip
-        inotify-tools
-        tailscale
+        bruno
+        winboat
         # Communications
         discord
         beeper

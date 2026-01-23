@@ -4,7 +4,7 @@
 # To add them to a shell, LD_LIBRARY_PATH must be set with "${pkgs.lib.makeLibraryPath libs}"; 
 with pkgs; [
     stdenv.cc.cc
-    openssl
+    # openssl
     xorg.libXcomposite
     xorg.libXtst
     xorg.libXrandr
@@ -20,6 +20,7 @@ with pkgs; [
     xorg.libxshmfence
     xorg.libXxf86vm
     libelf
+    fontconfig
     
     # Required
     glib
@@ -30,6 +31,9 @@ with pkgs; [
     udev
 
     libsForQt5.qt5.qtwayland
+    wayland
+    wayland-protocols
+    libxkbcommon
 
     # Without these it silently fails
     xorg.libXinerama

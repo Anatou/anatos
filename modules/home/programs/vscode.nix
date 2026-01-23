@@ -19,9 +19,9 @@
                         #peterschmalfeldt.explorer-exclude
                         bbenoist.nix
                         ms-vscode.cpptools-extension-pack
-                        #ms-python.python
-                        #ms-python.debugpy
-                        #ms-python.vscode-pylance
+                        ms-python.python
+                        ms-python.debugpy
+                        ms-python.vscode-pylance
                         ms-toolsai.jupyter
                         tamasfe.even-better-toml
                         shd101wyy.markdown-preview-enhanced
