@@ -36,6 +36,7 @@
         ungoogled-chromium
         zathura
         qbittorrent
+        jellyfin-mpv-shim
         # Art/creation
         blender
         inkscape-with-extensions
@@ -43,7 +44,6 @@
         krita-plugin-gmic
         godot
         anki
-        jellyfin-desktop
         # Computing
         cowsay
         mermaid-cli
