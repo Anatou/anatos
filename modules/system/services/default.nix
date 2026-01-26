@@ -7,6 +7,7 @@
     ./wireless.nix
     ./display-manager.nix
     ./flatpak.nix
+    ./printing.nix
     ./fonts.nix
     ./auto-mount-data-drive.nix
     ./splashscreen.nix

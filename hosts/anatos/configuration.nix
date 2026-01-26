@@ -49,14 +49,9 @@
     my.system.services.wireless.enable = true;
     my.system.services.openssh.enable = true;
 
-    # Enable CUPS to print documents.
-    services.printing.enable = true;
-
-    # Audio
-    my.system.services.pipewire.enable = true;
-
-    # Fonts
-    my.system.services.fonts.default.enable = true;
+    my.system.services.printing.enable = true; # Printing
+    my.system.services.pipewire.enable = true; # Audio
+    my.system.services.fonts.default.enable = true; # Fonts
 
     # =============== System language =============== #
     # Select internationalisation properties.
