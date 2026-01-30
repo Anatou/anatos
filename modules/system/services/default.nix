@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./at.nix
     ./audio.nix
     ./ssh.nix
     ./wireless.nix

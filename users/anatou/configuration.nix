@@ -39,6 +39,7 @@
 
     # udiskie services
     services.udisks2.enable = true;
+    services.atd.enable = true;
 
     
     my.system.services.flatpak.enable = true;

@@ -51,6 +51,7 @@
     networking.hostName = "${host}";
     my.system.services.wireless.enable = true;
     my.system.services.openssh.enable = true;
+    my.system.services.at.enable = true;
 
     my.system.services.printing.enable = true; # Printing
     my.system.services.pipewire.enable = true; # Audio
