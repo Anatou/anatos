@@ -8,6 +8,11 @@
             url = "github:nix-community/home-manager/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        winapps = {
+            url = "github:winapps-org/winapps";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         stylix = {
             url = "github:nix-community/stylix/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +30,7 @@
         home-manager, 
         stylix, 
         nvf,
+        winapps,
         ... 
     }@inputs: 
     let
@@ -72,6 +78,7 @@
                                 system = cfg.system;
                                 username = cfg.username;
                                 nixpkgs = nixpkgs;
+                                winapps = winapps;
                             };
 
                             users.${cfg.username}.imports = [

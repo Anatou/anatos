@@ -43,13 +43,14 @@
         krita
         krita-plugin-gmic
         godot
+        unityhub
         anki
+        gimp2-with-plugins
         # Computing
         cowsay
         mermaid-cli
         zip
         bruno
-        winboat
         # Communications
         discord
         beeper
@@ -105,6 +106,10 @@
         audio = [ "vlc.desktop" ];
         image = [ "qimgv.desktop" ];
     };
+
+    my.home.services.windows.enable = true;
+    my.home.services.windows.disk-location = "/home/anatou/documents/informatique/windows";
+    my.home.services.windows.use-winapps = true;
 
     my.home.services.user-dirs = {
         enable = true;
@@ -162,8 +167,6 @@
             echo $LSOUTPUT'';
         mermaid = "mmdc";
     };
-
-    # creuser nix-colors
 
     programs.home-manager.enable = true;
     home.stateVersion = "25.05";

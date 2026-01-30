@@ -9,6 +9,7 @@
             podman.enable = true;
 
             libvirtd.enable = true;
+            libvirtd.qemu.package = pkgs.qemu_full;
 
             virtualbox.host = {
                 enable = false;

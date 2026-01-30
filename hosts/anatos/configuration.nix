@@ -40,7 +40,10 @@
         enable32Bit = true;
     };
     hardware.graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
-    systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
+    systemd.tmpfiles.rules = [ 
+        "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" 
+        "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware"    
+    ];
     services.xserver.videoDrivers = [ "amdgpu" ];
 
     # =============== System services =============== #
