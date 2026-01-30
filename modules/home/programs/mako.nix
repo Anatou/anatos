@@ -14,14 +14,22 @@
             max-visible=10
             width=330
             font=FiraCode
-
             background-color=#000000FF
-
             border-size=0
             border-radius=10
 
             [mode=hide]
             invisible=1
+
+            [urgency=critical]
+            invisible=0
+            border-color=#a90010
+            layer=overlay
+            border-size=5
+            default-timeout=0
+            anchor=center
+            width=400
+            text-alignment=center
         '';
     };
 }

@@ -166,6 +166,7 @@
             LSOUTPUT=$LSOUTPUT$(ls -1 /run/current-system/sw/share/applications);
             echo $LSOUTPUT'';
         mermaid = "mmdc";
+        #alert = "echo \"notify-send --urgency=critical ALERT\"";
     };
 
     programs.home-manager.enable = true;
