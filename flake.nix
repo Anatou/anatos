@@ -20,6 +20,7 @@
         nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
         nixpkgs-linux-firmware-downgrade.url = "github:NixOS/nixpkgs/732e4d32ad9fde9447d7cfca129b3afec7de00cc";
         nvf.url = "github:notashelf/nvf";
+        devshells.url = "./devshells";
     };
 
     outputs = { 
@@ -31,6 +32,7 @@
         stylix, 
         nvf,
         winapps,
+        devshells,
         ... 
     }@inputs: 
     let
@@ -79,6 +81,7 @@
                                 username = cfg.username;
                                 nixpkgs = nixpkgs;
                                 winapps = winapps;
+                                devshells = devshells;
                             };
 
                             users.${cfg.username}.imports = [

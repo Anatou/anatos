@@ -1,5 +1,14 @@
 { config, lib, pkgs, inputs, system, username, host, pkgs-linux-firmware-downgrade, ... }:
-
+let
+    rocmEnv = pkgs.symlinkJoin {
+        name = "rocm-combined";
+        paths = with pkgs.rocmPackages; [
+            rocblas
+            hipblas
+            clr
+        ];
+    };
+in
 {
     # =============== Nix settings =============== #
     imports =
@@ -41,7 +50,8 @@
     };
     hardware.graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
     systemd.tmpfiles.rules = [ 
-        "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" 
+        # "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" 
+        "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
         "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware"    
     ];
     services.xserver.videoDrivers = [ "amdgpu" ];

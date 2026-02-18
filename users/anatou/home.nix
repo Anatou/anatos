@@ -28,6 +28,7 @@
         obsidian
         spotify
         thunderbird
+        eddie
         # File opening/manipulation
         libreoffice-still
         gedit
@@ -44,8 +45,10 @@
         krita-plugin-gmic
         godot
         unityhub
-        anki
         gimp2-with-plugins
+        # School
+        geogebra6
+        anki
         # Computing
         cowsay
         mermaid-cli

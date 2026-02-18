@@ -5,7 +5,7 @@ let
 in
 { name, packages ? [], environment ? {}, use-venv ? true, function, prefix}: pkgs.mkShell {
     name = "${name}";
-    packages = packages;
+    packages = packages ++ [pkgs.ninja];
     env = {
         SH = "zsh";
         LD_LIBRARY_PATH= "${pkgs.lib.makeLibraryPath libs}";

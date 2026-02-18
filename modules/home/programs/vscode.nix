@@ -25,17 +25,31 @@
                         zainchen.json
                         jnoortheen.nix-ide
                         reditorsupport.r
+                        geequlim.godot-tools
                     ];
                     userSettings = {
                         "editor.detectIndentation" = false;
                         "editor.tabSize" = 4;
                         "[nix]"."editor.tabSize" = 4;
+                        "editor.insertSpaces" = false;
                         "editor.indentSize" = "tabSize";
                         "files.autoSave" = "onFocusChange";
                         "editor.fontFamily" = lib.mkDefault "'Fira Code', 'monospace', 'monospace'";
                         "editor.fontLigatures" = true;
                         "keyboard.dispatch" = "keycode";
+                        "files.exclude" = {
+                            "**/.git"= true;
+                            "**/.svn"= true;
+                            "**/.vscode"= true;
+                            "**/.hg"= true;
+                            "**/.DS_Store"= true;
+                            "**/Thumbs.db"= true;
+                            "**/**.gd.uid"= true;
+                            "**/**.gdshader.uid"= true;
+                        };
                     };
+
+                    
                 };
             };
         };
