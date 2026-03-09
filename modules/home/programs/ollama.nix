@@ -9,6 +9,8 @@
         ];
         home.shellAliases = {
             ollarun = "kitty --detach sh -c 'ollama serve' && sleep 1 && ollama run";
+            qwen = "kitty --detach sh -c 'ollama serve' && sleep 1 && ollama run qwen3:14b";
+            codestral = "kitty --detach sh -c 'ollama serve' && sleep 1 && ollama run codestral:22b";
         };
     };
 }

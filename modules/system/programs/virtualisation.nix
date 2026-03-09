@@ -11,9 +11,14 @@
             libvirtd.enable = true;
             libvirtd.qemu.package = pkgs.qemu_full;
 
+            lxc = {
+                enable = true;
+                unprivilegedContainers = true;
+            };
+
             virtualbox.host = {
                 enable = false;
-                enableExtensionPack = true;
+                enableExtensionPack = false;
             };
             virtualbox.guest.enable = false;
             # Currently broken
@@ -27,7 +32,7 @@
             virt-viewer
             lazydocker
             docker-client
-            virtualbox 
+            # virtualbox 
         ];
     };
 }

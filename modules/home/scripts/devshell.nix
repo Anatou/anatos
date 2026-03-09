@@ -1,5 +1,6 @@
-{ pkgs, system, ... }:
-pkgs.writeShellScriptBin "devshell" ''
+{ pkgs, lib, option, config, system, ... }:
+let
+script = pkgs.writeShellScriptBin "devshell" ''
     progname=$(basename "$0")
     
     print_small_help() {
@@ -170,4 +171,12 @@ pkgs.writeShellScriptBin "devshell" ''
             ;;
     esac
     exit 0
-    ''
+    '';
+in
+{
+    options.my.home.scripts.devshell.enable = lib.mkEnableOption "Enable the devshell script";
+
+	config = lib.mkIf config.my.home.scripts.devshell.enable {
+		home.packages = [script pkgs.jq];
+	};
+}

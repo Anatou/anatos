@@ -124,6 +124,7 @@
 
     # ============= User scripts ============= #
     my.home.scripts.devshell.enable = true;
+    my.home.scripts.lxc-help.enable = true;
     
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [
@@ -144,7 +145,7 @@
     home.shellAliases = {
         hi = "echo Hi !";
         py = "devshell python:shell";
-        hgrep = "history | grep ";
+        hgrep = "history 0 | grep ";
         c = "clear";
         f = "clear && fastfetch";
         #hm = "home-manager";
