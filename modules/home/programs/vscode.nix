@@ -28,6 +28,7 @@
                         geequlim.godot-tools
                     ];
                     userSettings = {
+                        "editor.minimap.enabled"= false;
                         "editor.detectIndentation" = false;
                         "editor.tabSize" = 4;
                         "[nix]"."editor.tabSize" = 4;
@@ -46,6 +47,12 @@
                             "**/Thumbs.db"= true;
                             "**/**.gd.uid"= true;
                             "**/**.gdshader.uid"= true;
+                        };
+                        "github.copilot.enable"= {
+                            "*"= false;
+                            "plaintext"= false;
+                            "markdown"= false;
+                            "scminput"= false;
                         };
                     };
 

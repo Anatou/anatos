@@ -95,6 +95,7 @@
     my.home.services.meteofrance-daemon.enable = true;
     my.home.programs.caffeine.enable = true;
     my.home.services.udiskie.enable = true;
+    my.home.services.lxc.enable = true;
     my.home.services.tailscale.enable = true;
     my.home.services.stylix.enable = true;
     my.home.services.cursor = "bibata";
@@ -152,6 +153,7 @@
         #hm-switch = "home-manager switch --flake ~/anatos && source ~/.zshrc";
         sys-switch = "sudo nixos-rebuild switch --flake ~/anatos && source ~/.zshrc";
         sys-boot = "sudo nixos-rebuild boot --flake ~/anatos";
+        sys-test = "sudo nixos-rebuild test --flake ~/anatos";
         list-sys-gens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
         list-user-gens = "nix-env --list-generations";
         gc-sys-all = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old";

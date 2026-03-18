@@ -15,7 +15,6 @@ in
         my.home.programs.waybar.enable = true;
         my.home.programs.hyprpaper.enable = true;
         my.home.programs.hyprlock.enable = true;
-        my.home.scripts.niri-media-switcher.enable = true;
 
         assertions =
         [ { assertion = nixosConfig.programs.niri.enable;

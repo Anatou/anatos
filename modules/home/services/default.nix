@@ -5,6 +5,7 @@
         ./fonts.nix
         ./flatpak.nix
         ./cursor.nix
+        ./lxc.nix
         ./default-apps.nix
         ./user-dirs.nix
         ./stylix.nix

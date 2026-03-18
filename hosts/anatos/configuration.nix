@@ -83,7 +83,11 @@ in
 
     # =============== System programs =============== #
     my.system.programs.base-programs.enable = true;
-    my.system.programs.virtualisation.enable = true;
+    my.system.programs.virtualisation.docker.enable = true;
+    my.system.programs.virtualisation.podman.enable = true;
+    my.system.programs.virtualisation.libvirt.enable = true;
+    my.system.programs.virtualisation.lxc.enable = true;
+    my.system.programs.virtualisation.virtualbox.enable = false;
     services.hardware.openrgb.enable = true;
 
     # This option defines the first version of NixOS you have installed on this particular machine,

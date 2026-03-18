@@ -17,6 +17,7 @@
             "vboxusers"
             "render"
             "video"
+            "input"
         ]; 
         password = "anatou"; # default that must be changed (but at least user isn't locked out on first boot)
         shell = pkgs.zsh;
@@ -25,6 +26,7 @@
     programs.zsh.enable = true;
     programs.hyprland.enable = true;
     programs.niri.enable = true;
+    services.libinput.enable = true;
     #security.pam.services.hyprlock = {
     #    text = ''auth include login'';
     #};

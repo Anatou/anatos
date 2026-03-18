@@ -4,6 +4,7 @@
     inputs = {
         # NixOS official package source, using the nixos-25.05 branch here
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+        nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
         home-manager = {
             url = "github:nix-community/home-manager/release-25.11";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -26,6 +27,7 @@
     outputs = { 
         self, 
         nixpkgs, 
+        nixpkgs-unstable,
         nixpkgs-linux-firmware-downgrade, 
         nix-flatpak, 
         home-manager, 
@@ -66,6 +68,8 @@
 
                     pkgs-linux-firmware-downgrade =
                         import nixpkgs-linux-firmware-downgrade { system = cfg.system; allowUnfree = true; };
+                    pkgs-unstable =
+                        import nixpkgs-unstable { system = cfg.system; allowUnfree = true; };
                 };
 
                 modules = [
@@ -82,6 +86,8 @@
                                 nixpkgs = nixpkgs;
                                 winapps = winapps;
                                 devshells = devshells;
+                                pkgs-unstable =
+                                    import nixpkgs-unstable { system = cfg.system; allowUnfree = true; };
                             };
 
                             users.${cfg.username}.imports = [

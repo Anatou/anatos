@@ -5,6 +5,7 @@ in
 {
     options.my.home.services.meteofrance-daemon.enable = lib.mkEnableOption "Enable meteofrance-daemon";
 
+    # echo "set-city Antibes" | nc localhost 6000
     config = lib.mkIf config.my.home.services.meteofrance-daemon.enable {
         home.packages = [ meteofrance-daemon ];
     

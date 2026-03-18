@@ -26,9 +26,11 @@ with pkgs; [
     glib
     gtk2
     gtk3
+    python313Packages.tkinter
     bzip2
     libgbm
     udev
+    zlib
 
     libsForQt5.qt5.qtwayland
     wayland

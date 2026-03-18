@@ -1,4 +1,4 @@
-{ host, config, nixosConfig, pkgs, lib, ...}:
+{ host, config, nixosConfig, pkgs, pkgs-unstable, lib, ...}:
 
 {
 
@@ -16,7 +16,10 @@
         assertions =
         [ { assertion = nixosConfig.programs.hyprland.enable;
             message = "programs.hyprland.enable must be set to `true` on system level for hyprland to work";
-            }
+          }
+		  { assertion = nixosConfig.services.libinput.enable;
+            message = "services.libinput.enable must be set to `true` on system level for hyprland to work";
+          }
         ];
 
         home.packages = with pkgs; [
@@ -26,6 +29,8 @@
             hyprland-qtutils # needed for banners and ANR messages
             playerctl
             brightnessctl
+			# libinput
+			# libinput-gestures
         ];
         systemd.user.targets.hyprland-session.Unit.Wants = [
             "xdg-desktop-autostart.target"
@@ -33,7 +38,7 @@
 
         wayland.windowManager.hyprland = {
             enable = true;
-            package = pkgs.hyprland;
+            package = pkgs-unstable.hyprland;
             systemd = {
                 enable = true;
                 enableXdgAutostart = true;
@@ -55,36 +60,47 @@
                     kb_layout = "fr";
                     numlock_by_default = true;
                     repeat_delay = 300;
-                    follow_mouse = 1;
+                    follow_mouse = false;
                     float_switch_override_focus = 0;
                     sensitivity = 0;
+
                     touchpad = {
-                    natural_scroll = true;
-                    disable_while_typing = true;
-                    scroll_factor = 0.7;
+                        natural_scroll = true;
+                        disable_while_typing = true;
+                        scroll_factor = 0.7;
                     };
                 };
 
                 gestures = {
-                    workspace_swipe = 1;
-                    workspace_swipe_fingers = 3;
-                    workspace_swipe_distance = 500;
+                    # workspace_swipe = 1;
+                    # workspace_swipe_fingers = 3;
+                    workspace_swipe_distance = 300;
                     workspace_swipe_invert = 1;
-                    workspace_swipe_min_speed_to_force = 30;
+                    workspace_swipe_min_speed_to_force = 25;
                     workspace_swipe_cancel_ratio = 0.5;
                     workspace_swipe_create_new = 1;
-                    workspace_swipe_forever = 1;
+                    workspace_swipe_forever = false;
                 };
+
+                bezier = [
+                    "quick, 0.33, 1, 0.68, 1"
+                ];
+
+                animation = [
+                    "workspaces,1,5,default,slidevert"
+                    "windowsIn,1,2,quick,gnomed"
+                    "windowsOut,1,2,default,slide"
+                    "windowsMove,1,4,default,slide"
+                    "layers,1,1,quick,slide"
+                ];
 
                 general = {
                     "$modifier" = "SUPER";
-                    layout = "dwindle";
+                    layout = "scrolling";
                     gaps_in = 2;
-                    gaps_out = 0;
+                    gaps_out = "0,20,0,20";
                     border_size = 1;
-                    resize_on_border = true;
-                    #"col.active_border" = "rgb(${config.lib.stylix.colors.base08}) rgb(${config.lib.stylix.colors.base0C}) 45deg";
-                    #"col.inactive_border" = "rgb(${config.lib.stylix.colors.base01})";
+                    resize_on_border = false;
                 };
 
                 misc = {
@@ -109,6 +125,20 @@
                     pseudotile = true;
                     preserve_split = true;
                     force_split = 0;
+                };
+
+                master = {
+                    new_status = "master";
+                    new_on_top = 1;
+                    mfact = 0.66;
+                    orientation = "left";
+                };
+
+                scrolling = {
+                    fullscreen_on_one_column = false;
+                    explicit_column_widths = [ 0.5 0.95 ];
+                    #wrap_focus = false;
+                    #wrap_swapcol = false;
                 };
 
                 decoration = {
@@ -148,37 +178,29 @@
                     direct_scanout = 0;
                 };
 
-                master = {
-                    new_status = "master";
-                    new_on_top = 1;
-                    mfact = 0.5;
-                };
-
                 # Ensure Xwayland windows render at integer scale; compositor scales them
                 xwayland = {
                     force_zero_scaling = true;
                 };
 
                 workspace = [
-                    "special:special, gapsout:60 60 60 60, gapsin:30"
-                    "special:utils, gapsout:90 90 90 90, gapsin:2"
-                    "1, persistant:true"
-                    "2, persistant:true"
-                    "3, persistant:true"
-                    "4, persistant:true"
-                    "5, persistant:true"
-                    "6, persistant:true"
+                    "special:special, layout:dwindle, gapsout:60 60 60 60, gapsin:10"
+                    #"special:utils, gapsout:90 90 90 90, gapsin:2"
+                    "1, persistant:true, layout:scrolling" #, gapsout:0 20 0 20
+                    "2, persistant:true, layout:master, gapsout:0"
+                    "9, persistant:true, layout:dwindle, gapsout:0"
+                    "10, persistant:true, layout:dwindle, gapsout:0"
                 ];
 
-                windowrulev2 = [
-                    "nofocus, class:^(waybar)$"
+                windowrule = [
+                    "no_focus on, match:class ^(waybar)$"
                 ];
 
             };
 
             extraConfig = "
-            #monitor=,preferred,auto,auto
-            layerrule = animation slide, rofi
+                #monitor=,preferred,auto,auto
+                layerrule = animation popin, match:namespace rofi
             ";
         };
     };
