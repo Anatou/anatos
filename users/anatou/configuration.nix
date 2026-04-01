@@ -26,7 +26,6 @@
     programs.zsh.enable = true;
     programs.hyprland.enable = true;
     programs.niri.enable = true;
-    services.libinput.enable = true;
     #security.pam.services.hyprlock = {
     #    text = ''auth include login'';
     #};

@@ -17,9 +17,6 @@
         [ { assertion = nixosConfig.programs.hyprland.enable;
             message = "programs.hyprland.enable must be set to `true` on system level for hyprland to work";
           }
-		  { assertion = nixosConfig.services.libinput.enable;
-            message = "services.libinput.enable must be set to `true` on system level for hyprland to work";
-          }
         ];
 
         home.packages = with pkgs; [
@@ -29,8 +26,6 @@
             hyprland-qtutils # needed for banners and ANR messages
             playerctl
             brightnessctl
-			# libinput
-			# libinput-gestures
         ];
         systemd.user.targets.hyprland-session.Unit.Wants = [
             "xdg-desktop-autostart.target"

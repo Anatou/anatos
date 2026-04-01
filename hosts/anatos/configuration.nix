@@ -54,7 +54,7 @@ in
         "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
         "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware"    
     ];
-    services.xserver.videoDrivers = [ "amdgpu" ];
+    services.xserver.videoDrivers = [ "amdgpu" "vmware" ];
 
     # =============== System services =============== #
     # Wireless and networking
@@ -66,6 +66,8 @@ in
     my.system.services.printing.enable = true; # Printing
     my.system.services.pipewire.enable = true; # Audio
     my.system.services.fonts.default.enable = true; # Fonts
+
+    services.xserver.wacom.enable = true;
 
     # =============== System language =============== #
     # Select internationalisation properties.
@@ -88,6 +90,8 @@ in
     my.system.programs.virtualisation.libvirt.enable = true;
     my.system.programs.virtualisation.lxc.enable = true;
     my.system.programs.virtualisation.virtualbox.enable = false;
+    my.system.programs.virtualisation.virtualbox-retro.enable = false;
+    my.system.programs.virtualisation.vmware-client.enable = false;
     services.hardware.openrgb.enable = true;
 
     # This option defines the first version of NixOS you have installed on this particular machine,

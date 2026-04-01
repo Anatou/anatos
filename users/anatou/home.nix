@@ -49,6 +49,7 @@
         # School
         geogebra6
         anki
+        omnissa-horizon-client #vmware horizon
         # Computing
         cowsay
         mermaid-cli

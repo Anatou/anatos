@@ -1,4 +1,4 @@
-{ lib, config, pkgs, username, ...}:
+{ lib, config, pkgs, pkgs-old, username, ...}:
 
 {
     options.my.system.programs.virtualisation.docker.enable = lib.mkEnableOption "Enable docker";
@@ -6,6 +6,8 @@
     options.my.system.programs.virtualisation.libvirt.enable = lib.mkEnableOption "Enable libvirtd";
     options.my.system.programs.virtualisation.lxc.enable = lib.mkEnableOption "Enable lxc";
     options.my.system.programs.virtualisation.virtualbox.enable = lib.mkEnableOption "Enable virtualbox";
+    options.my.system.programs.virtualisation.virtualbox-retro.enable = lib.mkEnableOption "Enable virtualbox 5.2 (old)";
+    options.my.system.programs.virtualisation.vmware-client.enable = lib.mkEnableOption "Enable vmware client";
     
     config = lib.mkMerge [
         (lib.mkIf config.my.system.programs.virtualisation.docker.enable {
@@ -26,6 +28,10 @@
             programs = { virt-manager.enable = true; };
             environment.systemPackages = with pkgs; [ virt-viewer ];
         })
+        (lib.mkIf config.my.system.programs.virtualisation.vmware-client.enable {
+            virtualisation.vmware.guest.enable = true;
+            virtualisation.vmware.guest.headless = false;
+        })
         (lib.mkIf config.my.system.programs.virtualisation.lxc.enable {
             virtualisation = {
                 lxc = {
@@ -45,6 +51,16 @@
         (lib.mkIf config.my.system.programs.virtualisation.virtualbox.enable {
             virtualisation = {
                 virtualbox.host = {
+                    enable = true;
+                    enableExtensionPack = true;
+                };
+                virtualbox.guest.enable = true;
+            };
+        })
+        (lib.mkIf config.my.system.programs.virtualisation.virtualbox-retro.enable {
+            virtualisation = {
+                virtualbox.host = {
+                    package = pkgs-old.virtualbox;
                     enable = true;
                     enableExtensionPack = true;
                 };

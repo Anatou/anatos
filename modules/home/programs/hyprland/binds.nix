@@ -93,6 +93,10 @@
 				"$modifier,dead_circumflex, layoutmsg, colresize -0.15"
 				"$modifier,dollar, layoutmsg, colresize +0.15"
 				
+                # Monitor
+                "$modifier CTRL,Left, focusmonitor, l"
+				"$modifier CTRL,Right, focusmonitor, r"
+
                 # Workspace
 				"$modifier,Up, workspace, -1"
 				"$modifier,Down, workspace, +1"
