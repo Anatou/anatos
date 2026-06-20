@@ -48,10 +48,10 @@ binds = {
 
     "XF86AudioRaiseVolume" = { 
         _props = { allow-when-locked = true; };
-        spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; };
+        spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; };
     "XF86AudioLowerVolume" = { 
         _props = { allow-when-locked = true; };
-        spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; };
+        spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; };
     "XF86AudioMute" = { 
         _props = { allow-when-locked = true; };
         spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
@@ -62,11 +62,11 @@ binds = {
     };
     "XF86MonBrightnessUp" = { 
         _props = { allow-when-locked = true; };
-        spawn-sh = "brightnessctl --class=backlight set +10%";
+        spawn-sh = "brightnessctl --class=backlight set +5%";
     };
     "XF86MonBrightnessDown" = { 
         _props = { allow-when-locked = true; };
-        spawn-sh = "brightnessctl --class=backlight set 10%-";
+        spawn-sh = "brightnessctl --class=backlight set 5%-";
     };
     "Mod+TouchpadScrollDown" = { _props = { allow-when-locked = true; }; spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; };
     "Mod+TouchpadScrollUp"   = { _props = { allow-when-locked = true; }; spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; };

@@ -138,6 +138,13 @@ in
                 hot-corners = { off = no-children; };
             };
 
+            blur = {
+                passes = 3;
+                offset = 3;
+                noise = 0.02;
+                saturation = 1.5;
+            };
+
             environment = {
                 "NIXOS_OZONE_WL" = "1";
                 "NIXPKGS_ALLOW_UNFREE" = "1";
@@ -193,6 +200,31 @@ in
                     ];
                     open-maximized = true;
                 }
+                # ======================= Medium opacity =====================
+                {
+                    match = [ 
+                        { _props={app-id="^kitty$";}; } 
+                        { _props={app-id="^Spotify$";}; } 
+                        # { _props={app-id="^thunderbird$";}; } 
+                        { _props={app-id="^Beeper$";}; } 
+                    ];
+                    opacity = 0.85;
+                    background-effect = {
+                        blur = true;
+                    };
+                }
+                # ======================= Small opacity =====================
+                {
+                    match = [ 
+                        #{ _props={app-id="^code$";}; } 
+                        #{ _props={app-id="^obsidian$";}; } 
+                        #{ _props={app-id=''r#"^app\.zen_browser\.zen$"#'';}; } 
+                    ];
+                    opacity = 0.95;
+                    background-effect = {
+                        blur = true;
+                    };
+                }
             ];
 
             spawn-sh-at-startup = [
@@ -218,7 +250,7 @@ in
             ];
 
 
-            screenshot-path = "~/download/screenshots/screenshot from %Y-%m-%d %H-%M-%S.png";
+            screenshot-path = "~/downloads/screenshots/screenshot from %Y-%m-%d %H-%M-%S.png";
             #animation = {};
         });
     };

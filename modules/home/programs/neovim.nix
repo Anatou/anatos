@@ -58,7 +58,7 @@
                     zig.enable = true;
                     python.enable = true;
                     markdown.enable = true;
-                    ts = {
+                    typescript = {
                         enable = true;
                         lsp.enable = true;
                         format.type = ["prettierd"];

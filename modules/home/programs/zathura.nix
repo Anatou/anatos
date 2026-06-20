@@ -21,6 +21,8 @@
                 "<C-Right>" = "zoom in";
                 "<C-Down>" = "zoom in";
             };
+
+            extraConfig = "set selection-clipboard clipboar";
         };
     };
 }

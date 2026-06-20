@@ -34,11 +34,11 @@
         wayland.windowManager.hyprland = {
             enable = true;
             package = pkgs-unstable.hyprland;
-            systemd = {
-                enable = true;
-                enableXdgAutostart = true;
-                variables = [ "--all" ];
-            };
+            # systemd = {
+            #     enable = true;
+            #     enableXdgAutostart = true;
+            #     variables = [ "--all" ];
+            # };
             xwayland = {
                 enable = true;
             };
@@ -50,6 +50,11 @@
                     "systemctl --user restart hyprpaper.service"
                     "systemctl --user restart caffeine"
                     "systemctl --user restart udiskie"
+                    "hyprctl dispatch exec obsidian"
+                    "hyprctl dispatch exec beeper && hyprctl dispatch movetoworkspacesilent 2, class:BeeperTexts"
+                    "hyprctl dispatch exec thunderbird && hyprctl dispatch movetoworkspacesilent 2, class:thunderbird"
+                    "hyprctl dispatch exec spotify && hyprctl dispatch movetoworkspacesilent 2, class:spotify"
+					"sh $HOME/.config/waybar/waybar-controler.sh"
                 ];
                 input = {
                     kb_layout = "fr";

@@ -18,9 +18,8 @@
     my.home.programs.hyprland.enable = true;
     my.home.programs.niri.enable = true;
     my.home.programs.hyprlock.theme = "no_signal";
-    my.home.programs.hyprpaper.theme = "alien-in-space";
+    my.home.programs.hyprpaper.theme = "modane-montagne";
 
-    
     
     # ============= User programs ============= #
     home.packages = with pkgs; [
@@ -29,6 +28,7 @@
         spotify
         thunderbird
         eddie
+        tty-clock
         # File opening/manipulation
         libreoffice-still
         gedit
@@ -46,6 +46,8 @@
         godot
         unityhub
         gimp2-with-plugins
+		easyeffects
+		shotcut
         # School
         geogebra6
         anki
@@ -55,6 +57,7 @@
         mermaid-cli
         zip
         bruno
+        gdu
         # Communications
         discord
         beeper
@@ -84,10 +87,11 @@
     services.flatpak.overrides = {
         "app.zen_browser.zen".Context = {
             filesystems = [
-                "xdg-download"
+                "xdg-downloads"
                 "/run/.heim_org.h5l.kcm-socket"
                 "xdg-run/speech-dispatcher:ro"
                 "/home/${username}" # give zen full access to home directory
+                # go to about:config and set widget.dmabuf.force-enabled to true for screen casting
             ];
         };
     };
@@ -119,7 +123,7 @@
     my.home.services.user-dirs = {
         enable = true;
         documents = "documents";
-        download = "download";
+        downloads = "downloads";
     };
 
     services.caffeine.enable = true;
@@ -173,9 +177,14 @@
             LSOUTPUT=$LSOUTPUT$(ls -1 /run/current-system/sw/share/applications);
             echo $LSOUTPUT'';
         mermaid = "mmdc";
+        clock = "tty-clock -C 3 -S -c";
         #alert = "echo \"notify-send --urgency=critical ALERT\"";
+        dcu = "docker compose up && docker compose logs -f";
+        dcd = "docker compose down";
+        dps = "docker ps";
+        dlogs = "docker logs";
     };
 
     programs.home-manager.enable = true;
-    home.stateVersion = "25.05";
+    home.stateVersion = "26.05";
 }

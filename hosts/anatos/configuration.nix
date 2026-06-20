@@ -68,6 +68,8 @@ in
     my.system.services.fonts.default.enable = true; # Fonts
 
     services.xserver.wacom.enable = true;
+    hardware.opentabletdriver.enable = true;
+
 
     # =============== System language =============== #
     # Select internationalisation properties.

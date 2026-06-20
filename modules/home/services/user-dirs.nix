@@ -9,10 +9,10 @@
         description = "Name for the documents folder";
     };
 
-    options.my.home.services.user-dirs.download = lib.mkOption {
+    options.my.home.services.user-dirs.downloads = lib.mkOption {
         type = lib.types.str;
         default = "";
-        description = "Name for the download folder";
+        description = "Name for the downloads folder";
     };
 
     options.my.home.services.user-dirs.desktop = lib.mkOption {
@@ -65,10 +65,10 @@
                 documents = null;
             })
 
-            (lib.mkIf (config.my.home.services.user-dirs.download != "") {
-                download = config.my.home.services.user-dirs.download;
+            (lib.mkIf (config.my.home.services.user-dirs.downloads != "") {
+                download = config.my.home.services.user-dirs.downloads;
             })
-            (lib.mkIf (config.my.home.services.user-dirs.download == "") {
+            (lib.mkIf (config.my.home.services.user-dirs.downloads == "") {
                 download = null;
             })
 

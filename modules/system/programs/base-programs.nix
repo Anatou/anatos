@@ -27,7 +27,9 @@
             acpi
             bc
             jq
+            android-tools
+            # screencasting
+            xdg-desktop-portal-gnome
         ];
-        programs.adb.enable = true;
     };
 }

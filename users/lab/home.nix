@@ -50,7 +50,7 @@
     my.home.services.user-dirs = {
         enable = true;
         documents = "documents";
-        download = "download";
+        downloads = "downloads";
     };
 
     # ============= User scripts ============= #

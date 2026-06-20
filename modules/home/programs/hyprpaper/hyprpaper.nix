@@ -30,8 +30,11 @@ in
     services.hyprpaper = {
         enable = true;
         settings = {
-            preload = [ "/home/${username}/anatos/modules/home/programs/hyprpaper/${theme}.${file_extension}" ];
-            wallpaper = [ ",/home/${username}/anatos/modules/home/programs/hyprpaper/${theme}.${file_extension}" ];
+            splash = false;
+            wallpaper = {
+                monitor = "";
+                path = "/home/${username}/anatos/modules/home/programs/hyprpaper/${theme}.${file_extension}";
+            };
         };
     };
 };

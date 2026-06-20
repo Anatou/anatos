@@ -38,8 +38,8 @@
                     }
                     {
                         on = [ "g" "d" ];
-                        run = "cd ~/download";
-                        desc = "Goto ~/download";
+                        run = "cd ~/downloads";
+                        desc = "Goto ~/downloads";
                     }
                     {
                         on = [ "g" "t" ];

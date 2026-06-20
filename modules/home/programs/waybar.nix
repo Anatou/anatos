@@ -28,7 +28,7 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
         # Create state file (and start waybar in mini)
         if [ ! -f "$STATE_FILE" ]; then
             echo "mini" > "$STATE_FILE"
-            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
+            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini_rounded.style.css &
         else
 
             WAYBAR_MODE=$(cat "$STATE_FILE")
@@ -43,7 +43,7 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
             fi
 
             if [ "$ACTION" = "init" ]; then
-                waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
+                waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini_rounded.style.css &
                 echo "mini" > "$STATE_FILE"
             elif [ "$ACTION" = "kill" ]; then
                 if pgrep waybar >/dev/null; then
@@ -83,7 +83,7 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
                             echo "full_medium" > "$STATE_FILE"
                             ;;
                         "full_mini")
-                            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
+                            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini_rounded.style.css &
                             echo "mini" > "$STATE_FILE"
                             ;;
                         "full_medium")
@@ -91,7 +91,7 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
                             echo "medium" > "$STATE_FILE"
                             ;;
                         *)
-                            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
+                            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini_rounded.style.css &
                             echo "mini" > "$STATE_FILE"
                             ;;
                     esac
@@ -102,11 +102,11 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
                             echo "medium" > "$STATE_FILE"
                             ;;
                         "medium" | "full_mini" | "killed_mini" | "killed_full_mini")
-                            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
+                            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini_rounded.style.css &
                             echo "mini" > "$STATE_FILE"
                             ;;
                         *)
-                            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini.style.css &
+                            waybar -c ~/.config/waybar/waybar_mini -s ~/.config/waybar/waybar_mini_rounded.style.css &
                             echo "mini" > "$STATE_FILE"
                             ;;
                     esac
@@ -562,7 +562,7 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
         text = ''
             * {
                 font-family: "Fira Code";
-                font-size: 1rem;
+                font-size: 0.85rem;
             }
 
             tooltip {
@@ -571,22 +571,24 @@ config = lib.mkIf config.my.home.programs.waybar.enable {
             }
 
             tooltip label {
-                padding: ${padding};
-                background-color: rgba(0, 0, 0, 1);
-                border-radius: ${border-radius};
+                padding: 0.95rem;
+                background-color: rgba(0, 0, 0, 0.75);
+                border-radius: 1rem;
             }
 
             window#waybar {
-                background-color: rgba(0,0,0,0);
+                background-color: rgba(0, 0, 0, 0);
             }
 
             .modules-center {
-                background-color: rgba(0, 0, 0, 1);
-                color: rgba(255,255,255,1);
+                background-color: rgba(0, 0, 0, 0.75);
+                color: rgba(255, 255, 255, 1);
                 border-radius: 1rem;
-                margin-top: .25rem;
-                padding-left: 1rem;
-                padding-right: 1rem;
+                margin-top: 0.25rem;
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+                padding-top: 0.25rem;
+                padding-bottom: 0.25rem;
             }
         '';
     };

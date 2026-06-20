@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, system, host, username, ... }:
+{ inputs, config, pkgs, system, host, username, lib, ... }:
 
 {
     imports = [
@@ -25,6 +25,18 @@
 
     programs.zsh.enable = true;
     programs.hyprland.enable = true;
+    programs.hyprland.withUWSM = true;
+    programs.uwsm = {
+        enable = true;
+        waylandCompositors = {
+            hyprland = {
+                prettyName = "Hyprland";
+                comment = "Hyprland compositor managed by UWSM";
+                binPath = "/run/current-system/sw/bin/start-hyprland";
+
+            };
+        };
+    };
     programs.niri.enable = true;
     #security.pam.services.hyprlock = {
     #    text = ''auth include login'';
@@ -32,7 +44,8 @@
 
 
     programs.steam.enable = true;
-
+    programs.nix-ld.enable = true;
+    
     # Thunar services
     programs.xfconf.enable = true;
     services.gvfs.enable = true; 
