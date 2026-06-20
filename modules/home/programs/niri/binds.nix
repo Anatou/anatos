@@ -30,7 +30,7 @@ binds = {
     "Alt+Print" = {  screenshot-window = no-children; };
 
     "Mod+F" = { fullscreen-window = no-children; };
-    "Mod+Shift+F" = { toggle-windowed-fullscreen = no-children; };
+    "Mod+Shift+F" = { maximize-window-to-edges = no-children; };
     "Mod+Ctrl+F" = { toggle-windowed-fullscreen = no-children; };
     #"Mod+F" = [ { maximize-column = no-children; } { maximize-row = no-children; } ];
     "Mod+D" = { maximize-column = no-children; };
@@ -59,6 +59,22 @@ binds = {
     "XF86AudioMicMute" = {   
         _props = { allow-when-locked = true; };
         spawn-sh = "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+    };
+	"XF86AudioPlay" = { 
+        _props = { allow-when-locked = true; };
+        spawn-sh = "playerctl play-pause";
+    };
+	"XF86AudioPause" = { 
+        _props = { allow-when-locked = true; };
+        spawn-sh = "playerctl play-pause";
+    };
+	"XF86AudioNext" = { 
+        _props = { allow-when-locked = true; };
+        spawn-sh = "playerctl next";
+    };
+	"XF86AudioPrev" = { 
+        _props = { allow-when-locked = true; };
+        spawn-sh = "playerctl previous";
     };
     "XF86MonBrightnessUp" = { 
         _props = { allow-when-locked = true; };
@@ -126,51 +142,19 @@ binds = {
 
     "Mod+Ctrl+Page_Down" = { move-column-to-workspace-down = no-children; };
     "Mod+Ctrl+Page_Up" = {   move-column-to-workspace-up = no-children; };
-    #"Mod+Ctrl+U" = {         move-column-to-workspace-down = no-children; };
-    #"Mod+Ctrl+I" = {         move-column-to-workspace-up = no-children; };
-
+  
     "Mod+Shift+Page_Down" = { move-workspace-down = no-children; };
     "Mod+Shift+Page_Up" = {   move-workspace-up = no-children; };
-    #"Mod+Shift+U" = {         move-workspace-down = no-children; };
-    #"Mod+Shift+I" = {         move-workspace-up = no-children; };
-
+  
     "Mod+WheelScrollDown" = {      _props = { cooldown-ms = 150; }; focus-workspace-down = no-children; };
     "Mod+WheelScrollUp" = {        _props = { cooldown-ms = 150; }; focus-workspace-up = no-children; };
-    #"Mod+Ctrl+WheelScrollDown" = { _props = { cooldown-ms = 150; }; move-column-to-workspace-down = no-children; };
-    #"Mod+Ctrl+WheelScrollUp" = {   _props = { cooldown-ms = 150; }; move-column-to-workspace-up = no-children; };
-
     "Mod+WheelScrollRight" = {      focus-column-right = no-children; };
     "Mod+WheelScrollLeft" = {       focus-column-left = no-children; };
-    #"Mod+Ctrl+WheelScrollRight" = { move-column-right = no-children; };
-    #"Mod+Ctrl+WheelScrollLeft" = {  move-column-left = no-children; };
-
     "Mod+Shift+WheelScrollDown" = {  _props = { cooldown-ms = 150; }; focus-column-right = no-children; };
     "Mod+Shift+WheelScrollUp" = {    _props = { cooldown-ms = 150; }; focus-column-left = no-children; };
-    #"Mod+Ctrl+Shift+WheelScrollDown" = { move-column-right = no-children; };
-    #"Mod+Ctrl+Shift+WheelScrollUp" = {   move-column-left = no-children; };
 
     "Mod+Alt+WheelScrollDown" = { spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"; };
     "Mod+Alt+WheelScrollUp" = {  spawn-sh = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+"; };
-
-    #"Mod+ampersand" = { focus-workspace = 1; };
-    #"Mod+eacute"    = { focus-workspace = 2; };
-    #"Mod+quotedbl"  = { focus-workspace = 3; };
-    #"Mod+apostrophe" = { focus-workspace = 4; };
-    #"Mod+parenleft" = { focus-workspace = 5; };
-    #"Mod+minus" = { focus-workspace = 6; };
-    #"Mod+egrave" = { focus-workspace = 7; };
-    #"Mod+underscore" = { focus-workspace = 8; };
-    #"Mod+ccedilla" = { focus-workspace = 9; };
-
-    #"Mod+Ctrl+ampersand" = { move-column-to-workspace = 1; };
-    #"Mod+Ctrl+eacute"    = { move-column-to-workspace = 2; };
-    #"Mod+Ctrl+quotedbl"  = { move-column-to-workspace = 3; };
-    #"Mod+Ctrl+apostrophe" = { move-column-to-workspace = 4; };
-    #"Mod+Ctrl+parenleft" = { move-column-to-workspace = 5; };
-    #"Mod+Ctrl+minus" = { move-column-to-workspace = 6; };
-    #"Mod+Ctrl+egrave" = { move-column-to-workspace = 7; };
-    #"Mod+Ctrl+underscore" = { move-column-to-workspace = 8; };
-    #"Mod+Ctrl+ccedilla" = { move-column-to-workspace = 9; };
 
     "Mod+Y" = {  consume-or-expel-window-left = no-children; };
     "Mod+U" = { consume-or-expel-window-right = no-children; };

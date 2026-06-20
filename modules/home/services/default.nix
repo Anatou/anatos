@@ -11,7 +11,7 @@
         ./stylix.nix
         ./tailscale.nix
         ./udiskie.nix
-        ./windows.nix
+        # ./windows.nix
         ./meteofrance-daemon.nix
     ];
 }

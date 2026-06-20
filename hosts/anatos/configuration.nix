@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, system, username, host, pkgs-linux-firmware-downgrade, ... }:
+{ config, lib, pkgs, inputs, system, username, host, ... }:
 let
     rocmEnv = pkgs.symlinkJoin {
         name = "rocm-combined";
@@ -24,10 +24,13 @@ in
     hardware.enableRedistributableFirmware = true;
     hardware.enableAllFirmware = true;
 
+    nix.settings.keep-outputs = true;
+    nix.settings.keep-derivations = true;
     nix.settings.auto-optimise-store = true;
     nix.gc = {
         automatic = true;
         dates = "weekly";
+        options = "--delete-older-than 14d";
     };
 
     # =============== Boot & Kernel settings =============== #
@@ -37,7 +40,7 @@ in
 
     my.system.services.displayManager = "ly";
     my.system.services.splashscreen.enable = true;
-    hardware.firmware = [ pkgs-linux-firmware-downgrade.linux-firmware ];
+    hardware.firmware = [ pkgs.linux-firmware ];
 
     # Kernel options
     boot.kernelPackages = pkgs.linuxPackages_zen;

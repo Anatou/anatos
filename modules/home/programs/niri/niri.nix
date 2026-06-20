@@ -40,10 +40,16 @@ in
                 touchpad = {
                     tap = no-children;
                     natural-scroll = no-children;
+                    dwt = no-children;
+                    drag = true;
                 };
-                mouse = {};
-                trackpoint = {};
-                #focus-follows-mouse = no-children;
+                tablet = {
+                    map-to-focused-output = no-children;
+                };
+                focus-follows-mouse = [{ _props = {max-scroll-amount="10%";}; }];
+                warp-mouse-to-focus = [{ _props = {mode="center-xy-always";}; }];
+                workspace-auto-back-and-forth = no-children;
+
             };
 
             output = [ 
@@ -200,29 +206,49 @@ in
                     ];
                     open-maximized = true;
                 }
-                # ======================= Medium opacity =====================
+                # ======================= Small transparency on all windows =====================
                 {
-                    match = [ 
-                        { _props={app-id="^kitty$";}; } 
-                        { _props={app-id="^Spotify$";}; } 
-                        # { _props={app-id="^thunderbird$";}; } 
-                        { _props={app-id="^Beeper$";}; } 
-                    ];
-                    opacity = 0.85;
+                    opacity = 0.95;
+                    draw-border-with-background = false;
                     background-effect = {
                         blur = true;
                     };
                 }
-                # ======================= Small opacity =====================
+                # ======================= Big transparency =====================
                 {
                     match = [ 
-                        #{ _props={app-id="^code$";}; } 
-                        #{ _props={app-id="^obsidian$";}; } 
-                        #{ _props={app-id=''r#"^app\.zen_browser\.zen$"#'';}; } 
+                        { _props={app-id="^Spotify$";}; } 
+                        { _props={app-id="^Beeper$";}; } 
                     ];
-                    opacity = 0.95;
+                    opacity = 0.85;
+                    draw-border-with-background = false;
                     background-effect = {
                         blur = true;
+                    };
+                }
+                # ======================= Medium transparency =====================
+                {
+                    match = [ 
+                        { _props={app-id="^kitty$";}; } 
+                        { _props={app-id="^thunderbird$";}; } 
+                    ];
+                    opacity = 0.9;
+                    draw-border-with-background = false;
+                    background-effect = {
+                        blur = true;
+                    };
+                }
+                # ======================= No transparency =====================
+                {
+                    match = [ 
+                        { _props={app-id="^code$";}; } 
+                        { _props={app-id="^obsidian$";}; } 
+                        { _props={app-id=''r#"^app\.zen_browser\.zen$"#'';}; } 
+                    ];
+                    opacity = 1.0;
+                    draw-border-with-background = true;
+                    background-effect = {
+                        blur = false;
                     };
                 }
             ];

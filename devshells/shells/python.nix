@@ -8,29 +8,22 @@ in
     default = {
         prefix = prefix;
         function = mkPythonDevshell;
-        name = "python3.13";
-        packages = with pkgs; [ python313 python313Packages.zlib-ng python313Packages.uv jupyter-all python313Packages.tkinter ];
+        name = "python3.15";
+        packages = with pkgs; [ python315 python315Packages.zlib-ng python315Packages.uv jupyter-all python315Packages.tkinter ];
     };
 
-    v310 = {
+    v315t = {
         prefix = prefix;
         function = mkPythonDevshell;
-        name = "python3.10";
-        packages = with pkgs; [ python310 jupyter-all ];
+        name = "python3.15-free-threading";
+        packages = with pkgs; [ python315FreeThreading ];
     };
 
-    v314t = {
+    v315-nov = {
         prefix = prefix;
         function = mkPythonDevshell;
-        name = "python3.14-free-threading";
-        packages = with pkgs; [ python314FreeThreading ];
-    };
-
-    v313-nov = {
-        prefix = prefix;
-        function = mkPythonDevshell;
-        name = "python3.13-no-venv";
-        packages = with pkgs; [ python313 ];
+        name = "python3.15-no-venv";
+        packages = with pkgs; [ python315 ];
         use-venv = false;
     };
 
@@ -39,15 +32,15 @@ in
         function = mkBashDevShell;
         name = "python3.13-shell";
         packages = with pkgs; [
-            python313
+            python315
         ];
         shellHook = "python; exit";
     };
 
-    v313-bash = {
+    v315-bash = {
         prefix = prefix;
         function = mkBashDevShell;
-        name = "python3.13-bash";
-        packages = with pkgs; [ python313 jupyter-all ];
+        name = "python3.15-bash";
+        packages = with pkgs; [ python315 jupyter-all ];
     };
 }

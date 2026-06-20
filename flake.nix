@@ -3,18 +3,11 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-        nixpkgs-old = { url = "github:NixOS/nixpkgs/d2b5e6eafe4ee59d89a8233a599fafb83bc35169"; flake = false; };
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-        nixpkgs-linux-firmware-downgrade.url = "github:NixOS/nixpkgs/732e4d32ad9fde9447d7cfca129b3afec7de00cc";
         home-manager = {
             url = "github:nix-community/home-manager/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        winapps = {
-            url = "github:winapps-org/winapps";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
         stylix = {
             url = "github:nix-community/stylix/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -22,20 +15,23 @@
         nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
         nvf.url = "github:notashelf/nvf";
         devshells.url = "./devshells";
+
+        # winapps = {
+        #     url = "github:winapps-org/winapps";
+        #     inputs.nixpkgs.follows = "nixpkgs";
+        # };
     };
 
     outputs = { 
         self, 
         nixpkgs, 
-        nixpkgs-old,
         nixpkgs-unstable,
-        nixpkgs-linux-firmware-downgrade, 
         nix-flatpak, 
         home-manager, 
         stylix, 
         nvf,
-        winapps,
         devshells,
+        # winapps,
         ... 
     }@inputs: 
     let
@@ -67,12 +63,8 @@
                     username = cfg.username;
                     system = cfg.system;
 
-                    pkgs-linux-firmware-downgrade =
-                        import nixpkgs-linux-firmware-downgrade { system = cfg.system; allowUnfree = true; };
                     pkgs-unstable =
                         import nixpkgs-unstable { system = cfg.system; allowUnfree = true; };
-                    pkgs-old =
-                        import nixpkgs-old { system = cfg.system; allowUnfree = true; };
                 };
 
                 modules = [
@@ -87,12 +79,10 @@
                                 system = cfg.system;
                                 username = cfg.username;
                                 nixpkgs = nixpkgs;
-                                winapps = winapps;
+                                # winapps = winapps;
                                 devshells = devshells;
                                 pkgs-unstable =
                                     import nixpkgs-unstable { system = cfg.system; allowUnfree = true; };
-                                pkgs-old =
-                                    import nixpkgs-old { system = cfg.system; allowUnfree = true; };
                             };
 
                             users.${cfg.username}.imports = [

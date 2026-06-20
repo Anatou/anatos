@@ -1,4 +1,4 @@
-{ lib, config, pkgs, pkgs-old, username, ...}:
+{ lib, config, pkgs, username, ...}:
 
 {
     options.my.system.programs.virtualisation.docker.enable = lib.mkEnableOption "Enable docker";
@@ -60,7 +60,7 @@
         (lib.mkIf config.my.system.programs.virtualisation.virtualbox-retro.enable {
             virtualisation = {
                 virtualbox.host = {
-                    package = pkgs-old.virtualbox;
+                    package = pkgs.virtualbox;
                     enable = true;
                     enableExtensionPack = true;
                 };

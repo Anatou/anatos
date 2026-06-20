@@ -116,9 +116,9 @@
         image = [ "qimgv.desktop" ];
     };
 
-    my.home.services.windows.enable = true;
-    my.home.services.windows.disk-location = "/home/anatou/documents/informatique/windows";
-    my.home.services.windows.use-winapps = true;
+    # my.home.services.windows.enable = true;
+    # my.home.services.windows.disk-location = "/home/anatou/documents/informatique/windows";
+    # my.home.services.windows.use-winapps = true;
 
     my.home.services.user-dirs = {
         enable = true;
