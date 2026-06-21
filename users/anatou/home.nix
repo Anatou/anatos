@@ -41,6 +41,7 @@
         # Art/creation
         blender
         inkscape-with-extensions
+        adwaita-icon-theme #inkscape icons
         krita
         krita-plugin-gmic
         godot

@@ -18,6 +18,7 @@ in
         ];
 
     nix.settings.experimental-features = ["nix-command" "flakes"];
+    nix.settings.connect-timeout = 2;
 
     # Nix package options
     nixpkgs.config.allowUnfree = true;

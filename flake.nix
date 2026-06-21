@@ -35,6 +35,10 @@
         ... 
     }@inputs: 
     let
+        # The configuration used is automatically choosed from hostname. Use
+        #   nixos-rebuild switch --flake .#nixosConfigurations.<host>
+        # in order to choose/change the hostname.
+        # After, a simple sys-switch is needed
         host_config = {
             "anatos" = {
                 system = "x86_64-linux";
@@ -53,7 +57,6 @@
     {
     # ========== NixOs configuration ========== #
     # build with sudo nixos-rebuild switch --flake .
-    # or (same thing) sudo nixos-rebuild switch --flake .#nixosConfigurations.nixvm
     nixosConfigurations =
         nixpkgs.lib.mapAttrs
         (host: cfg:

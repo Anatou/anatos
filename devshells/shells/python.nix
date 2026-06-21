@@ -12,7 +12,7 @@ in
         packages = with pkgs; [ python315 python315Packages.uv jupyter-all ];
     };
 
-    v315t = {
+    t = {
         prefix = prefix;
         function = mkPythonDevshell;
         name = "python3.15-free-threading";
@@ -42,5 +42,12 @@ in
         function = mkBashDevShell;
         name = "python3.15-bash";
         packages = with pkgs; [ python315 jupyter-all ];
+    };
+
+    v314 = {
+        prefix = prefix;
+        function = mkPythonDevshell;
+        name = "python3.14";
+        packages = with pkgs; [ python314 ];
     };
 }

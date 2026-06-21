@@ -32,7 +32,7 @@ binds = {
     "Mod+F" = { fullscreen-window = no-children; };
     "Mod+Shift+F" = { maximize-window-to-edges = no-children; };
     "Mod+Ctrl+F" = { toggle-windowed-fullscreen = no-children; };
-    #"Mod+F" = [ { maximize-column = no-children; } { maximize-row = no-children; } ];
+    "Mod+M" = { maximize-column = no-children; };
     "Mod+D" = { maximize-column = no-children; };
     "Mod+Shift+D" = { expand-column-to-available-width = no-children; };
 
@@ -45,6 +45,7 @@ binds = {
 
     "Mod+Shift+Alt+L" = { power-off-monitors = no-children; };
     "Mod+L" = { spawn-sh = "loginctl lock-session"; };
+    "Mod+Shift+L" = { spawn-sh = "systemctl susped"; };
 
     "XF86AudioRaiseVolume" = { 
         _props = { allow-when-locked = true; };

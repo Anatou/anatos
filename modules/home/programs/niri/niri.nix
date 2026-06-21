@@ -202,7 +202,7 @@ in
                         { _props={app-id=''r#"^app\.zen_browser\.zen$"#'';}; } 
                         { _props={app-id="thunderbird$";}; } 
                         { _props={app-id="winboat";}; } 
-                        
+                        { _props={app-id=''r#"^org\.inkscape\.Inkscape$"#'';}; } 
                     ];
                     open-maximized = true;
                 }
@@ -244,6 +244,7 @@ in
                         { _props={app-id="^code$";}; } 
                         { _props={app-id="^obsidian$";}; } 
                         { _props={app-id=''r#"^app\.zen_browser\.zen$"#'';}; } 
+                        { _props={app-id=''r#"^org\.inkscape\.Inkscape$"#'';}; } 
                     ];
                     opacity = 1.0;
                     draw-border-with-background = true;
