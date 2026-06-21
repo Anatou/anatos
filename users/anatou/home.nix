@@ -155,19 +155,26 @@
         hgrep = "history 0 | grep ";
         c = "clear";
         f = "clear && fastfetch";
-        #hm = "home-manager";
-        #hm-switch = "home-manager switch --flake ~/anatos && source ~/.zshrc";
+
+        trash-size = "du -sh ~/.local/share/Trash";
+        empty-trash = "rm -rf ~/.local/share/Trash/*";
+        disk-usage = "cd / && gdu";
+
+
         sys-switch = "sudo nixos-rebuild switch --flake ~/anatos && source ~/.zshrc";
         sys-boot = "sudo nixos-rebuild boot --flake ~/anatos";
         sys-test = "sudo nixos-rebuild test --flake ~/anatos";
+
         list-sys-gens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system";
         list-user-gens = "nix-env --list-generations";
+
         gc-sys-all = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations old";
         gc-sys-pick = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations";
         gc-user-all = "nix-env --delete-generations old";
         gc-user-pick = "nix-env --delete-generations";
         gc-store = "nix-store --gc";
         gc-purge = "gc-sys-all && gc-user-all && gc-store";
+
         ls-desktop-files = ''
             LSOUTPUT="";
             LSOUTPUT=$LSOUTPUT"================ .desktop from flatpak ================\n";
@@ -179,7 +186,7 @@
             echo $LSOUTPUT'';
         mermaid = "mmdc";
         clock = "tty-clock -C 3 -S -c";
-        #alert = "echo \"notify-send --urgency=critical ALERT\"";
+        alert = "notify-send --urgency=critical ALERT";
         dcu = "docker compose up && docker compose logs -f";
         dcd = "docker compose down";
         dps = "docker ps";
