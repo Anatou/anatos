@@ -21,6 +21,11 @@
             }) (nixpkgs.lib.attrsets.attrsToList shells)
         );
 
+        shellFiles = nixpkgs.lib.attrNames (
+            nixpkgs.lib.filterAttrs 
+                (name: type: type == "regular" && nixpkgs.lib.hasSuffix ".nix" name) 
+                (builtins.readDir ./shells)
+        );
     in {
 
         ####################################################################
@@ -28,13 +33,10 @@
         ####################################################################
         # allShells.<system> = { c = {...}; python = {...}; ... }
         allShells = forAllSystems (pkgs: system:
-            importShell (import ./shells/c.nix      { inherit pkgs system; }) //
-            importShell (import ./shells/java.nix { inherit pkgs system; })   //
-            importShell (import ./shells/node.nix { inherit pkgs system; })   //
-            importShell (import ./shells/prolog.nix { inherit pkgs system; }) //
-            importShell (import ./shells/python.nix { inherit pkgs system; }) //
-            importShell (import ./shells/r.nix   { inherit pkgs system; }) //
-            importShell (import ./shells/rust.nix   { inherit pkgs system; })
+            nixpkgs.lib.foldl' (acc: file: 
+                let imported = import (./shells + "/${file}") { inherit pkgs system; };
+                in  acc // importShell imported
+            ) {} shellFiles
         );
 
 
@@ -54,46 +56,21 @@
         let
             shells = self.allShells.${system};
 
-            ############################################################
-            # Expose individual packages
-            ############################################################
+            # On extrait tous les paquets exactement comme avant
             allPkgs = nixpkgs.lib.flatten (map
                 (sh: sh.packages)
                 (nixpkgs.lib.attrValues shells)
             ) ++ import ./lib/libs.nix { inherit pkgs; };
 
-            perPkg = nixpkgs.lib.listToAttrs (
-            map (p: {
-                name  = builtins.replaceStrings ["." "-"] ["_" "_"] p.name;
-                value = pkgs.buildEnv { name = p.name; paths = [p]; };
-                }) allPkgs
-            );
-
-            ############################################################
-            # Download all packages
-            ############################################################
-            pkgNames = builtins.concatStringsSep " " (map (name: name) (builtins.attrNames perPkg));
-
-            installScript = pkgs.writeShellScriptBin "install-all-devshell-packages" ''
-            echo "Installing all devshell packages:"
-            echo "  ${pkgNames}"
-
-            # Remove old packages
-            mkdir -p "$HOME"/.nix-profile-devshells
-            rm -rf "$HOME"/.nix-profile-devshells/*
-
-            # Install new packages
-            # Unchanged packages will not be downloaded again as they still exist in the store
-            for pkg in ${pkgNames}; do
-                echo "Installing: ''${pkg}"
-                nix profile add --profile "$HOME"/.nix-profile-devshells/''${pkg} "$HOME"/anatos/devshells#packages.${system}.''${pkg}
-            done
-
-            echo ""
-            echo "✔ All devshell packages installed successfully."
-            '';
-        in
-        perPkg // { installScript = installScript; }
-        );
+        in {
+            # On expose un seul paquet global qui regroupe tout.
+            # buildEnv crée un environnement virtuel contenant tous les "paths" fournis.
+            cache-all-shells = pkgs.buildEnv { 
+                name = "all-devshells-cache"; 
+                paths = allPkgs; 
+                # On ignore les collisions (si deux shells utilisent la même dépendance)
+                ignoreCollisions = true; 
+            };
+        });
     };
 }

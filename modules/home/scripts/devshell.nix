@@ -18,7 +18,7 @@ script = pkgs.writeShellScriptBin "devshell" ''
         echo ""
         echo "devshell <shell>"
         echo "  Activates the specified devshell"
-        echo "  <shell> must be formatted like <prefix>:<option>. For example: \`devshell python:v314t\`"
+        echo "  <shell> must be formatted like <prefix>:<option>. For example: \`devshell python:v315t\`"
         echo "  You can omit the <option> part for the default shell of a prefix. For example: \`devshell python\`"
         echo "  Devshells can be nested"
         echo "  You can list all available devshells with \`devshell list\`"
@@ -33,29 +33,18 @@ script = pkgs.writeShellScriptBin "devshell" ''
         echo "devshell fhs"
         echo "  Activates the FHS devshell (Filesystem Hierarchy Standard)"
         echo "  The FHS devshell is a non-sandboxed FHS compliant environment with many libs"
-        echo "  It may be used to run or compile some programs needing a standard file système"
+        echo "  It may be used to run or compile some programs needing a standard file system"
+        echo ""
+        echo "devshell warm"
+        echo "  Downloads and builds all the devshells and associated packages"
+        echo "  They will be ready to use with no build time for any future use"
+        echo ""
+        echo "devshell clean"
+        echo "  Cleans all the prebuilt shells"
         echo ""
         echo "devshell help"
         echo "  Prints this help"
         echo ""
-    }
-
-    print_packages_help() {
-        echo -e "\x1b[1m-= Packages options =-\x1b[0m"
-        echo ""
-        echo "devshell packages warm"
-        echo "  Install all the packages needed by the devshells"
-        echo "  Installed packages are protected of future nix store garbage collection"
-        echo ""
-        echo "devshell packages clean"
-        echo "  Remove all protection on the packages needed by the devshells"
-        echo "  They will be deleted by any future nix store garbage collection"
-        echo "  Packages are not immediatly deleted"
-        echo ""
-        echo "devshell packages clean"
-        echo "  Prints help about pacakges"
-        echo ""
-
     }
 
     print_invalid_option_error() {
@@ -128,32 +117,13 @@ script = pkgs.writeShellScriptBin "devshell" ''
         "fhs") 
             nix-shell "$HOME"/anatos/devshells/fhs
             ;;
-        "packages")
-            if [[ ! -n "$2" ]]; then
-                echo -e "\x1b[1;31m$progname packages: No option specified\x1b[1;0m"
-                print_small_help
-                exit 1
-            fi
-            case "$2" in
-                "help") 
-                    print_packages_help 
-                    ;;
-                "warm") 
-                    nix profile remove devshells
-                    nix profile install "$HOME"/anatos/devshells#installScript
-                    install-all-devshell-packages
-                    echo -e "Warmed all devshell programs, they will persist through \`nix-store --gc\`"
-                    ;;
-                "clean") 
-                    rm -rf "$HOME"/.nix-profile-devshells/*
-                    echo -e "Cleaned all devshell programs, run `nix-store --gc` to permanently remove them"
-                    ;;
-                * )
-                    print_invalid_option_error "$*"
-                    print_small_help
-                    exit 1
-                    ;;
-            esac
+        "warm")
+            cd "$HOME"/anatos/devshells
+            nix build .#cache-all-shells
+            ;;
+        "clean")
+            rm "$HOME"/anatos/devshells/result*
+            nix-collect-garbage
             ;;
         "fhs") 
             nix-shell ~/anatos/devshells/fhs/shell.nix

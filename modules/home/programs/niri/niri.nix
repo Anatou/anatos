@@ -260,6 +260,7 @@ in
                 "systemctl --user restart caffeine"
                 "systemctl --user restart udiskie"
                 "beeper" # For some reason I cannot find a way to spawn beeper from regular 'spawn' 
+                "thunderbird"
                 "nm-applet --indicator"
                 "blueman-applet"
             ];

@@ -9,7 +9,7 @@ in
         prefix = prefix;
         function = mkPythonDevshell;
         name = "python3.15";
-        packages = with pkgs; [ python315 python315Packages.zlib-ng python315Packages.uv jupyter-all python315Packages.tkinter ];
+        packages = with pkgs; [ python315 python315Packages.uv jupyter-all ];
     };
 
     v315t = {
