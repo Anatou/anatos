@@ -58,7 +58,7 @@
                 "$modifier,Q,exec,kitty"
                 "$modifier,A,exec,flatpak run app.zen_browser.zen"
                 "$modifier,Space,exec,$HOME/.config/hypr/openrofi"
-                "$modifier,I,exec,rofimoji"
+                "$modifier,I,exec,rofimoji-cfg"
                 "$modifier,C,killactive"
                 "$modifier,Z,exec,bash $HOME/.config/waybar/waybar-controler.sh"
                 "$modifier SHIFT,Z,exec,bash $HOME/.config/waybar/waybar-controler.sh big"
@@ -74,7 +74,6 @@
                 "$modifier SHIFT,V,pin"
                 "$modifier,J,togglesplit"
                 "$modifier,L,exec,loginctl lock-session"
-                "$modifier,I,exec,exec,bash rofimoji"
                 ",Print,exec,wayland-screenshot"
 
                 # Master layout

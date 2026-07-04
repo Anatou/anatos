@@ -8,12 +8,13 @@ binds = {
     "Mod+O" = {  _props = { hotkey-overlay-title = "Open Obsidian"; }; spawn = "obsidian"; };
     "Mod+E" = {  _props = { hotkey-overlay-title = "Open a File Explorer: yazi"; }; spawn-sh = "kitty -e yazi"; };
     "Mod+Shift+E" = {  _props = { hotkey-overlay-title = "Open a File Explorer: thunar"; }; spawn = "thunar"; };
+    "Mod+G" = {  _props = { hotkey-overlay-title = "Open a text editor: Gedit"; }; spawn = "gedit"; };
     "Mod+H" = {  _props = { hotkey-overlay-title = "Open help"; }; show-hotkey-overlay = no-children; };
     "Mod+Space" = {  _props = { hotkey-overlay-title = "Run an Application: rofi"; }; spawn-sh = "rofi -show drun"; };
     "Mod+Shift+X" = {  _props = { hotkey-overlay-title = "Launch vscode and Open anatos"; }; spawn-sh = "code ~/anatos"; };
-    "Mod+I" = {  _props = { hotkey-overlay-title = "Run an emoji picker: rofimoji"; }; spawn-sh = "rofimoji"; };
+    "Mod+I" = {  _props = { hotkey-overlay-title = "Run an emoji picker: rofimoji"; }; spawn-sh = "rofimoji-cfg"; };
     #"Mod+Tab" = {  _props = { hotkey-overlay-title = "Switch to media workspace"; }; spawn-sh = "niri-media-switcher"; };
-    "Mod+Tab" = {  _props = { hotkey-overlay-title = "Switch to media workspace"; }; focus-workspace = 1; };
+    "Mod+Tab" = {  _props = { hotkey-overlay-title = "Switch to media workspace"; }; fo	- [ ] Lock screen without blocking computercus-workspace = 1; };
 
     "Mod+Shift+W" = { center-column = no-children; };
     "Mod+W" = { _props = { repeat = false; }; toggle-overview = no-children; };
@@ -45,7 +46,7 @@ binds = {
 
     "Mod+Shift+Alt+L" = { power-off-monitors = no-children; };
     "Mod+L" = { spawn-sh = "loginctl lock-session"; };
-    "Mod+Shift+L" = { spawn-sh = "systemctl susped"; };
+    "Mod+Shift+L" = { spawn-sh = "systemctl suspend"; };
 
     "XF86AudioRaiseVolume" = { 
         _props = { allow-when-locked = true; };
@@ -166,6 +167,26 @@ binds = {
 
     #"Mod+X" = {       center-column = no-children; };
     #"Mod+Ctrl+X" = {  center-visible-columns = no-children; };
+
+    "Mod+ampersand" = { focus-workspace = 1; };
+    "Mod+eacute"    = { focus-workspace = 2; };
+    "Mod+quotedbl"  = { focus-workspace = 3; };
+    "Mod+apostrophe" = { focus-workspace = 4; };
+    "Mod+parenleft" = { focus-workspace = 5; };
+    "Mod+minus" = { focus-workspace = 6; };
+    "Mod+egrave" = { focus-workspace = 7; };
+    "Mod+underscore" = { focus-workspace = 8; };
+    "Mod+ccedilla" = { focus-workspace = 9; };
+
+    "Mod+Ctrl+ampersand" = { move-column-to-workspace = 1; };
+    "Mod+Ctrl+eacute"    = { move-column-to-workspace = 2; };
+    "Mod+Ctrl+quotedbl"  = { move-column-to-workspace = 3; };
+    "Mod+Ctrl+apostrophe" = { move-column-to-workspace = 4; };
+    "Mod+Ctrl+parenleft" = { move-column-to-workspace = 5; };
+    "Mod+Ctrl+minus" = { move-column-to-workspace = 6; };
+    "Mod+Ctrl+egrave" = { move-column-to-workspace = 7; };
+    "Mod+Ctrl+underscore" = { move-column-to-workspace = 8; };
+    "Mod+Ctrl+ccedilla" = { move-column-to-workspace = 9; };
 
     "Mod+Dead_circumflex" = { set-column-width = "-15%" ; };
     "Mod+Dollar" = { set-column-width = "+15%" ; };

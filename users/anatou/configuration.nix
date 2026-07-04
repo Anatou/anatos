@@ -42,6 +42,21 @@
     #    text = ''auth include login'';
     #};
 
+    security.sudo.extraConfig = ''
+        Defaults env_keep += "DISPLAY XAUTHORITY"
+    '';
+    environment.systemPackages = [ pkgs.xhost ];
+    systemd.user.services.allow-root-x11 = {
+        description = "Autorize root (via sudo) to connect to the XWayland display ";
+        wantedBy = [ "graphical-session.target" ];
+        partOf = [ "graphical-session.target" ];
+        serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
+            ExecStart = "${pkgs.xhost}/bin/xhost +SI:localuser:root";
+        };
+    };
+
 
     programs.steam.enable = true;
     programs.nix-ld.enable = true;
@@ -55,7 +70,6 @@
     services.udisks2.enable = true;
     services.atd.enable = true;
 
-    
     my.system.services.flatpak.enable = true;
     my.system.services.auto-mount-data-drive.enable = true;
 }

@@ -6,10 +6,8 @@
     config = lib.mkIf config.my.home.programs.rofimoji.enable {
         home.packages = with pkgs; [
             rofimoji
+            (pkgs.writeShellScriptBin "rofimoji-cfg" "rofimoji -a clipboard -f emojis latin-1 math")
         ];
-        home.shellAliases = {
-            rofimoji = "rofimoji -a clipboard copy -f emojis latin-1 math";
-        };
         # All extension files are @${pkgs.rofimoji}/lib/python3.12/site-packages/picker/data/
     };
 }
