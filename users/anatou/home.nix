@@ -27,7 +27,6 @@
         obsidian
         spotify
         thunderbird
-        eddie
         tty-clock
         # File opening/manipulation
         libreoffice-still
@@ -49,6 +48,8 @@
         gimp2-with-plugins
 		easyeffects
 		shotcut
+        friction-graphics
+        digikam
         # School
         geogebra6
         anki
@@ -56,6 +57,7 @@
         # Computing
         cowsay
         mermaid-cli
+        eddie
         zip
         bruno
         gdu
