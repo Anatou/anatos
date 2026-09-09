@@ -38,6 +38,7 @@
         };
     };
     programs.niri.enable = true;
+    programs.nix-ld.enable = true;
     #security.pam.services.hyprlock = {
     #    text = ''auth include login'';
     #};
@@ -57,9 +58,10 @@
         };
     };
 
-
+    # Gaming services
     programs.steam.enable = true;
-    programs.nix-ld.enable = true;
+    hardware.steam-hardware.enable = true;
+    hardware.xpadneo.enable = true;
     
     # Thunar services
     programs.xfconf.enable = true;

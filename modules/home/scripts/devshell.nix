@@ -144,7 +144,7 @@ script = pkgs.writeShellScriptBin "devshell" ''
             print_shells
             ;;
         "fhs")
-            nix-shell --option substitute false "$HOME"/anatos/devshells/fhs/shell.nix
+            nix-shell "$HOME"/anatos/devshells/fhs/shell.nix
             ;;
         "warm")
             cd "$flake_dir"

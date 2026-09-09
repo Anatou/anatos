@@ -3,7 +3,16 @@
 # This is a non-exhaustive list of binaries needed for dynamic linking
 # To add them to a shell, LD_LIBRARY_PATH must be set with "${pkgs.lib.makeLibraryPath libs}"; 
 with pkgs; [
-    stdenv.cc.cc
+    # Chaîne de compilation C de base
+    glibc
+    glibc.dev
+    stdenv.cc
+    stdenv.cc.libc
+    stdenv.cc.libc_dev
+    binutils
+    pkg-config
+    gnumake
+
     # openssl
     libxcomposite
     libxtst
@@ -67,6 +76,9 @@ with pkgs; [
     glew_1_10
     libidn
     tbb
+
+    libxml2
+    libxslt
     
     # Other things from runtime
     flac

@@ -4,6 +4,10 @@
     options.my.home.programs.neovim.enable = lib.mkEnableOption "Enable my neovim configuration";
 
     config = lib.mkIf config.my.home.programs.neovim.enable {
+        home.shellAliases = {
+            nv = "nvim";
+        };
+        
         programs.nvf = {
             enable = true;
 
@@ -55,6 +59,7 @@
                     enableExtraDiagnostics = true;
                     nix.enable = true;
                     clang.enable = true;
+					qml.enable = true;
                     zig.enable = true;
                     python.enable = true;
                     markdown.enable = true;

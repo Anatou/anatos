@@ -22,6 +22,7 @@
             thunar-vcs-plugin
             thunar-archive-plugin
             thunar-media-tags-plugin
+            thunar-shares-plugin
         ];
     };
 }

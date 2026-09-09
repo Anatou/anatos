@@ -146,9 +146,9 @@ in
 
             blur = {
                 passes = 3;
-                offset = 3;
-                noise = 0.02;
-                saturation = 1.5;
+                offset = 1;
+                noise = 0.01;
+                saturation = 1.2;
             };
 
             environment = {
@@ -180,6 +180,17 @@ in
                 "XDG_TERMINAL_EMULATOR" = "kitty";
                 "XDG_MENU_PREFIX" = "plasma-";
             };
+
+            layer-rule = [
+                {
+                    match = [ 
+                        { _props={namespace="^quickshell$";}; } 
+                    ];
+                    background-effect = {
+                        xray = false;
+                    };
+                }
+            ];
 
             window-rule = [ 
                 {

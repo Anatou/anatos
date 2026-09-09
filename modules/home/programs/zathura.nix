@@ -22,7 +22,7 @@
                 "<C-Down>" = "zoom in";
             };
 
-            extraConfig = "set selection-clipboard clipboar";
+            extraConfig = "set selection-clipboard clipboard";
         };
     };
 }

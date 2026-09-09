@@ -20,6 +20,11 @@
         #     url = "github:winapps-org/winapps";
         #     inputs.nixpkgs.follows = "nixpkgs";
         # };
+
+		colibri = {
+            url = "./mypkgs/colibri";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = { 
@@ -31,6 +36,7 @@
         stylix, 
         nvf,
         devshells,
+		colibri,
         # winapps,
         ... 
     }@inputs: 
@@ -78,14 +84,12 @@
                         home-manager = {
                             backupFileExtension = "backup2";
                             extraSpecialArgs = {
-                                inherit inputs host home-manager;
+                                inherit inputs host home-manager colibri nixpkgs devshells;
                                 system = cfg.system;
                                 username = cfg.username;
-                                nixpkgs = nixpkgs;
-                                # winapps = winapps;
-                                devshells = devshells;
                                 pkgs-unstable =
                                     import nixpkgs-unstable { system = cfg.system; allowUnfree = true; };
+                                # winapps = winapps;
                             };
 
                             users.${cfg.username}.imports = [

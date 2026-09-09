@@ -1,4 +1,4 @@
-{ lib, config, ...}:
+{ lib, config, pkgs, ...}:
 
 {
     options.my.home.programs.git.enable = lib.mkEnableOption "Enable my git configuration";
@@ -6,6 +6,7 @@
     config = lib.mkIf config.my.home.programs.git.enable {
         programs.git = {
             enable = true;
+            lfs.enable = true;
             settings = {
                 alias = {
                     a = "add .";
@@ -46,5 +47,9 @@
             gfetch = "git fetch --prune";
             
         };
+
+        home.packages = with pkgs; [
+            git-xet
+        ];
     };
 }

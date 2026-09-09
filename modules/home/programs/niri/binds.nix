@@ -31,11 +31,11 @@ binds = {
     "Alt+Print" = {  screenshot-window = no-children; };
 
     "Mod+F" = { fullscreen-window = no-children; };
-    "Mod+Shift+F" = { maximize-window-to-edges = no-children; };
     "Mod+Ctrl+F" = { toggle-windowed-fullscreen = no-children; };
     "Mod+M" = { maximize-column = no-children; };
     "Mod+D" = { maximize-column = no-children; };
-    "Mod+Shift+D" = { expand-column-to-available-width = no-children; };
+    "Mod+Ctrl+D" = { expand-column-to-available-width = no-children; };
+    "Mod+Shift+D" = { maximize-window-to-edges = no-children; };
 
     "Mod+V" = {       toggle-window-floating = no-children; };
     "Mod+Shift+V" = { switch-focus-between-floating-and-tiling = no-children; };
@@ -165,8 +165,8 @@ binds = {
     "Mod+Shift+R" = { switch-preset-window-height = no-children; };
     "Mod+Ctrl+R" = {  reset-window-height = no-children; };
 
-    #"Mod+X" = {       center-column = no-children; };
-    #"Mod+Ctrl+X" = {  center-visible-columns = no-children; };
+    "Mod+X" = {       center-column = no-children; };
+    "Mod+Ctrl+X" = {  center-visible-columns = no-children; };
 
     "Mod+ampersand" = { focus-workspace = 1; };
     "Mod+eacute"    = { focus-workspace = 2; };

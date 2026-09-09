@@ -1,4 +1,4 @@
-{ inputs, config, nixpkgs, pkgs, system, host, username, ... }:
+{ inputs, config, nixpkgs, pkgs, system, host, username, colibri, ... }:
 
 {
     imports = [
@@ -10,6 +10,8 @@
     home.username = "${username}";
     home.homeDirectory = "/home/${username}";
     # D'autres options de home pour config les différents affichages, langues, variables, curseurs, etc...
+
+    services.gnome-keyring.enable = true;
 
     # ============= User desktop environment ============= #
     # Don't forget to activate the DE from the system configuration as well
@@ -61,6 +63,8 @@
         zip
         bruno
         gdu
+        quickshell
+        colibri.packages.${system}.default
         # Communications
         discord
         beeper
@@ -162,7 +166,6 @@
         empty-trash = "rm -rf ~/.local/share/Trash/*";
         disk-usage = "cd / && gdu";
 
-
         sys-switch = "sudo nixos-rebuild switch --flake ~/anatos && source ~/.zshrc";
         sys-boot = "sudo nixos-rebuild boot --flake ~/anatos";
         sys-test = "sudo nixos-rebuild test --flake ~/anatos";
@@ -176,6 +179,8 @@
         gc-user-pick = "nix-env --delete-generations";
         gc-store = "nix-store --gc";
         gc-purge = "gc-sys-all && gc-user-all && gc-store";
+
+        eddie = "eddie-ui elevation=sudo";
 
         ls-desktop-files = ''
             LSOUTPUT="";

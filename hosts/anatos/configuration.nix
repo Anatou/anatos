@@ -64,7 +64,7 @@ in
     # Wireless and networking
     networking.hostName = "${host}";
     my.system.services.wireless.enable = true;
-    my.system.services.openssh.enable = true;
+    my.system.services.openssh.enable = false;
     my.system.services.at.enable = true;
     my.system.services.howdy.enable = true;
 
