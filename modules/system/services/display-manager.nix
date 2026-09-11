@@ -36,7 +36,7 @@ in
         enable = true;
         settings = {
             clock = "%c";
-            battery_id = "BAT_0";
+            battery_id = "BAT1";
             box_title = "Hello !";
             lang = "fr";
         };

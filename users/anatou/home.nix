@@ -65,6 +65,7 @@
         gdu
         quickshell
         colibri.packages.${system}.default
+        opencode
         # Communications
         discord
         beeper

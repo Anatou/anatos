@@ -37,11 +37,33 @@
             };
         };
     };
-    programs.niri.enable = true;
+    
     programs.nix-ld.enable = true;
     #security.pam.services.hyprlock = {
     #    text = ''auth include login'';
     #};
+
+    programs.niri.enable = true;
+    programs.dconf.enable = true;
+    xdg.portal = {
+        enable = true;
+        
+        extraPortals = [
+            pkgs.xdg-desktop-portal-gnome
+            pkgs.xdg-desktop-portal-gtk
+        ];
+
+        config.niri = {
+            default = [ "gnome" "gtk" ];
+
+            "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+            "org.freedesktop.impl.portal.Access" = [ "gtk" ];
+            "org.freedesktop.impl.portal.Notification" = [ "gtk" ];
+            "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+            "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
+            "org.freedesktop.impl.portal.Screenshot" = [ "gnome" ];
+        };
+    };
 
     security.sudo.extraConfig = ''
         Defaults env_keep += "DISPLAY XAUTHORITY"

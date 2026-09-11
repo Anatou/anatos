@@ -45,6 +45,9 @@ in
 
     # Kernel options
     boot.kernelPackages = pkgs.linuxPackages_zen;
+    boot.kernelParams = [
+        "ttm.pages_limit=6291456"
+    ];
 
     # Driver
     hardware.cpu.amd.updateMicrocode = true;
@@ -54,10 +57,10 @@ in
     };
     hardware.graphics.extraPackages = [ pkgs.rocmPackages.clr.icd ];
     systemd.tmpfiles.rules = [ 
-        # "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" 
         "L+    /opt/rocm   -    -    -     -    ${rocmEnv}"
         "L+ /var/lib/qemu/firmware - - - - ${pkgs.qemu}/share/qemu/firmware"    
     ];
+    boot.initrd.kernelModules = [ "amdgpu" ];
     services.xserver.videoDrivers = [ "amdgpu" "vmware" ];
 
     # =============== System services =============== #

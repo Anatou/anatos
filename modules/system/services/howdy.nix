@@ -13,5 +13,6 @@
         };
         security.pam.services.hyprlock.howdy.enable = true;
         security.pam.services.sudo.howdy.enable = false;
+        security.pam.services.ly.howdy.enable = false;
     };
 }
