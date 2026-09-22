@@ -4,6 +4,7 @@
   imports = [
     ./at.nix
     ./audio.nix
+    ./wifi-ap.nix
     ./ssh.nix
     ./wireless.nix
     ./howdy.nix

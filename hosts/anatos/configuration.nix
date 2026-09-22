@@ -68,8 +68,39 @@ in
     networking.hostName = "${host}";
     my.system.services.wireless.enable = true;
     my.system.services.openssh.enable = false;
-    my.system.services.at.enable = true;
+  	my.system.services.wifi-ap = {
+		enable = true;
+
+		wifiInterface = "wlp98s0";
+		apInterface = "ap0";
+
+		ssid = "Meccha-OwO";
+
+		address = "192.168.50.1";
+		network = "192.168.50.0/24";
+
+		dhcpStart = "192.168.50.100";
+		dhcpEnd = "192.168.50.200";
+	};
+
+	systemd.user.services.polkit-gnome-authentication-agent-1 = {
+		description = "polkit-gnome-authentication-agent-1";
+
+		wantedBy = [ "graphical-session.target" ];
+		wants = [ "graphical-session.target" ];
+		after = [ "graphical-session.target" ];
+
+		serviceConfig = {
+			Type = "simple";
+			ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+			Restart = "on-failure";
+			RestartSec = 1;
+		};
+	};
+	
     my.system.services.howdy.enable = true;
+	
+    my.system.services.at.enable = true;
 
     my.system.services.printing.enable = true; # Printing
     my.system.services.pipewire.enable = true; # Audio
