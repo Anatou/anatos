@@ -540,13 +540,6 @@ let
 
       if "$SYSTEMCTL" is-active --quiet "$AP_SERVICE" 2>/dev/null; then
         printf '  état   : actif\n'
-		PASSWORD_FILE="/etc/wifi-ap/password"
-
-		if [ -r "$PASSWORD_FILE" ]; then
-			printf '\n[AP credentials]\n'
-			printf '  mot de passe : %s\n' \
-				"$(${pkgs.coreutils}/bin/tr -d '\n' < "$PASSWORD_FILE")"
-		fi
       else
         printf '  état   : arrêté\n'
       fi
@@ -555,6 +548,16 @@ let
         printf '  ready  : oui\n'
       else
         printf '  ready  : non\n'
+      fi
+
+	  if "$SYSTEMCTL" is-active --quiet "$AP_SERVICE" 2>/dev/null; then
+		PASSWORD_FILE="/etc/wifi-ap/password"
+
+		if [ -r "$PASSWORD_FILE" ]; then
+			printf '\n[AP credentials]\n'
+			printf '  mot de passe : %s\n' \
+				"$(${pkgs.coreutils}/bin/tr -d '\n' < "$PASSWORD_FILE")"
+		fi
       fi
 
       if [ -f "$STATE_FILE" ]; then
@@ -642,12 +645,6 @@ EOF
         -s "${cfg.network}" \
         -o "$WIFI" \
         -j MASQUERADE 2>/dev/null || true
-
-      ${pkgs.iptables}/bin/iptables -D INPUT \
-        -i "$AP" \
-        -p udp \
-        --dport 67 \
-        -j ACCEPT 2>/dev/null || true
 
       # Disable forwarding
       ${pkgs.sysctl}/bin/sysctl -w net.ipv4.ip_forward=0 >/dev/null || true
@@ -781,12 +778,6 @@ EOF
       --ctstate RELATED,ESTABLISHED \
       -j ACCEPT
 
-    ${pkgs.iptables}/bin/iptables -A INPUT \
-        -i "$AP" \
-        -p udp \
-        --dport 67 \
-        -j ACCEPT
-
     HOSTAPD_CONFIG="$(
       ${pkgs.coreutils}/bin/mktemp
     )"
@@ -820,6 +811,7 @@ EOF
 interface=$AP
 bind-interfaces
 
+dhcp-authoritative
 dhcp-range=${cfg.dhcpStart},${cfg.dhcpEnd},255.255.255.0,${cfg.dhcpLeaseTime}
 
 dhcp-option=3,${cfg.address}
@@ -955,6 +947,8 @@ in
     networking.networkmanager.unmanaged = [
       "interface-name:${cfg.apInterface}"
     ];
+
+	networking.firewall.interfaces.${cfg.apInterface}.allowedUDPPorts = [ 67 ];
 
     systemd.services.wifi-ap = {
       description = "Wi-Fi Access Point (${cfg.apInterface})";
