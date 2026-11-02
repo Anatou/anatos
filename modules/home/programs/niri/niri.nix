@@ -15,6 +15,7 @@ in
         my.home.programs.waybar.enable = true;
         my.home.programs.hyprpaper.enable = true;
         my.home.programs.hyprlock.enable = true;
+        my.home.programs.wayscriber.enable = true;
 
         assertions =
         [ { assertion = nixosConfig.programs.niri.enable;
@@ -40,7 +41,7 @@ in
                 touchpad = {
                     tap = no-children;
                     natural-scroll = no-children;
-                    dwt = no-children;
+                    #dwt = no-children; #disable while typing
                     drag = true;
                 };
                 tablet = {
@@ -266,6 +267,7 @@ in
                 "thunderbird"
                 "nm-applet --indicator"
                 "blueman-applet"
+                "wayscriber --daemon"
             ];
             spawn-at-startup = [
                 "obsidian" "spotify"

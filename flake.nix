@@ -25,6 +25,8 @@
             url = "./mypkgs/colibri";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        wayscriber.url = "github:devmobasa/wayscriber?ref=v0.9.26";
     };
 
     outputs = { 
@@ -37,6 +39,7 @@
         nvf,
         devshells,
 		colibri,
+        wayscriber,
         # winapps,
         ... 
     }@inputs: 
@@ -84,7 +87,7 @@
                         home-manager = {
                             backupFileExtension = "backup2";
                             extraSpecialArgs = {
-                                inherit inputs host home-manager colibri nixpkgs devshells;
+                                inherit inputs host home-manager colibri nixpkgs devshells wayscriber;
                                 system = cfg.system;
                                 username = cfg.username;
                                 pkgs-unstable =

@@ -6,6 +6,13 @@
     ];
     nixpkgs.config.allowUnfree = true;
 
+    services.home-manager.autoExpire = {
+        enable = true;
+        frequency = "weekly";
+        timestamp = "-14 days";
+        store.cleanup = true;   # lance aussi un GC du store après l'expiration
+    };
+
     # ============= User configuration ============= #
     home.username = "${username}";
     home.homeDirectory = "/home/${username}";
@@ -134,7 +141,7 @@
         downloads = "downloads";
     };
 
-    services.caffeine.enable = true;
+    services.caffeine.enable = false;
 
     # ============= User scripts ============= #
     my.home.scripts.devshell.enable = true;
@@ -143,11 +150,11 @@
     # ============= User fonts ============= #
     my.home.services.fonts.extra = with pkgs; [
         #vdrsymbols
+        noto-fonts-color-emoji
         fira-code
         fira-code-symbols
         jetbrains-mono
         minecraftia
-        noto-fonts-color-emoji
     ];
 
     # ============= User shell ============= #
@@ -168,6 +175,7 @@
         disk-usage = "cd / && gdu";
 
         sys-switch = "sudo nixos-rebuild switch --flake ~/anatos && source ~/.zshrc";
+        sys-build = "sudo nixos-rebuild build --flake ~/anatos";
         sys-boot = "sudo nixos-rebuild boot --flake ~/anatos";
         sys-test = "sudo nixos-rebuild test --flake ~/anatos";
 
@@ -179,7 +187,7 @@
         gc-user-all = "nix-env --delete-generations old";
         gc-user-pick = "nix-env --delete-generations";
         gc-store = "nix-store --gc";
-        gc-purge = "gc-sys-all && gc-user-all && gc-store";
+        gc-purge = "nix-collect-garbage -d && gc-sys-all && gc-user-all && gc-store";
 
         eddie = "eddie-ui elevation=sudo";
 

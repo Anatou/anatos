@@ -27,6 +27,8 @@
             };
             programs = { virt-manager.enable = true; };
             environment.systemPackages = with pkgs; [ virt-viewer ];
+            networking.firewall.interfaces.virbr0.allowedUDPPorts = [ 67 ];
+
         })
         (lib.mkIf config.my.system.programs.virtualisation.vmware-client.enable {
             virtualisation.vmware.guest.enable = true;

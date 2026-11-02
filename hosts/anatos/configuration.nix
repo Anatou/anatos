@@ -37,9 +37,11 @@ in
     # =============== Boot & Kernel settings =============== #
     # Boot options
     boot.loader.systemd-boot.enable = true;
+    boot.loader.timeout = 0;
     boot.loader.efi.canTouchEfiVariables = true;
 
     my.system.services.displayManager = "ly";
+    my.system.services.kmscon.enable = false;
     my.system.services.splashscreen.enable = true;
     hardware.firmware = [ pkgs.linux-firmware ];
 

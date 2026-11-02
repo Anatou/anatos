@@ -33,6 +33,7 @@
 
         wayland.windowManager.hyprland = {
             enable = true;
+            portalPackage = null;
             package = pkgs-unstable.hyprland;
             # systemd = {
             #     enable = true;

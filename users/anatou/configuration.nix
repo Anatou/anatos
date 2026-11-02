@@ -68,7 +68,7 @@
     security.sudo.extraConfig = ''
         Defaults env_keep += "DISPLAY XAUTHORITY"
     '';
-    environment.systemPackages = [ pkgs.xhost ];
+    environment.systemPackages = [ pkgs.xhost ]; #pkgs.adwaita-icon-theme
     systemd.user.services.allow-root-x11 = {
         description = "Autorize root (via sudo) to connect to the XWayland display ";
         wantedBy = [ "graphical-session.target" ];

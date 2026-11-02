@@ -16,6 +16,9 @@ binds = {
     #"Mod+Tab" = {  _props = { hotkey-overlay-title = "Switch to media workspace"; }; spawn-sh = "niri-media-switcher"; };
     "Mod+Tab" = {  _props = { hotkey-overlay-title = "Switch to media workspace"; }; focus-workspace = 1; };
 
+    "Mod+S" = {  _props = { hotkey-overlay-title = "Open a drawable overlay"; }; spawn-sh = "wayscriber --daemon-toggle"; };
+    "Mod+Shift+S" = {  _props = { hotkey-overlay-title = "Open a drawable overlay and freeze bg"; }; spawn-sh = "wayscriber --daemon-toggle --freeze"; };
+
     "Mod+Shift+W" = { center-column = no-children; };
     "Mod+W" = { _props = { repeat = false; }; toggle-overview = no-children; };
     "Mod+C" = { _props = { repeat = false; }; close-window = no-children; };

@@ -8,6 +8,7 @@
     ./ssh.nix
     ./wireless.nix
     ./howdy.nix
+    ./kmscon.nix
     ./display-manager.nix
     ./flatpak.nix
     ./printing.nix

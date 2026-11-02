@@ -18,6 +18,11 @@
             };
 
             fonts = {
+                emoji = {
+                    package = pkgs.noto-fonts-color-emoji;
+                    name = "Noto Color Emoji";
+                };
+
                 serif = {
                     package = pkgs.dejavu_fonts;
                     name = "DejaVu Serif";
@@ -31,11 +36,6 @@
                 monospace = {
                     package = pkgs.fira-code;
                     name = "Firacode";
-                };
-
-                emoji = {
-                    package = pkgs.noto-fonts-color-emoji;
-                    name = "Noto Color Emoji";
                 };
             };
         };

@@ -32,13 +32,24 @@ in
     })
 
     (lib.mkIf (config.my.system.services.displayManager == "ly") {
+    # See options https://github.com/fairyglade/ly/blob/v1.3.x/res/config.ini
       services.displayManager.ly = {
         enable = true;
         settings = {
-            clock = "%c";
-            battery_id = "BAT1";
-            box_title = "Hello !";
+            clock = "%A %e %B %Y - %R";
             lang = "fr";
+            box_title = "Hello User !";
+            
+            battery_id = "BAT1";
+            session_log = ".local/ly/ly-session.log";
+            brightness_down_key = "F4";
+            brightness_up_key = "F5";
+
+            animation = "matrix";
+            # 12288-12543 for japanese text but its broken
+            # Or 48-49 for only 0 and 1
+            cmatrix_min_codepoint = 48;
+            cmatrix_max_codepoint = 50;
         };
       };
     })

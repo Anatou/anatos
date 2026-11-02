@@ -21,6 +21,7 @@
         ./thunar.nix
         ./vscode.nix
         ./waybar.nix
+        ./wayscriber.nix
         ./yazi.nix
         ./zathura.nix
         ./zoxide.nix

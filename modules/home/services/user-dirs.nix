@@ -51,6 +51,12 @@
         description = "Name for the publicShare folder";
     };
 
+    options.my.home.services.user-dirs.projects = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+        description = "Name for the Projects folder";
+    };
+
     
 
 
@@ -112,6 +118,13 @@
             })
             (lib.mkIf (config.my.home.services.user-dirs.publicShare == "") {
                 publicShare = null;
+            })
+
+            (lib.mkIf (config.my.home.services.user-dirs.projects != "") {
+                projects = config.my.home.services.user-dirs.projects;
+            })
+            (lib.mkIf (config.my.home.services.user-dirs.projects == "") {
+                projects = null;
             })
         ];
     };
