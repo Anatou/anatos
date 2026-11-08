@@ -36,7 +36,6 @@
         obsidian
         spotify
         thunderbird
-        tty-clock
         # File opening/manipulation
         libreoffice-still
         gedit
@@ -82,6 +81,7 @@
     my.home.programs.git.enable = true;
     my.home.programs.zsh.enable = true;
     my.home.programs.zoxide.enable = true;
+    my.home.programs.clock.enable = true;
     my.home.programs.fastfetch.enable = true;
     my.home.programs.btop.enable = true;
     my.home.programs.ollama.enable = true;
@@ -201,7 +201,6 @@
             LSOUTPUT=$LSOUTPUT$(ls -1 /run/current-system/sw/share/applications);
             echo $LSOUTPUT'';
         mermaid = "mmdc";
-        clock = "tty-clock -C 3 -S -c";
         alert = "notify-send --urgency=critical ALERT";
         dcu = "docker compose up && docker compose logs -f";
         dcd = "docker compose down";

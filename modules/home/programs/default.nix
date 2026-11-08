@@ -6,6 +6,7 @@
         ./cava.nix
         ./fastfetch
         ./git.nix
+        ./clock-rs.nix
         ./hyprland
         ./hyprlock
         ./hyprpaper
