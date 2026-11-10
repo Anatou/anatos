@@ -23,7 +23,7 @@
                 date = {
                     fmt = "%A, %B %d %Y";
                     use_12h = false;
-                    utc = true;
+                    utc = false;
                     hide_seconds = false;
                 };
             };
