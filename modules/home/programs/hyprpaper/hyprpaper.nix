@@ -1,15 +1,16 @@
 { host, config, pkgs, lib, username, ...}:
 let 
     theme = config.my.home.programs.hyprpaper.theme;
-    jpg_bg = [ "modane-montagne" "anatole-thabor" "hyprpaper" "mountain_sunset" "alien-in-space" ];
+    jpg_bg = [ "modane-montagne" "anatole-thabor" "hyprpaper" "alien-in-space" ];
     png_bg = [ ];
-    backgrounds = jpg_bg ++ png_bg;
+    folder_bg = [ "vicuna" ];
+    backgrounds = jpg_bg ++ png_bg ++ folder_bg;
     
     file_extension = 
         if builtins.any (el: el==theme) jpg_bg then
-            "jpg"
+            ".jpg"
         else if builtins.any (el: el==theme) png_bg then
-            "png" 
+            ".png" 
         else "";
 in
 {
@@ -21,7 +22,7 @@ in
     options.my.home.programs.hyprpaper.enable = lib.mkEnableOption "Enable my hyprpaper configuration";
     options.my.home.programs.hyprpaper.theme = lib.mkOption {
         type = lib.types.enum (backgrounds);
-        default = "mountain_sunset";
+        default = "hyprpaper";
         description = "Choose your hyprpaper background (${backgrounds})";
     };
 
@@ -33,7 +34,8 @@ in
             splash = false;
             wallpaper = {
                 monitor = "";
-                path = "/home/${username}/anatos/modules/home/programs/hyprpaper/${theme}.${file_extension}";
+                timeout = "60";
+                path = "/home/${username}/anatos/assets/wallpapers/${theme}${file_extension}";
             };
         };
     };

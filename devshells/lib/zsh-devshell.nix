@@ -2,8 +2,9 @@
 let
     libs = import ./libs.nix { inherit pkgs; };
     make-devshell-name = (import ./make-devshell-name.nix);
+    make-zdotdir = (import ./make-zdotdir.nix) { inherit pkgs; };
 in
-{ name, packages ? [], env ? {}, beforeZsh ? "", afterZsh ? "", function, prefix }: pkgs.mkShell {
+{ name, packages ? [], env ? {}, beforeZsh ? "", afterZsh ? "", zshrc ? "", function, prefix }: pkgs.mkShell {
     name = "${name}";
     packages = packages;
     env = {
@@ -12,6 +13,7 @@ in
     } // env;
     shellHook = ''${make-devshell-name name}'' +
     beforeZsh + ''
+        export ZDOTDIR=${make-zdotdir name zshrc}
         exec $SH
     '' + afterZsh;
 }

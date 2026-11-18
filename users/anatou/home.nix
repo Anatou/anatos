@@ -27,7 +27,7 @@
     my.home.programs.hyprland.enable = true;
     my.home.programs.niri.enable = true;
     my.home.programs.hyprlock.theme = "no_signal";
-    my.home.programs.hyprpaper.theme = "modane-montagne";
+    my.home.programs.hyprpaper.theme = "vicuna";
 
     
     # ============= User programs ============= #

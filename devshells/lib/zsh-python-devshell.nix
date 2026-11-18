@@ -2,8 +2,9 @@
 let
     libs = import ./libs.nix { inherit pkgs; };
     make-devshell-name = (import ./make-devshell-name.nix);
+    make-zdotdir = (import ./make-zdotdir.nix) { inherit pkgs; };
 in
-{ name, packages ? [], environment ? {}, use-venv ? true, function, prefix}: pkgs.mkShell {
+{ name, packages ? [], environment ? {}, use-venv ? true, zshrc ? "", function, prefix}: pkgs.mkShell {
     name = "${name}";
     packages = packages ++ [pkgs.ninja];
     env = {
@@ -30,6 +31,7 @@ in
     ''
     ${make-devshell-name name}
     ${venv-setup}
+    export ZDOTDIR=${make-zdotdir name zshrc}
     exec $SH
     deactivate
     '';
