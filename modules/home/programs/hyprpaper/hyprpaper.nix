@@ -34,7 +34,7 @@ in
             splash = false;
             wallpaper = {
                 monitor = "";
-                timeout = "60";
+                timeout = "600";
                 path = "/home/${username}/anatos/assets/wallpapers/${theme}${file_extension}";
             };
         };
