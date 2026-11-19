@@ -78,17 +78,17 @@ in
             ];
 
             layout = {
-                gaps = 2;
+                gaps = 0;
                 struts = {
                     left = 32;
                     right = 32;
-                    top = -2;
-                    bottom = -2;
+                    top = 0;
+                    bottom = 0;
                 };
                 center-focused-column = "never";
                 #default-column-display = "tabbed";
                 #empty-workspace-above-first = no-children;
-                always-center-single-column = no-children;
+                #always-center-single-column = no-children;
                 preset-column-widths = {
                     proportion = [
                         0.33333
@@ -99,8 +99,8 @@ in
                 default-column-width = { proportion = 0.5; };
                 focus-ring = {
                     off = no-children;
-                    width = 4;
-                    active-color = "#7fc8ff";
+                    width = 1;
+                    active-color = "#ffc87f";
                     inactive-color = "#505050";
                 };
                 border = {
@@ -122,12 +122,12 @@ in
                     # off
                     hide-when-single-tab = no-children;
                     place-within-column = no-children;
-                    gap = 2;
-                    width = 8;
+                    gap = 0;
+                    width = 6;
                     length = { _props={total-proportion=1.0; };};
                     position = "right";
-                    gaps-between-tabs = 2;
-                    corner-radius = 8;
+                    gaps-between-tabs = 0;
+                    corner-radius = 0;
                     #active-color = "red";
                     #inactive-color = "gray";
                     #urgent-color = "blue";
@@ -186,7 +186,7 @@ in
 
             window-rule = [ 
                 {
-                    geometry-corner-radius = 12;
+                    geometry-corner-radius = 0;
                     clip-to-geometry = true;
                 }
                 {
